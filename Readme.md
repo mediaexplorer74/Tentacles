@@ -39,3 +39,5 @@ As is. No support. Just for fun! DIY.
 
 ## .
 [m][e] 2025
+
+![Logo](Images/footer.png)
