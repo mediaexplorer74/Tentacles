@@ -1,0 +1,18 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: PressPlay.FFWD.Interfaces.IContactProcessor
+// Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
+// Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.FFWD.dll
+
+using PressPlay.FFWD.Components;
+
+#nullable disable
+namespace PressPlay.FFWD.Interfaces
+{
+  public interface IContactProcessor
+  {
+    void Update();
+
+    void ResetStays(Collider collider);
+  }
+}

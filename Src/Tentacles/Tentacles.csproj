@@ -1,0 +1,2187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{D4313173-99B3-47E2-A81A-8C82A7BB460B}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tentacles</RootNamespace>
+    <AssemblyName>Tentacles</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <LangVersion>latest</LangVersion>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>TiltMaze_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <GenerateAppxPackageOnBuild>false</GenerateAppxPackageOnBuild>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="PressPlay.Tentacles.Scripts\**\*.cs" />
+    <Compile Remove="Debugging\Accelerometer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Debugging\AccelerometerState.cs" />
+    <Compile Include="DebugViewXNA.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PressPlay.FFWD\Element`1.cs" />
+    <Compile Include="PressPlay.FFWD\FarseerPhysics\Collision\AABB.cs" />
+    <Compile Include="PressPlay.FFWD\FarseerPhysics\Collision\ClipVertex.cs" />
+    <Compile Include="PressPlay.FFWD\FarseerPhysics\Collision\Collision.cs" />
+    <Compile Include="PressPlay.FFWD\FarseerPhysics\Collision\ContactFeature.cs" />
+    <Compile Include="PressPlay.FFWD\QuadTreeBroadPhase.cs" />
+    <Compile Include="PressPlay.FFWD\QuadTree`1.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ABaseBehaviour.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ABaseWeapon.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AchievementDescription.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AchievementListItem.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AcidPenetratorFrontParticle.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AcidPenetratorMainBody.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AlertPopup.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AnimatedCheckPoint.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AnimatedClawCollider.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AnimatedLemmyDamager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AnimatedTentacleTipCollider.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AudioManager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AudioObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AudioSettings.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AudioWrapper.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AudioWrapperComponent.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BackgroundScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BackgroundTrack.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BaseActivator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BaseBullet.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BaseCondition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BaseCreature.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicBoss.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicClawCollider.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicEnemyHitLump.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicLemmyDamager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicPenetrator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicPenetratorMainBody.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BasicTentacleTipCollider.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BezierConnection.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BezierCurve.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BezierCurveUniformMover.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BlockCrumble.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BossActivator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BossFightCondition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BossSounds.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BulletData.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\BulletStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ButtonComponent.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ButtonRenderer.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CallbackObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CamState.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CamStateActivator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CannonScript.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CatchUpStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ChainedMoverTarget.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Challenge.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ChallengeBar.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ChallengeHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ChallengeTrigger.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ChallengeUI.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CheatManager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CheckPoint.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Claw.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ClawBehaviour.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ConfirmPopup.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CreatureMover.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CreatureMoverNode.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CreatureMoverNodeWrapper.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CreatureToolbox.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CreditsScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CreditTextEntry.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\CRSpline.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Current.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MoviePlayer.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DamageFeedback.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DamageFeedbackMeshAndSpriteSheet.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DamageLemmyStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Dandelion.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DebugCameraControl.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DefaultCamStateActivator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DelayedInstantiator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DoorActivator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DoorOpenClose.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\DoorSequence.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Ease.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\EndLevelStarControl.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\EnergyCell.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\EnergyContainer.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\EntryExitPair.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Equations.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\FeedbackHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\FireworksSpawn.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\FullScreenImageHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GameDatabase.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GameLibrary.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GameplaySettings.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GameSession.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GlobalManager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GlobalSettings.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GlobalUserData.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Gobbler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GridElement.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GUIAssets.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GuiBarShowSettings.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GUICamera.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\GunController.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\HitLumpPosition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ILevelHandlerCutscene.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\IngameGUI.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\InGamePauseMenu.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\InputHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\IntroSequence.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\IntroTutorialSequence.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\IPickup.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\IPoolable.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\JumpPosition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Language.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LanguageItem.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LeaderBoardScreen.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LeaderboardLevelData.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LeaderBoardTestScreen.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Lemmy.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LemmyPassedCheckPointCondition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LemmySeekingBullet.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LemmySquishedTester.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LemmyStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LemmyTravelScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Level.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelBatch.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelExit.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelImportDataStructure.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelLoadInfo.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelMusicAndSound.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelProgress.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelResult.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelResultData.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelSelectButton.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelSelection.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelSelectRow.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelSession.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelStartCheckPoint.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelStateChangeCondition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LevelTypeSettings.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LightningDamageFeedback.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LightningDoor.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LightningPenetratorMainBody.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LightningRenderer.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LineDrawerXZ.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LoadingScreen2.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LoadSceneScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LocalisationManager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\LoopControl.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Maelstrom.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MainBody.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MainMenu.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MenuButton.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MenuSceneScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Menu\MainMenu\EndLevelScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Menu\MainMenu\EndLevelStar.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Mine.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MiniTentacle.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MoveToAndPullLemmy.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MovingBullet.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MovingCreature.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MultipleStreamsSoundLoop.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MusicController.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MusicControllerTrigger.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\NotImplementedScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\NumberUtil.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ObjectMover.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ObjectPool.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ObjectPoolPreset.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ObjectShaker.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\OnClawBehaviourConnect.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\OnOffSlider.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\OptionsScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\OutroSequence.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PathFollowCam.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PathFollowCamNode.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PathFollowCamNodeConnection.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PathFollowCamPosition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PathFollowCamStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PathFollowObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PauseMenu.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PickupScoreAndColor.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PointPickup.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PoolableAnimation.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PoolableObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PoolableParticle.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PoolablePickup.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PoolableText.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PPAnimationClip.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PPAnimationHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\PreloaderScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\RaycastLemmyDamager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ResetOnLemmyDeath.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\RifleWeapon.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\RigidbodyAffectedByCurrents.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\RipableObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\RotateThis.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SaveHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SceneLoaderManager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ScreenRayCheckHit.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ShootingWallCrawler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ShootPattern.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ShootPatternMiniSuperShooter.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\ShootPatternSuperShooter_v2.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SimpleLineDrawer.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SimpleRenderObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SimpleRotate.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SimpleSprite.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SimpleText.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SpikeWall.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SpikyWallCrawler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SpritePositions.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SpriteSheetAnim.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SpriteSheetLineDrawer.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SpriteText.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\StreamedSoundLoop.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperGobblerBoss.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperGobblerBossAttackShield.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperShooter.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperShooterTentacle.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperWormAttackPattern.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperWormBoss.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperWormEntryExit.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperWormHead.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\SuperWormSegment.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TemplateScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Tentacle.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleActivatedExplosiveMine.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleJoint.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleLeaderboardRow.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleTip.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleTipCollisionStats.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleTipDamager.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TentacleVisualStats.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TestAudioScreen.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TimedBlockElectric.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TimedRotation.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TravelNode.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TrialModeManager.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TriggerCondition.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TriggeredByLemmy.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TTBaseBehavior.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TurnOffAtDistance.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\TurnOffAtDistanceHandler.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UIProgressBar.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UnlockAchievementActivator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UnlockedAchievements.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UpsellScreen.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UserProfile.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UVSpriteSheet.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UVSpriteSheetAnimator.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\WallCrawlMover.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\WallJumper.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\Waypoint.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\WaypointMover.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\WaypointWrapper.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\WeaponSounds.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\World.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\WorldResult.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\XnaMusicUtil.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\XNAParticleSpriteSheet.cs" Exclude="true" />
+    <Compile Include="PressPlay.Tentacles.Scripts\XNAPerParticleRotation.cs" Exclude="true" />
+    <Compile Include="PrimitiveBatch.cs" Exclude="true" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Game1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Content\Sounds\Streams\BrainLoopPart1-2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\BrainLoopPart1-2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\BrainLoopPart1-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\BrainLoopPart1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\BrainLoopPart2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\BrainLoopPart2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\BrainLoopPart3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt1-2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt1-2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt1-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\EntrailLoop6janPrt3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart1-2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart1-2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart1-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\IntestLoopPart3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\PetriLoop.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart1-2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart1-2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart1-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart2-3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Streams\VeinLoopPart3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <!-- Final removals for MVP shell build -->
+  <ItemGroup>
+    <Compile Remove="PressPlay.Tentacles.Scripts\**\*.cs" />
+    <Compile Remove="Debugging\Accelerometer.cs" />
+    <Compile Remove="Game1.cs" />
+    <Compile Remove="PressPlay.FFWD\**\*.cs" />
+    <Compile Remove="DebugViewXNA.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GameShell.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="MonoGame.Framework.WindowsUniversal">
+      <Version>3.8.0.1641</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Music.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Music.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Models\acid_weed_foot.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\bossCannon.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_acidpenetrator_bubble.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_acidpenetrator_ring.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_gobbler_attackShield_helmet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_MiniShooterBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_MiniShooterBoss_Death.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_MiniShooterBoss_walls.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_ShooterBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_ShooterBoss_Death.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\boss_ShooterBoss_walls.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\current_start_end.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\current_start_end_noAnim.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\doodads.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\doodads_2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\door_teeth.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_gobbler_body.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_gobbler_chunks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_gobbler_helmet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_omnishooter_body_wShooters.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_ShootingWallCrawler.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_shootingWallCrawler_chunks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_spikyWallCrawler.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_wallJumper_chunks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\enemy_wallJumper_static.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\fillers.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\FlowyStrand_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\FlowyStrand_01b.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\FlowyStrand_02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\FlowyStrand_02b.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\gobbler_bossStatic.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\gobbler_bossStatic_death.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\harmless_door.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_AcidCannon_Continous.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_crumblingblock.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_crumblingblock_base.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_mealstrom_thing.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_mine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_spiker.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_spike_claw.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_spike_rotating01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_spike_wall_straight03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_spike_wall_straight_noAnim.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\hazard_wall_shooter.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\lemmy_body.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\lemmy_claw.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\maelstrom3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\penetrator_electric_deskinned.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\simple_round_flat_enemy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\sprite_square.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\suction_cup.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\toony_acid_spew_mesh.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\VeinProb_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\VeinProb_02.1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\w01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\w02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\wormBoss_antenna.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\wormBoss_head.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\worm_boss_body.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Models\worm_boss_tail.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Resources\DebugCamera.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Resources\LevelSettings\BRAIN_settings.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Resources\LevelSettings\DESATGREEN_settings.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Resources\LevelSettings\INTESTINES_settings.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Resources\LevelSettings\PETRIDISH_settings.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Resources\LevelSettings\VEINS_settings.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_CurrentsSidewalking_BossWorm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_easyBrainMiniBossGobbler.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_ElectricCurrentsHard.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_ElectricPenetrator.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_ElectricTimedBlocksHard.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_Final_boss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_lvl38_movingspikes.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_SpeedChallenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_SpinningMovingBlocks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Brain_Vortex_LeapOfFaith_.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_AcidChallCurrentMixArenaMiniBossShooter.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_AcidChallenge+LeapOfFaith.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_AcidOpenAreaAsteroids.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_AcidPenetratorPickupBonus.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_CrumblingBlocks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_currentsAndTiming.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_intro.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_islandSpeedChallenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_LotsOfCurrents.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_MovingCrumblingWeedDandelions.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_RollerGobblerTimeVortex.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Green_VeryEasy_OnlySpikes.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestines_circleblocks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\INTESTINES_FirstMovingSpikesEasy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestines_new23_revMeathack.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestines_PoisonPenetrator.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestine_MeatHackerDmdChallMiniBossWorm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestine_OmniWalkersBlockChallArena.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\intestine_RollercoasterSpikeWalkers.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestine_RollerCurrentAcidMixArenaGobBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Intestine_SmileyMovingWalkersDNA.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\petridish_tutorial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Preloader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_DestructoBlocksTeethTripping.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_EasyRotatingChallenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_MinesPickupChallenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_RollersCrumblingDmgChallArena.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_ShooterOmniSpikePickup.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_SwingingDmgChallMovingBlocks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_weedsDmgChallMovingBlocksTeeth.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\Veins_WeedsOmniShooter.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scenes\VEIN_SuperEasy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\AcidLoop#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\BrainStep2#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\BrainStep2#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\BrainStep2#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\BrainStep2#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\BrainStep2#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\bubbles#1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ChalFailGAIN.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ChalStartGAIN.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ChalSuccesGAIN.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbDeflate#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbDeflate#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbDeflate#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbGrab#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbGrab#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbGrab#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbInflate#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbInflate#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CrumbInflate#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeEat#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\CuteEyeRip#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\DesGreenStep1#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\DesGreenStep1#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\DesGreenStep1#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\DesGreenStep1#12.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\drop.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\dropSwoosh.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzz#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoop#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoop#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoop#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoop#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoopNoSpike#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoopNoSpike#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoopNoSpike#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ElecBuzzLoopNoSpike#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\GobblerBreath#02MONO.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\GobblerDeath#02MONO.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\GobblerQuake#05MONO.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\GobblerQuakeNoBreath#2MONO.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\IntestStep2#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\IntestStep2#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\IntestStep2#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\IntestStep2#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\IntestStep2#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\IntestStep2#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbe#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbe#10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbe#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbeSkr#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbeSkr#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbeSkr#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyAbeSkr#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuHi31.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuHi32.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuHi33.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo13.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo14.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo18.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo24.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuLo37.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed28.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed34.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed38.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed39.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed41.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyApuMed42.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyScreamPitch#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyScreamPitch#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyScreamPitch#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#12.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#13.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#14.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#15.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#16.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#17.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#18.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#19.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#20.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\LemmyThrowNEW-4dB#21.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\EndLevelScreen\countup7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\EndLevelScreen\Fast zing.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\EndLevelScreen\Kaboom.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\EndLevelScreen\noStar.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\EndLevelScreen\starhit.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\MenuKlik#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\menu\MenuWhosh#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\MineExplo#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\Minetest4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\PenetratorAcid01DOWN5dB.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\PenetratorElecLoop03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\PenetratorPoisonLoop02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\PointPickupBlop#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\PointPickupBlop#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorClose#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorClose#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorClose#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorClose#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorOpen#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorOpen#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\SausageDoorOpen#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossBlast02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossClaw01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossDeath02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossHurt01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossHurt02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossHurt03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossHurt04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossHurtBigEye03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShooterBossLoop01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV2#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV3#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\ShotV4#11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\StormLoop#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\swoosh.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\swoosh_digi.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\swoosh_digi2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\swoosh_light.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorClose#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorClose#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorClose#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorClose#08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorOpen#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorOpen#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TeethDoorOpen#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentBounce1#05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentBounce1#06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentBounce1#07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentHitSplat1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentHitSplat2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentHitSplat3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentHitSplat4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentHitSplat5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentThrowSplat1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentThrowSplat2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TentThrowSplat3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\TSTGobblerBreath.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WallCrawlerShieldClose.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WallCrawlerShieldOpen.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormDeath01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormGrowlDELAY#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormGrowlDELAY#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormGrowlDELAY#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormGrowlDELAY#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormLoop02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormSegment#01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormSegment#02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormSegment#03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sounds\WormSegment#04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\acidCannon.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\acidd_goo_sprite_atlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\acid_weeds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\acid_weed_foot.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\blank.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\blank_texture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_brain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_brain_challenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_brain_electric.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_brain_wormhole.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_brown_desat.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_brown_desat_challenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_green_challenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_intestine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_intestine_challenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_intestine_wormhole.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_petri.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_petri_challenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_veins.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\block_veins_challenge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\bossCannonGreen.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\boss_acidpenetrator_ring.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\boss_FinalEye.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\boss_MiniShooterBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\boss_poisonpenetrator_ring.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\boss_shooterBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\boss_tentacle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\brain_spike.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\bullet_bally.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\bullet_bally_pink.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\bullet_big_goo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\camera_blood.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\circleWhite.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\confetti_spritesheet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\current_divider_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\current_divider_veins.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\current_start_end.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\current_start_end_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\cute_eye.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient12.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient13.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient14.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient15.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient16.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient8.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\damage_gradient9.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\dandelion.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\dandelion_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\dandelion_poc_1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\dangerwall_weed02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\dangerwall_weed03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\desatgreen_spike.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_brain01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_brain02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_brown02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_green01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_green02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_green03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_intestine01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_intestine02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_petri01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_petri02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_veins01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\doodad_veins02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\door01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\enemy_gobbler_body.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\enemy_gobbler_helmet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\enemy_ShootingWallCrawler.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\enemy_sprite_eye.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\enemy_wallJumper.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\FlowyStrand_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\FlowyStrand_02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Fonts\TentaclesFont20.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Fonts\TentaclesFont40.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\foot.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\gobblerBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\gobblerMiniBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\goo_shot.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\GUIButtonMaterial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\GUIMaterial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\GUIWindowMaterial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\harmless_door_2_brain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\harmless_door_2_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\harmless_door_2_intestine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\harmless_door_2_veins.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_crumblingblock_sprites.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_maelstrom_tooth.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_mine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_spiker.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_veins_weed.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_veins_weed_1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_veins_weed_2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\hazard_veins_weed_3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\IngameGUIMaterial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\intestine_hit_wall.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\intestine_spike.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_bubble_light.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_eye_anim.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_body_brain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_body_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_body_intestines.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_body_petri.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_body_veins.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_tentacle_brain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_tentacle_green.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_tentacle_intestines.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_tentacle_petri.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_glow_tentacle_veins.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_mouth 1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_splat.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lemmy_tentacle_mini.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\level_entrance.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lightning01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\lightning_end.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\maelstrom3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Achievements\achievementBoxAtlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Achievements\AchievementsBg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Credits\credits_bg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Credits\credits_gradient.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\EndLevel\endlevel_pausemenu_atlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\HelpNOptions\HelpNOptionsBg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\HelpNOptions\menu_switch_atlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Leaderboards\LeaderboardsBg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Leaderboards\Leaderboards_bg_overlay.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Leaderboards\Leaderboards_buttonAtlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_atlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_bar_tutorial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_bg_brain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_bg_intestines.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_bg_stomach.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_bg_tutorial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelIntroTransition\loadingScreen_bg_veins.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelSelection\LevelSelectButtonAtlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelSelection\LevelSelectionBg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\LevelSelection\LevelSelectionStarAtlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\loading_pressplaylogo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\MainMenuBg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_buttonAtlas_de_DE.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_buttonAtlas_en_GB.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_buttonAtlas_es_ES.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_buttonAtlas_fr_FR.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_buttonAtlas_it_IT.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_logo_de_DE.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_logo_en_GB.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_logo_es_ES.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_logo_fr_FR.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Main\mainMenu_logo_it_IT.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\misc_assets.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_bg_de_DE.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_bg_en_GB.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_bg_es_ES.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_bg_fr_FR.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_bg_it_IT.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_buttonAtlas_de_DE.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_buttonAtlas_en_GB.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_buttonAtlas_es_ES.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_buttonAtlas_fr_FR.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Menu\Upsell\upsell_buttonAtlas_it_IT.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\MGS_WP7_Horiz_Still.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\multiplier_mat.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\penetrator.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\penetrator_tailSection.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\petridish_hit_wall.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\petridish_spike.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\pickup_enemy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\pickup_material.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\poison_goo_sprite_atlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\RingWhite.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\simple_bubble_additive.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\simple_round_flat_enemy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\spike02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\sprite_pickup_enemy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\sprite_pickup_point.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\tentacle_glow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\texture_package_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\toony_acid_spew.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\VeinProb_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\VeinProb_02_Texture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\veins_spike.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\wallCannon.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\white_circle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\wormBoss.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\wormhole_brain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\wormhole_intestine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
