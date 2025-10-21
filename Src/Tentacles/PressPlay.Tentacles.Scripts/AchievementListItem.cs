@@ -5,7 +5,6 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using PressPlay.FFWD.UI.Controls;
 using System.IO;
@@ -19,15 +18,19 @@ namespace PressPlay.Tentacles.Scripts
     private TextControl description;
     private string nameText = "";
     private string descriptionText = "";
-    private Achievement achievement;
+    // Achievement class is not available in MonoGame, so we replace it with a placeholder
+    // private Achievement achievement;
+    private object achievement;
     private Texture2D icon;
     private PressPlay.FFWD.Color lockedColor = PressPlay.FFWD.Color.black;
     private PressPlay.FFWD.Color unlockedColor = PressPlay.FFWD.Color.white;
 
-    public AchievementListItem(Texture2D texture, Rectangle sourceRect, Achievement achievement)
+    public AchievementListItem(Texture2D texture, Rectangle sourceRect, object achievement)
     {
-      this.achievement = achievement;
+      // this.achievement = achievement;
       this.AddChild((Control) new ImageControl(texture, sourceRect));
+      // Achievement class is not available in MonoGame, so we skip this functionality
+      /*
       if (achievement != null)
       {
         using (Stream picture = achievement.GetPicture())
@@ -55,6 +58,10 @@ namespace PressPlay.Tentacles.Scripts
         this.nameText = "Secret";
         this.descriptionText = "Continue playing to unlock this secret achievement.";
       }
+      */
+      // Set default values for nameText and descriptionText
+      this.nameText = "Secret";
+      this.descriptionText = "Continue playing to unlock this secret achievement.";
       this.name = new TextControl(this.nameText, GUIAssets.berlinsSans40);
       this.name.useWordWrap = false;
       this.name.ignoreSize = true;
@@ -68,10 +75,12 @@ namespace PressPlay.Tentacles.Scripts
       this.description.transform.localScale = new PressPlay.FFWD.Vector3(0.9f);
       if (achievement != null)
       {
+        /*
         if (achievement.IsEarned)
           this.description.SetColor(this.unlockedColor);
         else
           this.description.SetColor(this.lockedColor);
+        */
       }
       this.description.size = new PressPlay.FFWD.Vector2(300f, 50f);
       this.AddChild((Control) this.description);

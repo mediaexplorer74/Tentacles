@@ -6,7 +6,6 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System;
@@ -48,23 +47,24 @@ namespace PressPlay.Tentacles.Scripts
     public GlobalManager.Languages deviceLanguage
     {
       get
-      {
-        switch (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName)
-        {
-          case "en":
-            return GlobalManager.Languages.en_GB;
-          case "fr":
-            return GlobalManager.Languages.fr_FR;
-          case "it":
-            return GlobalManager.Languages.it_IT;
-          case "de":
-            return GlobalManager.Languages.de_DE;
-          case "es":
-            return GlobalManager.Languages.es_ES;
-          default:
-            return this.defaultLanguage;
-        }
-      }
+      {         //TODO
+                /*switch (CurrentCulture.TwoLetterISOLanguageName)
+                {
+                  case "en":
+                    return GlobalManager.Languages.en_GB;
+                  case "fr":
+                    return GlobalManager.Languages.fr_FR;
+                  case "it":
+                    return GlobalManager.Languages.it_IT;
+                  case "de":
+                    return GlobalManager.Languages.de_DE;
+                  case "es":
+                    return GlobalManager.Languages.es_ES;
+                  default:
+                    return this.defaultLanguage;
+                }*/
+                return GlobalManager.Languages.en_GB;
+            }
     }
 
     public GlobalManager.GlobalState globalState
@@ -190,7 +190,8 @@ namespace PressPlay.Tentacles.Scripts
       {
         if (!GlobalManager.isTrialMode)
           return;
-        Gamer.SignedInGamers[PlayerIndex.One].LeaderboardWriter.GetLeaderboard(LeaderboardIdentity.Create(LeaderboardKey.BestScoreLifeTime, leaderboardIdFromBatchId)).Rating = totalScore;
+        // Gamer services are not available in MonoGame, so we skip the leaderboard update
+        // Gamer.SignedInGamers[PlayerIndex.One].LeaderboardWriter.GetLeaderboard(LeaderboardIdentity.Create(LeaderboardKey.BestScoreLifeTime, leaderboardIdFromBatchId)).Rating = totalScore;
       }
     }
 

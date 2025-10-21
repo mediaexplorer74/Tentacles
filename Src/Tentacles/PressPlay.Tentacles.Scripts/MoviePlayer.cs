@@ -4,7 +4,6 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
-using Microsoft.Phone.Tasks;
 using Microsoft.Xna.Framework.Media;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
@@ -80,12 +79,15 @@ namespace PressPlay.Tentacles.Scripts
       this.currentMovie = _movie;
       GlobalManager.Instance.currentProfile.UnlockMovie((int) _movie);
       this.currentPlayingIsSkipable = _skipable;
+      // MediaPlayerLauncher is not available in MonoGame, so we skip this functionality
+      /*
       new MediaPlayerLauncher()
       {
         Location = MediaLocationType.Install,
         Media = new Uri(this.GetMovieName(_movie) + ".wmv", UriKind.Relative),
         Controls = (!this.currentPlayingIsSkipable ? MediaPlaybackControls.None : MediaPlaybackControls.Skip)
       }.Show();
+      */
       this.mode = MoviePlayer.Mode.playingWP7Movie;
     }
 

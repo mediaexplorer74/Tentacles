@@ -6,7 +6,6 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using PressPlay.FFWD;
 using PressPlay.FFWD.ScreenManager;
@@ -75,7 +74,8 @@ namespace PressPlay.Tentacles.Scripts
     private void OnButtonPress(object sender, EventArgs e)
     {
       this.returningFromMarketplace = true;
-      Guide.ShowMarketplace(Gamer.SignedInGamers[PlayerIndex.One].PlayerIndex);
+      // Guide.ShowMarketplace is not available in MonoGame, so we skip this functionality
+      // Guide.ShowMarketplace(Gamer.SignedInGamers[PlayerIndex.One].PlayerIndex);
     }
 
     public override void HandleInput(InputState input) => base.HandleInput(input);

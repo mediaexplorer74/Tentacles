@@ -5,7 +5,6 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
 using System;
 using System.Collections.Generic;
 
@@ -32,10 +31,13 @@ namespace PressPlay.Tentacles.Scripts
     public AchievementsHandler()
     {
       this.CreateAchievements();
-      SignedInGamer signedInGamer = Gamer.SignedInGamers[PlayerIndex.One];
-      signedInGamer?.BeginGetAchievements(new AsyncCallback(this.GetAchievementsCallback), (object) signedInGamer);
+      // SignedInGamer and Gamer classes are not available in MonoGame, so we skip this functionality
+      // SignedInGamer signedInGamer = Gamer.SignedInGamers[PlayerIndex.One];
+      // signedInGamer?.BeginGetAchievements(new AsyncCallback(this.GetAchievementsCallback), (object) signedInGamer);
     }
 
+    // GetAchievementsCallback is not available in MonoGame, so we skip this functionality
+    /*
     protected void GetAchievementsCallback(IAsyncResult result)
     {
       if (!(result.AsyncState is SignedInGamer asyncState))
@@ -55,6 +57,7 @@ namespace PressPlay.Tentacles.Scripts
       this.hasReceivedAchievements = true;
       this.ConsolidateAchievements();
     }
+    */
 
     public void ConsolidateAchievements()
     {

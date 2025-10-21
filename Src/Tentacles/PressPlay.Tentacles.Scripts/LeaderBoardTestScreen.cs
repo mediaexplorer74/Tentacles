@@ -4,7 +4,6 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
-using Microsoft.Xna.Framework.GamerServices;
 using PressPlay.FFWD.ScreenManager;
 using System;
 
@@ -15,14 +14,19 @@ namespace PressPlay.Tentacles.Scripts
   {
     private const int BestTimeLeaderboard = 0;
     private const int LeaderboardPageSize = 600;
-    private LeaderboardReader leaderboardReader;
+    // LeaderboardReader class is not available in MonoGame, so we replace it with a placeholder
+    // private LeaderboardReader leaderboardReader;
+    private object leaderboardReader;
     private LeaderBoardTestScreen.GameState gameState = LeaderBoardTestScreen.GameState.WaitingForSignIn;
 
     public LeaderBoardTestScreen()
     {
-      SignedInGamer.SignedIn += new EventHandler<SignedInEventArgs>(this.GamerSignedInCallback);
+      // SignedInGamer.SignedIn event is not available in MonoGame, so we skip this functionality
+      // SignedInGamer.SignedIn += new EventHandler<SignedInEventArgs>(this.GamerSignedInCallback);
     }
 
+    // GamerSignedInCallback is not available in MonoGame, so we skip this functionality
+    /*
     protected void GamerSignedInCallback(object sender, SignedInEventArgs args)
     {
       SignedInGamer gamer = args.Gamer;
@@ -34,7 +38,10 @@ namespace PressPlay.Tentacles.Scripts
       else
         this.gameState = LeaderBoardTestScreen.GameState.Idle;
     }
+    */
 
+    // LeaderboardReadCallback is not available in MonoGame, so we skip this functionality
+    /*
     protected void LeaderboardReadCallback(IAsyncResult result)
     {
       if (!(result.AsyncState is SignedInGamer))
@@ -51,6 +58,7 @@ namespace PressPlay.Tentacles.Scripts
         this.gameState = LeaderBoardTestScreen.GameState.Idle;
       }
     }
+    */
 
     public enum GameState
     {

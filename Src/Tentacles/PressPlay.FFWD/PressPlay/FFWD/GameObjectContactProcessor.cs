@@ -132,7 +132,7 @@ namespace PressPlay.FFWD
                 collisionBToA.contacts[index4].thisCollider = userData4.collider;
                 collisionBToA.contacts[index4].otherCollider = userData3.collider;
                 collisionBToA.contacts[index4].point = (Vector3) points[index4];
-                collisionBToA.contacts[index4].normal = (Vector3) -normal;
+                collisionBToA.contacts[index4].normal = (Vector3)(-normal);
                 collisionAToB.contacts[index4].thisCollider = userData3.collider;
                 collisionAToB.contacts[index4].otherCollider = userData4.collider;
                 collisionAToB.contacts[index4].point = (Vector3) points[index4];

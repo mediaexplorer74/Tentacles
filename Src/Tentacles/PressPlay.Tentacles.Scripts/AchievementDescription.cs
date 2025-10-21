@@ -5,7 +5,6 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
 using PressPlay.FFWD;
 using System;
 
@@ -33,13 +32,6 @@ namespace PressPlay.Tentacles.Scripts
       this.nameKey = key;
     }
 
-    protected void AwardAchievementCallback(IAsyncResult result)
-    {
-      if (!(result.AsyncState is SignedInGamer asyncState))
-        return;
-      asyncState.EndAwardAchievement(result);
-    }
-
     public void SetUnlocked()
     {
       this._isUnlocked = true;
@@ -52,18 +44,19 @@ namespace PressPlay.Tentacles.Scripts
         return;
       this._isUnlocked = true;
       GlobalManager.Instance.currentProfile.unlockedAchievements.AddKey(this.key);
-      SignedInGamer signedInGamer = Gamer.SignedInGamers[PlayerIndex.One];
-      if (signedInGamer == null)
-        return;
-      try
-      {
-        signedInGamer.BeginAwardAchievement(this.key, new AsyncCallback(this.AwardAchievementCallback), (object) signedInGamer);
-      }
-      catch (Exception ex)
-      {
-        Debug.LogError("Could not award achievement " + this.key + ". " + ex.Message);
-        this._isUnlocked = false;
-      }
+      // Gamer services are not available in MonoGame, so we skip the achievement awarding
+      // SignedInGamer signedInGamer = Gamer.SignedInGamers[PlayerIndex.One];
+      // if (signedInGamer == null)
+      //   return;
+      // try
+      // {
+      //   signedInGamer.BeginAwardAchievement(this.key, new AsyncCallback(this.AwardAchievementCallback), (object) signedInGamer);
+      // }
+      // catch (Exception ex)
+      // {
+      //   Debug.LogError("Could not award achievement " + this.key + ". " + ex.Message);
+      //   this._isUnlocked = false;
+      // }
     }
   }
 }

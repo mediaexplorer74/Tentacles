@@ -406,7 +406,7 @@ namespace PressPlay.FFWD
 
     public static bool CheckCapsule(Vector3 start, Vector3 end, float radius)
     {
-      return Physics.CheckCapsule(start, end, radius, (LayerMask) -5);
+      return Physics.CheckCapsule(start, end, radius, (LayerMask)(-5));
     }
 
     public static bool CheckCapsule(Vector3 start, Vector3 end, float radius, LayerMask layermask)

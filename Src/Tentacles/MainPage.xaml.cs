@@ -23,7 +23,7 @@ namespace PressPlay.Tentacles
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        readonly GameShell _game;
+        readonly Game1 _game;
 
         public MainPage()
         {
@@ -31,7 +31,7 @@ namespace PressPlay.Tentacles
 
             // Create the game.
             var launchArguments = string.Empty;
-            _game = MonoGame.Framework.XamlGame<GameShell>.Create(
+            _game = MonoGame.Framework.XamlGame<Game1>.Create(
                 launchArguments,
                 Window.Current.CoreWindow,
                 swapChainPanel);

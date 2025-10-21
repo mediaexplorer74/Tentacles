@@ -92,16 +92,19 @@ namespace PressPlay.FFWD
         }
         if (fields[index1].FieldType.IsArray && typeof (UnityObject).IsAssignableFrom(fields[index1].FieldType.GetElementType()))
         {
-          if (fields[index1].GetValue(objectToFix) is UnityObject[] unityObjectArray)
+          UnityObject[] unityObjectArray = default;
+          if (fields[index1].GetValue(objectToFix) is UnityObject[])
           {
             unityObjectArray = unityObjectArray.Clone() as UnityObject[];
             for (int index2 = 0; index2 < unityObjectArray.Length; ++index2)
             {
-              if (unityObjectArray[index2] != null && unityObjectArray[index2].isPrefab && idMap.ContainsKey(unityObjectArray[index2].GetInstanceID()) && unityObjectArray[index2] != idMap[unityObjectArray[index2].GetInstanceID()])
+              if (unityObjectArray[index2] != null && unityObjectArray[index2].isPrefab 
+                                && idMap.ContainsKey(unityObjectArray[index2].GetInstanceID()) && unityObjectArray[index2] != idMap[unityObjectArray[index2].GetInstanceID()])
                 unityObjectArray[index2] = idMap[unityObjectArray[index2].GetInstanceID()];
             }
           }
-          fields[index1].SetValue(objectToFix, (object) unityObjectArray);
+          
+          fields[index1].SetValue(objectToFix, unityObjectArray);
         }
         if (Application.fixReferences.Contains(fields[index1].FieldType.Name))
           this.DoFixReferences(fields[index1].GetValue(objectToFix), idMap);
@@ -172,7 +175,7 @@ namespace PressPlay.FFWD
     internal bool SendMessage(string methodName, object value)
     {
       Type tp = this.GetType();
-      BindingFlags flags = BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic | BindingFlags.Public;
+      BindingFlags flags = BindingFlags.Instance /*| BindingFlags.InvokeMethod */ | BindingFlags.NonPublic | BindingFlags.Public;
       while (tp != typeof (Component))
       {
         MethodInfo cachedMethod = tp.GetCachedMethod(methodName, flags);
@@ -187,8 +190,8 @@ namespace PressPlay.FFWD
           methodInfo.Invoke((object) this, parameters);
           return true;
         }
-        tp = tp.BaseType;
-        flags = BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic;
+        tp = tp.GetTypeInfo().BaseType;
+        flags = BindingFlags.Instance | /*BindingFlags.InvokeMethod |*/ BindingFlags.NonPublic;
       }
       return false;
     }

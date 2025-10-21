@@ -4,9 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
-using Microsoft.Xna.Framework.GamerServices;
 using System;
-using System.Threading;
 
 #nullable disable
 namespace PressPlay.Tentacles.Scripts
@@ -15,7 +13,7 @@ namespace PressPlay.Tentacles.Scripts
   {
     private static TrialModeManager instance;
     private volatile bool trialMode = true;
-    private Thread trialThread;
+    //private Thread trialThread;
 
     public static TrialModeManager Instance
     {
@@ -34,25 +32,30 @@ namespace PressPlay.Tentacles.Scripts
       this.ForcedUpdateTrial();
       if (!this.trialMode)
         return;
-      this.trialThread = new Thread(new ThreadStart(this.CheckTrial));
-      this.trialThread.IsBackground = true;
-      this.trialThread.Start();
+      //this.trialThread = new Thread(new ThreadStart(this.CheckTrial));
+      //this.trialThread.IsBackground = true;
+      //this.trialThread.Start();
     }
 
     public void ForcedUpdateTrial()
     {
       if (!this.trialMode)
         return;
-      this.trialMode = Guide.IsTrialMode;
+      // Guide.IsTrialMode is not available in MonoGame, so we skip this functionality
+      // this.trialMode = Guide.IsTrialMode;
+      this.trialMode = false; // Assume full version for now
     }
 
     private void CheckTrial()
     {
       while (this.trialMode)
       {
-        this.trialMode = Guide.IsTrialMode;
-        if (this.trialMode)
-          Thread.Sleep(TimeSpan.FromSeconds(3.0));
+        // Guide.IsTrialMode is not available in MonoGame, so we skip this functionality
+        // this.trialMode = Guide.IsTrialMode;
+        this.trialMode = false; // Assume full version for now
+        
+       //if (this.trialMode)
+       //  Thread.Sleep(TimeSpan.FromSeconds(3.0));
       }
     }
   }

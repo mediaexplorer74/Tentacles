@@ -39,7 +39,10 @@ namespace PressPlay.FFWD
     {
       float num = RaycastHelper._distance * fraction;
       Component userData = fixture.Body.UserData;
-      if (!(userData is Collider collider) && userData is Rigidbody)
+
+        //TODO
+        Collider collider = default;
+      if (!(userData is Collider) && userData is Rigidbody)
         collider = (userData as Rigidbody).collider;
       if (collider == null || collider.gameObject == null || (RaycastHelper._layerMask & 1 << collider.gameObject.layer) <= 0)
         return -1f;
@@ -80,7 +83,8 @@ namespace PressPlay.FFWD
     public static bool pointCastCallback(Fixture fixture)
     {
       Component userData = fixture.Body.UserData;
-      if (!(userData is Collider collider) && userData is Rigidbody)
+      Collider collider = default;
+      if (!(userData is Collider) && userData is Rigidbody)
         collider = (userData as Rigidbody).collider;
       if (collider != null && collider.gameObject != null && (RaycastHelper._layerMask & 1 << collider.gameObject.layer) > 0)
       {

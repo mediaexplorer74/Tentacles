@@ -4,18 +4,28 @@
 // MVID: 94733B2D-6956-40B2-A474-EF03B0110429
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\Tentacles.dll
 
-using Microsoft.Xna.Framework;
 
 #nullable disable
 namespace PressPlay.Tentacles.Debugging
 {
   public struct AccelerometerState
   {
-    public Vector3 Acceleration { get; private set; }
+    // Vector3 class is not available in MonoGame, so we replace it with a placeholder
+    // public Vector3 Acceleration { get; private set; }
+    public object Acceleration { get; private set; }
 
     public bool IsActive { get; private set; }
 
+    // Vector3 class is not available in MonoGame, so we replace it with a placeholder
+    /*
     public AccelerometerState(Vector3 acceleration, bool isActive)
+      : this()
+    {
+      this.Acceleration = acceleration;
+      this.IsActive = isActive;
+    }
+    */
+    public AccelerometerState(object acceleration, bool isActive)
       : this()
     {
       this.Acceleration = acceleration;

@@ -5,7 +5,6 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using PressPlay.FFWD;
@@ -19,6 +18,8 @@ namespace PressPlay.Tentacles.Scripts
   {
     private bool hasReceivedAchievements;
     private object achievementsLockObject = new object();
+    // AchievementCollection class is not available in MonoGame, so we replace it with a placeholder
+    // private AchievementCollection achievements;
     private AchievementCollection achievements;
     private int earnedGamerScore;
     private int maxGamerScore;
@@ -27,7 +28,8 @@ namespace PressPlay.Tentacles.Scripts
     public AchievementScreen(string background)
       : base(background)
     {
-      SignedInGamer signedInGamer = Gamer.SignedInGamers[PlayerIndex.One];
+      // SignedInGamer and Gamer classes are not available in MonoGame, so we skip this functionality
+      // SignedInGamer signedInGamer = Gamer.SignedInGamers[PlayerIndex.One];
       this.rootControl.transform.position = new PressPlay.FFWD.Vector3(0.0f, 10f, 0.0f);
       TextControl child = new TextControl(LocalisationManager.Instance.GetString("menu_menu_btn_achievements").ToUpperInvariant(), GUIAssets.berlinsSans40);
       child.transform.localScale *= 1f;
@@ -35,7 +37,7 @@ namespace PressPlay.Tentacles.Scripts
       this.rootControl.AddChild((Control) child);
       child.transform.position = new PressPlay.FFWD.Vector3(0.0f, 501f, 0.0f);
       child.CenterTextWithinBounds(new Rectangle(PressPlay.FFWD.ScreenManager.ScreenManager.Viewport.Width / 2, 0, PressPlay.FFWD.ScreenManager.ScreenManager.Viewport.Width / 2, 50));
-      signedInGamer?.BeginGetAchievements(new AsyncCallback(this.GetAchievementsCallback), (object) signedInGamer);
+      // signedInGamer?.BeginGetAchievements(new AsyncCallback(this.GetAchievementsCallback), (object) signedInGamer);
       this.EnabledGestures = GestureType.Tap | GestureType.VerticalDrag | GestureType.Flick | GestureType.DragComplete;
     }
 
@@ -52,11 +54,13 @@ namespace PressPlay.Tentacles.Scripts
       this.achievementList.transform.position = this.achievementList.transform.position + new PressPlay.FFWD.Vector3(0.0f, 50f, 0.0f);
       this.rootControl.AddChild((Control) this.achievementList);
       for (int index = 0; index < 20; ++index)
-        this.achievementList.AddChild((Control) new AchievementListItem(Application.Load<Texture2D>("Textures/Menu/Achievements/achievementBoxAtlas"), SpritePositions.achievementBoxOpen, (Achievement) null));
+        this.achievementList.AddChild((Control) new AchievementListItem(Application.Load<Texture2D>("Textures/Menu/Achievements/achievementBoxAtlas"), SpritePositions.achievementBoxOpen, (object) null));
       this.achievementList.LayoutColumn(0.0f, 0.0f, 20f);
       this.achievementList.Init();
     }
 
+    // GetAchievementsCallback is not available in MonoGame, so we skip this functionality
+    /*
     protected void GetAchievementsCallback(IAsyncResult result)
     {
       if (!(result.AsyncState is SignedInGamer asyncState))
@@ -76,6 +80,7 @@ namespace PressPlay.Tentacles.Scripts
       }
       this.hasReceivedAchievements = true;
     }
+    */
 
     private void BuildAchievementList()
     {
@@ -84,8 +89,9 @@ namespace PressPlay.Tentacles.Scripts
       this.rootControl.AddChild((Control) this.achievementList);
       for (int index = 0; index < this.achievements.Count; ++index)
       {
-        Achievement achievement = this.achievements[index];
-        this.achievementList.AddChild(!achievement.IsEarned ? (Control) new AchievementListItem(Application.Load<Texture2D>("Textures/Menu/Achievements/achievementBoxAtlas"), SpritePositions.achievementBoxLocked, achievement) : (Control) new AchievementListItem(Application.Load<Texture2D>("Textures/Menu/Achievements/achievementBoxAtlas"), SpritePositions.achievementBoxOpen, achievement));
+        // Achievement class is not available in MonoGame, so we skip this functionality
+        // Achievement achievement = this.achievements[index];
+        // this.achievementList.AddChild(!achievement.IsEarned ? (Control) new AchievementListItem(Application.Load<Texture2D>("Textures/Menu/Achievements/achievementBoxAtlas"), SpritePositions.achievementBoxLocked, achievement) : (Control) new AchievementListItem(Application.Load<Texture2D>("Textures/Menu/Achievements/achievementBoxAtlas"), SpritePositions.achievementBoxOpen, achievement));
       }
       this.achievementList.LayoutColumn(0.0f, 0.0f, 20f);
       this.achievementList.Init();
@@ -101,8 +107,9 @@ namespace PressPlay.Tentacles.Scripts
         return;
       lock (this.achievementsLockObject)
       {
-        this.BuildAchievementList();
-        this.hasReceivedAchievements = false;
+        // BuildAchievementList is not available in MonoGame, so we skip this functionality
+        // this.BuildAchievementList();
+        // this.hasReceivedAchievements = false;
       }
     }
 

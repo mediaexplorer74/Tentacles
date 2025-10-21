@@ -7,6 +7,7 @@
 using FarseerPhysics.Common.Decomposition.CDT;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 #nullable disable
 namespace Poly2Tri.Triangulation.Delaunay.Sweep
@@ -398,7 +399,7 @@ namespace Poly2Tri.Triangulation.Delaunay.Sweep
           if (eq == tcx.EdgeEvent.ConstrainedEdge.Q && ep == tcx.EdgeEvent.ConstrainedEdge.P)
           {
             if (tcx.IsDebugEnabled)
-              Console.WriteLine("[FLIP] - constrained edge done");
+              Debug.WriteLine("[FLIP] - constrained edge done");
             t.MarkConstrainedEdge(ep, eq);
             delaunayTriangle.MarkConstrainedEdge(ep, eq);
             DTSweep.Legalize(tcx, t);
@@ -408,13 +409,13 @@ namespace Poly2Tri.Triangulation.Delaunay.Sweep
           {
             if (!tcx.IsDebugEnabled)
               return;
-            Console.WriteLine("[FLIP] - subedge done");
+            Debug.WriteLine("[FLIP] - subedge done");
           }
         }
         else
         {
           if (tcx.IsDebugEnabled)
-            Console.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge");
+            Debug.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge");
           Orientation o = TriangulationUtil.Orient2d(eq, triangulationPoint, ep);
           t = DTSweep.NextFlipTriangle(tcx, o, t, delaunayTriangle, p, triangulationPoint);
           DTSweep.FlipEdgeEvent(tcx, ep, eq, t, p);

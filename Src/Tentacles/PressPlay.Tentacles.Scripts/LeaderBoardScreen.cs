@@ -5,7 +5,6 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using PressPlay.FFWD;
 using PressPlay.FFWD.ScreenManager;
@@ -19,8 +18,11 @@ namespace PressPlay.Tentacles.Scripts
   public class LeaderBoardScreen : BackgroundScreen
   {
     private const int LeaderboardPageSize = 13;
-    private SignedInGamer gamer;
-    private LeaderboardReader leaderboardReader;
+    // SignedInGamer and LeaderboardReader classes are not available in MonoGame, so we replace them with placeholders
+    // private SignedInGamer gamer;
+    // private LeaderboardReader leaderboardReader;
+    private object gamer;
+    private object leaderboardReader;
     private List<TentacleLeaderboardRow> debugData = new List<TentacleLeaderboardRow>();
     private ScrollingPanelControl leaderboardPanel;
     private bool isCommuncating;
@@ -188,8 +190,9 @@ namespace PressPlay.Tentacles.Scripts
         {
           Debug.Log((object) "BeginLeaderboardRead");
           this.isCommuncating = true;
-          this.gamer = Gamer.SignedInGamers[PlayerIndex.One];
-          LeaderboardReader.BeginRead(LeaderboardIdentity.Create(LeaderboardKey.BestScoreLifeTime, leaderboardIdFromBatchId), (Gamer) this.gamer, 13, new AsyncCallback(this.LeaderboardReadCallback), (object) this.gamer);
+          // Gamer and LeaderboardReader classes are not available in MonoGame, so we skip this functionality
+          // this.gamer = Gamer.SignedInGamers[PlayerIndex.One];
+          // LeaderboardReader.BeginRead(LeaderboardIdentity.Create(LeaderboardKey.BestScoreLifeTime, leaderboardIdFromBatchId), (Gamer) this.gamer, 13, new AsyncCallback(this.LeaderboardReadCallback), (object) this.gamer);
         }
       }
     }
@@ -199,6 +202,8 @@ namespace PressPlay.Tentacles.Scripts
       this.SetDisplayText(LocalisationManager.Instance.GetString("FLB_could_not_connect"));
     }
 
+    // LeaderboardReadCallback is not available in MonoGame, so we skip this functionality
+    /*
     protected void LeaderboardReadCallback(IAsyncResult result)
     {
       if (this.ScreenState == ScreenState.TransitionOff)
@@ -220,7 +225,10 @@ namespace PressPlay.Tentacles.Scripts
         this.BuildLeaderboardList(this.leaderboardReader);
       this.isCommuncating = false;
     }
+    */
 
+    // BuildLeaderboardList is not available in MonoGame, so we skip this functionality
+    /*
     private void BuildLeaderboardList(LeaderboardReader lr)
     {
       this.displayText.gameObject.active = false;
@@ -248,6 +256,7 @@ namespace PressPlay.Tentacles.Scripts
       this.leaderboardPanel.LayoutColumn();
       this.rootControl.AddChild((Control) this.leaderboardPanel);
     }
+    */
 
     private void OnBackButton(object sender, ButtonControlEventArgs e) => this.ExitScreen();
 

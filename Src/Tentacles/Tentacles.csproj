@@ -130,13 +130,10 @@
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="PressPlay.Tentacles.Scripts\**\*.cs" />
-    <Compile Remove="Debugging\Accelerometer.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Debugging\Accelerometer.cs" />
     <Compile Include="Debugging\AccelerometerState.cs" />
     <Compile Include="DebugViewXNA.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -557,17 +554,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
-  <!-- Final removals for MVP shell build -->
-  <ItemGroup>
-    <Compile Remove="PressPlay.Tentacles.Scripts\**\*.cs" />
-    <Compile Remove="Debugging\Accelerometer.cs" />
-    <Compile Remove="Game1.cs" />
-    <Compile Remove="PressPlay.FFWD\**\*.cs" />
-    <Compile Remove="DebugViewXNA.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="GameShell.cs" />
-  </ItemGroup>
+  
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>

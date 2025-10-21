@@ -5,7 +5,6 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using FarseerPhysics.Dynamics;
-using Microsoft.Devices;
 using Microsoft.Xna.Framework.Content;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
@@ -424,7 +423,8 @@ namespace PressPlay.Tentacles.Scripts
         this.sndDamageLow.PlaySound();
         if (!GlobalManager.Instance.currentProfile.vibrationIsEnabled)
           return;
-        VibrateController.Default.Start(TimeSpan.FromMilliseconds(100.0));
+        // VibrateController is not available in MonoGame, so we skip the vibration
+        // VibrateController.Default.Start(TimeSpan.FromMilliseconds(100.0));
       }
       else if ((double) _damage <= 40.0)
       {
@@ -433,7 +433,8 @@ namespace PressPlay.Tentacles.Scripts
         this.sndDamageMedium.PlaySound();
         if (!GlobalManager.Instance.currentProfile.vibrationIsEnabled)
           return;
-        VibrateController.Default.Start(TimeSpan.FromMilliseconds(200.0));
+        // VibrateController is not available in MonoGame, so we skip the vibration
+        // VibrateController.Default.Start(TimeSpan.FromMilliseconds(200.0));
       }
       else
       {
@@ -442,7 +443,8 @@ namespace PressPlay.Tentacles.Scripts
         this.sndDamageHigh.PlaySound();
         if (!GlobalManager.Instance.currentProfile.vibrationIsEnabled)
           return;
-        VibrateController.Default.Start(TimeSpan.FromMilliseconds(300.0));
+        // VibrateController is not available in MonoGame, so we skip the vibration
+        // VibrateController.Default.Start(TimeSpan.FromMilliseconds(300.0));
       }
     }
 
@@ -509,7 +511,8 @@ namespace PressPlay.Tentacles.Scripts
       LevelHandler.Instance.RespawnAtLastCheckpoint();
       if (!GlobalManager.Instance.currentProfile.vibrationIsEnabled)
         return;
-      VibrateController.Default.Start(TimeSpan.FromMilliseconds(500.0));
+      // VibrateController is not available in MonoGame, so we skip the vibration
+      // VibrateController.Default.Start(TimeSpan.FromMilliseconds(500.0));
     }
 
     public void StartExitAnimation()

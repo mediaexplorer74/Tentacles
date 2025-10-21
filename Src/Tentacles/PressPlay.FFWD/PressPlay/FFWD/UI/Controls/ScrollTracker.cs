@@ -117,7 +117,7 @@ namespace PressPlay.FFWD.UI.Controls
             if ((double) Math.Abs(gesture.Delta.X) < (double) Math.Abs(gesture.Delta.Y))
             {
               this.IsTracking = false;
-              this.Velocity = (PressPlay.FFWD.Vector2) -gesture.Delta;
+              this.Velocity = (PressPlay.FFWD.Vector2)(-gesture.Delta);
               continue;
             }
             continue;

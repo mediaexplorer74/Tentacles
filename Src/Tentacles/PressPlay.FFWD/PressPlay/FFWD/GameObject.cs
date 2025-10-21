@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using PressPlay.FFWD.Components;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 #nullable disable
 namespace PressPlay.FFWD
@@ -409,7 +410,7 @@ namespace PressPlay.FFWD
 
     public bool CompareTag(string tag)
     {
-      return this.tag.Equals(tag, StringComparison.InvariantCultureIgnoreCase);
+      return this.tag.Equals(tag, StringComparison.CurrentCultureIgnoreCase);
     }
 
     public static GameObject FindWithTag(string tag)

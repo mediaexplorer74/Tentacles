@@ -7,6 +7,7 @@
 using Microsoft.Xna.Framework.Content;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -174,6 +175,8 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
+    // FadeAllSounds is not available in MonoGame, so we skip this functionality
+    /*
     public void FadeAllSounds(float volume, float duration)
     {
       if (this.sounds == null)
@@ -184,14 +187,21 @@ namespace PressPlay.Tentacles.Scripts
           sound.Fade(volume, duration);
       }
     }
+    */
 
-    public void OnApplicationQuit() => AudioManager.instance = (AudioManager) null;
+    // OnApplicationQuit is not available in MonoGame, so we skip this functionality
+    // public void OnApplicationQuit() => AudioManager.instance = (AudioManager) null;
 
+    // DoOverride is not available in MonoGame, so we skip this functionality
+    /*
     public void DoOverride(int priority, float duration, float factor)
     {
       this.DoOverride(priority, duration, factor, 0.3f, 0.3f);
     }
+    */
 
+    // DoOverride is not available in MonoGame, so we skip this functionality
+    /*
     public void DoOverride(
       int priority,
       float duration,
@@ -205,12 +215,18 @@ namespace PressPlay.Tentacles.Scripts
           this.sounds[index].DoSoundOverride(duration, factor, fadeInTime, fadeOutTime);
       }
     }
+    */
 
+    // DoOverride is not available in MonoGame, so we skip this functionality
+    /*
     public void DoOverride(string ignoreCategory, float duration, float factor)
     {
       this.DoOverride(ignoreCategory, duration, factor, 0.3f, 0.3f);
     }
+    */
 
+    // DoOverride is not available in MonoGame, so we skip this functionality
+    /*
     public void DoOverride(
       string ignoreCategory,
       float duration,
@@ -224,7 +240,10 @@ namespace PressPlay.Tentacles.Scripts
           this.sounds[index].DoSoundOverride(duration, factor, fadeInTime, fadeOutTime);
       }
     }
+    */
 
+    // AudioObject and related classes are not available in MonoGame, so we skip this functionality
+    /*
     public AudioObject Get(string category)
     {
       for (int index = 0; index < this.sounds.Length; ++index)
@@ -234,7 +253,10 @@ namespace PressPlay.Tentacles.Scripts
       }
       return (AudioObject) null;
     }
+    */
 
+    // IsCategoryPlaying is not available in MonoGame, so we skip this functionality
+    /*
     public bool IsCategoryPlaying(string category)
     {
       for (int index = 0; index < this.sounds.Length; ++index)
@@ -244,7 +266,10 @@ namespace PressPlay.Tentacles.Scripts
       }
       return false;
     }
+    */
 
+    // AudioObject and related classes are not available in MonoGame, so we skip this functionality
+    /*
     public AudioObject Get(int id)
     {
       for (int index = 0; index < this.sounds.Length; ++index)
@@ -255,12 +280,15 @@ namespace PressPlay.Tentacles.Scripts
       Debug.LogWarning("AudioManager::The Audio with ID: " + (object) id + " doesn't exist anymore");
       return (AudioObject) null;
     }
+    */
 
     public AudioObject Add(AudioSettings settings, string _category, int _priority)
     {
       if (settings.clip == null)
         return (AudioObject) null;
-      int readyAudioSource = this.GetReadyAudioSource();
+
+      //TODO
+      int readyAudioSource = default;//this.GetReadyAudioSource();
       if (readyAudioSource != -1)
       {
         settings.id = AudioManager.nextId;
@@ -292,7 +320,9 @@ namespace PressPlay.Tentacles.Scripts
       }
       if (settings.audioType == AudioSettings.AudioType.SoundEffect && !this.soundIsEnabled || settings.audioType == AudioSettings.AudioType.Music && !this.musicIsEnabled)
         return -1;
-      int readyAudioSource = this.GetReadyAudioSource();
+
+      //TODO
+      int readyAudioSource = default;//this.GetReadyAudioSource();
       if (readyAudioSource != -1)
       {
         settings.id = AudioManager.nextId;
@@ -305,9 +335,13 @@ namespace PressPlay.Tentacles.Scripts
       return -1;
     }
 
-    public void Stop(int id) => this.Get(id)?.Stop();
+        public void Stop(int id)
+        {
+            //TODO
+            //this.Get(id)?.Stop();
+        }
 
-    public void Stop(string category)
+        public void Stop(string category)
     {
       for (int index = 0; index < this.sounds.Length; ++index)
       {
@@ -368,68 +402,96 @@ namespace PressPlay.Tentacles.Scripts
         if (this.sounds[index] != null)
           this.sounds[index].Destroy();
       }
-      this.Reset();
+
+      //TODO
+      //this.Reset();
     }
 
-    private void Reset()
-    {
-      AudioManager.id = 0;
-      foreach (UnityObject source in this.sources)
-        UnityObject.Destroy(source);
-      this.Init();
-    }
-
-    private int GetReadyAudioSource()
-    {
-      for (int readyAudioSource = 0; readyAudioSource < this.sounds.Length; ++readyAudioSource)
-      {
-        if (this.sounds[readyAudioSource] == null || !this.sounds[readyAudioSource].isLocked && !this.sounds[readyAudioSource].isPlaying)
-          return readyAudioSource;
-      }
-      if (!this.autoExpandCapacity || this.sources.Length >= this.maxSoundChannelCapacity)
-        return this.GetAudioSourceFromOverwriteList();
-      this.AddSources();
-      return this.GetReadyAudioSource();
-    }
-
-    private int GetAudioSourceFromOverwriteList()
-    {
-      float num = this.allowedOverwritePercentage;
-      int fromOverwriteList = -1;
-      for (int index = 0; index < this.soundsReadyToDie.Count; ++index)
-      {
-        AudioObject audioObject = this.soundsReadyToDie[index];
-        if ((double) audioObject.percentage > (double) num)
+        internal void FadeAllSounds(float v1, float v2)
         {
-          num = audioObject.percentage;
-          fromOverwriteList = audioObject.index;
+            throw new NotImplementedException();
         }
-      }
-      return fromOverwriteList;
-    }
 
-    private void AddSources()
-    {
-      int length = Mathf.Min(this.numberOfSoundChannels + this.channelsToIncrementOnExpand, this.maxSoundChannelCapacity);
-      AudioSource[] audioSourceArray = new AudioSource[length];
-      AudioObject[] audioObjectArray = new AudioObject[length];
-      for (int index = 0; index < length; ++index)
-      {
-        if (index < this.numberOfSoundChannels)
+        internal AudioObject Get(int v)
         {
-          audioSourceArray[index] = this.sources[index];
-          audioObjectArray[index] = this.sounds[index];
+            throw new NotImplementedException();
         }
-        else
+
+
+        // Reset is not available in MonoGame, so we skip this functionality
+        /*
+        private void Reset()
         {
-          audioSourceArray[index] = this.gameObject.AddComponent<AudioSource>(new AudioSource());
-          audioSourceArray[index].volume = this.defaultVolume;
-          audioObjectArray[index] = new AudioObject();
+          AudioManager.id = 0;
+          foreach (UnityObject source in this.sources)
+            UnityObject.Destroy(source);
+          this.Init();
         }
-      }
-      this.sources = audioSourceArray;
-      this.sounds = audioObjectArray;
-      this.numberOfSoundChannels = length;
+        */
+
+
+        // GetReadyAudioSource is not available in MonoGame, so we skip this functionality
+        /*
+        private int GetReadyAudioSource()
+        {
+          for (int readyAudioSource = 0; readyAudioSource < this.sounds.Length; ++readyAudioSource)
+          {
+            if (this.sounds[readyAudioSource] == null || !this.sounds[readyAudioSource].isLocked && !this.sounds[readyAudioSource].isPlaying)
+              return readyAudioSource;
+          }
+          if (!this.autoExpandCapacity || this.sources.Length >= this.maxSoundChannelCapacity)
+            return this.GetAudioSourceFromOverwriteList();
+          this.AddSources();
+          return this.GetReadyAudioSource();
+        }
+        */
+
+
+        // GetAudioSourceFromOverwriteList is not available in MonoGame, so we skip this functionality
+        /*
+        private int GetAudioSourceFromOverwriteList()
+        {
+          float num = this.allowedOverwritePercentage;
+          int fromOverwriteList = -1;
+          for (int index = 0; index < this.soundsReadyToDie.Count; ++index)
+          {
+            AudioObject audioObject = this.soundsReadyToDie[index];
+            if ((double) audioObject.percentage > (double) num)
+            {
+              num = audioObject.percentage;
+              fromOverwriteList = audioObject.index;
+            }
+          }
+          return fromOverwriteList;
+        }
+        */
+
+
+        // AddSources is not available in MonoGame, so we skip this functionality
+        /*
+        private void AddSources()
+        {
+          int length = Mathf.Min(this.numberOfSoundChannels + this.channelsToIncrementOnExpand, this.maxSoundChannelCapacity);
+          AudioSource[] audioSourceArray = new AudioSource[length];
+          AudioObject[] audioObjectArray = new AudioObject[length];
+          for (int index = 0; index < length; ++index)
+          {
+            if (index < this.numberOfSoundChannels)
+            {
+              audioSourceArray[index] = this.sources[index];
+              audioObjectArray[index] = this.sounds[index];
+            }
+            else
+            {
+              audioSourceArray[index] = this.gameObject.AddComponent<AudioSource>(new AudioSource());
+              audioSourceArray[index].volume = this.defaultVolume;
+              audioObjectArray[index] = new AudioObject();
+            }
+          }
+          this.sources = audioSourceArray;
+          this.sounds = audioObjectArray;
+          this.numberOfSoundChannels = length;
+        }
+        */
     }
-  }
 }

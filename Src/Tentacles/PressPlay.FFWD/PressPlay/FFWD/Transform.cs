@@ -206,10 +206,10 @@ namespace PressPlay.FFWD
     public Vector3 right => (Vector3) Microsoft.Xna.Framework.Vector3.Normalize(this.world.Right);
 
     [ContentSerializerIgnore]
-    public Vector3 forward => (Vector3) -Microsoft.Xna.Framework.Vector3.Normalize(this.world.Forward);
+    public Vector3 forward => (Vector3)(-Microsoft.Xna.Framework.Vector3.Normalize(this.world.Forward));
 
     [ContentSerializerIgnore]
-    public Vector3 up => (Vector3) -Microsoft.Xna.Framework.Vector3.Normalize(this.world.Up);
+    public Vector3 up => (Vector3)(-Microsoft.Xna.Framework.Vector3.Normalize(this.world.Up));
 
     [ContentSerializerIgnore]
     public Transform root => this.parent != null ? this.parent.root : this;

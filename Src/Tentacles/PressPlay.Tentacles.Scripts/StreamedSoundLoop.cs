@@ -16,7 +16,7 @@ namespace PressPlay.Tentacles.Scripts
 {
   internal class StreamedSoundLoop
   {
-    protected Thread readThread;
+    //protected Thread readThread;
     protected Stream waveFileStream;
     protected DynamicSoundEffectInstance dynamicSound;
     protected BinaryReader reader;
@@ -70,23 +70,24 @@ namespace PressPlay.Tentacles.Scripts
       this.position = this.count;
       this.dynamicSound.BufferNeeded += new EventHandler<EventArgs>(this.DynamicSound_BufferNeeded);
       this.CreateReadThread();
-      do
-        ;
-      while (!this.readThread.IsAlive);
+            //do
+            //{ }
+            //while (!this.readThread.IsAlive);
     }
 
     private void CreateReadThread()
     {
-      this.readThread = new Thread(new ThreadStart(this.ASyncreadBuffer));
-      this.readThread.Name = "LoopedSoundStreamReader";
-      this.readThread.Start();
-      this.readThread.IsBackground = true;
+    //RnD / TODO
+    //this.readThread = default;//new Thread(new ThreadStart(this.ASyncreadBuffer));
+    //  this.readThread.Name = "LoopedSoundStreamReader";
+    //  this.readThread.Start();
+    //  this.readThread.IsBackground = true;
     }
 
     protected void DynamicSound_BufferNeeded(object sender, EventArgs e)
     {
-      if (this.readThread.IsAlive)
-        return;
+      //if (this.readThread.IsAlive)
+      //  return;
       this.CreateReadThread();
     }
 
@@ -97,34 +98,38 @@ namespace PressPlay.Tentacles.Scripts
       this.buffer1 = (byte[]) null;
     }
 
-    protected void ASyncreadBuffer()
-    {
-      while (this.dynamicSound.PendingBufferCount < 2)
-      {
-        if (Application.isDeactivated)
-          return;
-        this.asyncReader = this.reader;
-        this.asyncReader.BaseStream.Position = (long) (this.position + this.headerSize);
-        int num = this.dataSize - this.position;
-        if (num >= this.count)
+        protected void ASyncreadBuffer()
         {
-          this.buffer1 = this.asyncReader.ReadBytes(this.count);
-          this.position += this.count;
-        }
-        else
-        {
-          this.buffer1 = new byte[this.count];
-          Buffer.BlockCopy((Array) this.asyncReader.ReadBytes(num), 0, (Array) this.buffer1, 0, num);
-          this.asyncReader.BaseStream.Position = (long) this.headerSize;
-          Buffer.BlockCopy((Array) this.asyncReader.ReadBytes(this.count - num), 0, (Array) this.buffer1, num, this.count - num);
-          this.position = this.count - num;
-        }
-        if (this.dynamicSound.IsDisposed || Application.isDeactivated)
-          return;
-        this.SubmitBuffer();
-      }
-      while (!Application.isDeactivated && !this.dynamicSound.IsDisposed && this.dynamicSound.PendingBufferCount >= 2)
-        Thread.Sleep(TimeSpan.FromMilliseconds((double) this.bufferSizeMilliseconds));
+            while (this.dynamicSound.PendingBufferCount < 2)
+            {
+                if (Application.isDeactivated)
+                    return;
+                this.asyncReader = this.reader;
+                this.asyncReader.BaseStream.Position = (long)(this.position + this.headerSize);
+                int num = this.dataSize - this.position;
+                if (num >= this.count)
+                {
+                    this.buffer1 = this.asyncReader.ReadBytes(this.count);
+                    this.position += this.count;
+                }
+                else
+                {
+                    this.buffer1 = new byte[this.count];
+                    Buffer.BlockCopy((Array)this.asyncReader.ReadBytes(num), 0, (Array)this.buffer1, 0, num);
+                    this.asyncReader.BaseStream.Position = (long)this.headerSize;
+                    Buffer.BlockCopy((Array)this.asyncReader.ReadBytes(this.count - num), 0, (Array)this.buffer1, num, this.count - num);
+                    this.position = this.count - num;
+                }
+                if (this.dynamicSound.IsDisposed || Application.isDeactivated)
+                    return;
+                this.SubmitBuffer();
+            }
+            while (!Application.isDeactivated && !this.dynamicSound.IsDisposed && this.dynamicSound.PendingBufferCount >= 2)
+            { 
+                //TODO
+                //Thread.Sleep(TimeSpan.FromMilliseconds((double)this.bufferSizeMilliseconds));
+            }
+
       if (this.dynamicSound.IsDisposed || Application.isDeactivated)
         return;
       this.ASyncreadBuffer();

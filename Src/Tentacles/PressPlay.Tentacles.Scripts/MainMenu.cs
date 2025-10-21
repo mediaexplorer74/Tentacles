@@ -6,7 +6,6 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using PressPlay.FFWD;
 using PressPlay.FFWD.ScreenManager;
@@ -180,7 +179,8 @@ namespace PressPlay.Tentacles.Scripts
           this.ScreenManager.AddScreen((GameScreen) new OptionsScreen("Textures/Menu/HelpNOptions/HelpNOptionsBg"), new PlayerIndex?(PlayerIndex.One));
           break;
         case "buygame":
-          Guide.ShowMarketplace(Gamer.SignedInGamers[PlayerIndex.One].PlayerIndex);
+          // Guide.ShowMarketplace is not available in MonoGame, so we skip this functionality
+          // Guide.ShowMarketplace(Gamer.SignedInGamers[PlayerIndex.One].PlayerIndex);
           break;
       }
     }
