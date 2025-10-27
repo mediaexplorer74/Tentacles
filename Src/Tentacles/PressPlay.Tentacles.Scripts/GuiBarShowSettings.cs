@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.GuiBarShowSettings
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -11,14 +11,15 @@ namespace PressPlay.Tentacles.Scripts
 {
   public struct GuiBarShowSettings(
     string text,
-    Color color,
+    Microsoft.Xna.Framework.Color barColor,
     float duration,
     bool showProgressBar,
     GuiBarShowSettings.DoOnTransition doOnShow,
     GuiBarShowSettings.DoOnTransition doOnTransitionInComplete)
   {
     public string text = text;
-    public Color color = color;
+    public Microsoft.Xna.Framework.Color barColor = barColor;
+    public Microsoft.Xna.Framework.Color backgroundColor = backgroundColor;
     public float duration = duration;
     public bool showProgressBar = showProgressBar;
     public GuiBarShowSettings.DoOnTransition doOnShow = doOnShow;

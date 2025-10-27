@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.Lemmy
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -16,7 +16,7 @@ namespace PressPlay.Tentacles.Scripts
   public class Lemmy : MonoBehaviour
   {
     private const int framesBeforeSquish = 3;
-    public Renderer glowRenderer;
+    public PressPlay.FFWD.Components.Renderer glowRenderer;
     public bool aimAtFingerPosition;
     public bool useControllerInput;
     private RigidbodyAffectedByCurrents currentEffectScript;
@@ -56,9 +56,9 @@ namespace PressPlay.Tentacles.Scripts
     private Tentacle clawTentacle;
     private Claw _claw;
     private ParticleEmitter bubbleTrail;
-    private ParticleAnimator bubbleTrailAnimator;
-    private ParticleEmitter bleedBubbleTrail;
-    private ParticleAnimator bleedBubbleTrailAnimator;
+    private PressPlay.FFWD.Components.ParticleAnimator bubbleTrailAnimator;
+    private PressPlay.FFWD.Components.ParticleEmitter bleedBubbleTrail;
+    private PressPlay.FFWD.Components.ParticleAnimator bleedBubbleTrailAnimator;
     public PressPlay.FFWD.Components.Camera lemmyFollowCamera;
     public PathFollowCam pathFollowCam;
     private Vector3 forceFromTentacles;
@@ -353,7 +353,7 @@ namespace PressPlay.Tentacles.Scripts
       this.lastPosition = this.transform.position;
     }
 
-    public override void OnCollisionEnter(Collision collision)
+    public override void OnCollisionEnter(PressPlay.FFWD.Collision collision)
     {
       if (collision.gameObject.tag == GlobalSettings.Instance.pickupTag)
       {
@@ -367,7 +367,7 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public override void OnCollisionStay(Collision collision)
+    public override void OnCollisionStay(PressPlay.FFWD.Collision collision)
     {
       base.OnCollisionStay(collision);
       if (!LayerMaskOperations.CheckLayerMaskContainsLayer(GlobalSettings.Instance.allWallsLayers, collision.gameObject.layer) || collision.collider.connectedBody.BodyType != BodyType.Kinematic || (collision.contacts.Length == 1 ? (double) Vector3.DistanceSquared(collision.contacts[0].point, this.transform.position) : (double) Mathf.Min(Vector3.DistanceSquared(collision.contacts[0].point, this.transform.position), Vector3.DistanceSquared(collision.contacts[1].point, this.transform.position))) > (double) this.squishDistance)

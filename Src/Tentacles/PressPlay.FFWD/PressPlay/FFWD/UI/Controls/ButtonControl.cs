@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.UI.Controls.ButtonControl
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -16,15 +16,15 @@ namespace PressPlay.FFWD.UI.Controls
     public TextControl textControl;
     public AudioClip buttonSound;
     private ImageControl background;
-    private ButtonStyle buttonStyle;
-    private ButtonControlStates previousState = ButtonControlStates.normal;
-    private ButtonControlStates _state = ButtonControlStates.normal;
+    private PressPlay.FFWD.UI.Controls.ButtonStyle buttonStyle;
+    private PressPlay.FFWD.UI.Controls.ButtonControl.ButtonControlStates previousState = PressPlay.FFWD.UI.Controls.ButtonControl.ButtonControlStates.normal;
+    private PressPlay.FFWD.UI.Controls.ButtonControl.ButtonControlStates _state = PressPlay.FFWD.UI.Controls.ButtonControl.ButtonControlStates.normal;
     public string link;
     private bool useCustomClickRect;
     private Rectangle _clickRect;
     private PressPlay.FFWD.Vector3 lastPressPosition;
 
-    public ButtonControlStates state
+    public PressPlay.FFWD.UI.Controls.ButtonControl.ButtonControlStates state
     {
       get => this._state;
       set => this.ChangeState(value);
@@ -50,7 +50,7 @@ namespace PressPlay.FFWD.UI.Controls
       this.OnClickEvent((object) this, (EventArgs) new ButtonControlEventArgs(this.link));
     }
 
-    public ButtonControl(ButtonStyle buttonStyle, string link)
+    public ButtonControl(PressPlay.FFWD.UI.Controls.ButtonStyle buttonStyle, string link)
     {
       this.gameObject.name = nameof (ButtonControl);
       this.buttonStyle = buttonStyle;
@@ -62,7 +62,7 @@ namespace PressPlay.FFWD.UI.Controls
       this.AddChild((Control) this.textControl);
     }
 
-    private void ChangeState(ButtonControlStates newState)
+    private void ChangeState(PressPlay.FFWD.UI.Controls.ButtonControl.ButtonControlStates newState)
     {
       ((UISpriteRenderer) this.background.renderer).texture = this.buttonStyle.texture;
       ((UISpriteRenderer) this.background.renderer).sourceRect = this.buttonStyle.GetSourceRect((int) newState);
@@ -88,7 +88,7 @@ namespace PressPlay.FFWD.UI.Controls
       this.InvalidateAutoSize();
     }
 
-    public override void HandleInput(InputState input)
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
       if (this.state == ButtonControlStates.disabled)
         return;
@@ -121,7 +121,7 @@ namespace PressPlay.FFWD.UI.Controls
       this.ChangeState(ButtonControlStates.normal);
     }
 
-    protected override bool isMouseWithinBounds(InputState input)
+    protected override bool isMouseWithinBounds(PressPlay.FFWD.ScreenManager.InputState input)
     {
       return this.useCustomClickRect ? this.isMouseWithinBounds(input, this.clickRect) : base.isMouseWithinBounds(input);
     }

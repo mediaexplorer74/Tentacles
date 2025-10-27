@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.SuperWormBoss
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -147,7 +148,7 @@ namespace PressPlay.Tentacles.Scripts
       this.head.leftAntenna.transform.rotation = quaternion;
       if (!this.head.sndLoop.isPlaying)
         this.head.sndLoop.PlaySound();
-      if (this.currentAttackPattern.exit == null || (double) (this.head.transform.position - this.currentAttackPattern.exit.transform.position).sqrMagnitude >= 2.0999999046325684)
+      if (this.currentAttackPattern.exit == null || (this.head.transform.position - this.currentAttackPattern.exit.transform.position).LengthSquared() >= 2.0999999046325684)
         return;
       this.currentAttackPattern.exit.Open();
     }
@@ -177,9 +178,9 @@ namespace PressPlay.Tentacles.Scripts
 
     protected override void UpdateBossStateExposed() => base.UpdateBossStateExposed();
 
-    private EntryExitPair GetEntryExitPair(Vector3 _victimPosition) => new EntryExitPair();
+    private EntryExitPair GetEntryExitPair(Microsoft.Xna.Framework.Vector3 _victimPosition) => new EntryExitPair();
 
-    private SuperWormAttackPattern GetBestAttackPattern(Vector3 _victimPosition)
+    private SuperWormAttackPattern GetBestAttackPattern(Microsoft.Xna.Framework.Vector3 _victimPosition)
     {
       float num = this.EvaluateAttackPattern(this.attackPatterns[0], _victimPosition);
       SuperWormAttackPattern attackPattern1 = this.attackPatterns[0];
@@ -206,27 +207,27 @@ namespace PressPlay.Tentacles.Scripts
 
     private float EvaluateAttackPattern(
       SuperWormAttackPattern _attackPattern,
-      Vector3 _victimPosition)
+      Microsoft.Xna.Framework.Vector3 _victimPosition)
     {
       float num1 = 0.0f;
       float num2 = 0.0f;
       float num3 = -1f;
       float num4 = 0.0f;
       if (_attackPattern.entry != null)
-        num4 += (_attackPattern.entry.transform.position - _victimPosition).sqrMagnitude * num1;
+        num4 += (_attackPattern.entry.transform.position - _victimPosition).LengthSquared() * num1;
       if (_attackPattern.exit != null)
-        num4 += (_attackPattern.exit.transform.position - _victimPosition).sqrMagnitude * num2;
+        num4 += (_attackPattern.exit.transform.position - _victimPosition).LengthSquared() * num2;
       return num4 + this.GetClosestDistToWaypoint(_attackPattern.path.waypoints, _victimPosition) * num3;
     }
 
-    private float GetClosestDistToWaypoint(Waypoint[] _waypoints, Vector3 _pos)
+    private float GetClosestDistToWaypoint(Waypoint[] _waypoints, Microsoft.Xna.Framework.Vector3 _pos)
     {
       if (_waypoints.Length == 0)
         return -1f;
-      float x = (_waypoints[0].transform.position - _pos).sqrMagnitude;
+      float x = (_waypoints[0].transform.position - _pos).LengthSquared();
       for (int index = 1; index < _waypoints.Length; ++index)
       {
-        float sqrMagnitude = (_waypoints[index].transform.position - _pos).sqrMagnitude;
+        float sqrMagnitude = (_waypoints[index].transform.position - _pos).LengthSquared();
         if ((double) sqrMagnitude < (double) x)
           x = sqrMagnitude;
       }
@@ -236,7 +237,7 @@ namespace PressPlay.Tentacles.Scripts
     private void CreateAttackPath(
       WaypointWrapper _entryPath,
       WaypointWrapper _exitPath,
-      Vector3 _victimPosition)
+      Microsoft.Xna.Framework.Vector3 _victimPosition)
     {
       int length = 1 + _entryPath.waypoints.Length + _exitPath.waypoints.Length;
       if (this.currentAttackWaypoints == null || this.currentAttackWaypoints.Length != length)

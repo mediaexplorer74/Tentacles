@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.SuperShooter
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -43,7 +43,7 @@ namespace PressPlay.Tentacles.Scripts
     public PPAnimationHandler anim;
     public Transform[] pushParticleEffectPositions;
     public PoolableParticle pushParticleEffect;
-    public ParticleEmitter[] pushParticleEmitters;
+    public PressPlay.FFWD.Components.ParticleEmitter particleEmitter;
     public float sequenceOffset;
     protected float progress;
     protected int currentShootPattern;

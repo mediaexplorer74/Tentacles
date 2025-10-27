@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.OptionsScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -120,14 +120,14 @@ namespace PressPlay.Tentacles.Scripts
           this.btnLockedScreen.textControl.text = LocalisationManager.Instance.GetString("label_off").ToUpper();
           break;
         case "credits":
-          this.ScreenManager.AddScreen((GameScreen) new CreditsScreen("Textures/Menu/Credits/credits_bg"), new PlayerIndex?(PlayerIndex.One));
+          this.ScreenManager.AddScreen(new MainMenu(), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
           break;
       }
     }
 
-    public override void OnTransitionOffComplete()
+    public override void OnTransitionExitComplete()
     {
-      base.OnTransitionOffComplete();
+      base.OnTransitionExitComplete();
       this.rootControl.gameObject.SetActiveRecursively(false);
       this.background.gameObject.SetActiveRecursively(false);
     }
@@ -140,7 +140,7 @@ namespace PressPlay.Tentacles.Scripts
       this.background.gameObject.SetActiveRecursively(true);
     }
 
-    public override void HandleInput(InputState input) => base.HandleInput(input);
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input) => base.HandleInput(input);
 
     public override void Update(
       GameTime gameTime,

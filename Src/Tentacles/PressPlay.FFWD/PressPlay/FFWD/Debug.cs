@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Debug
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -66,7 +66,7 @@ namespace PressPlay.FFWD
       Debug.DrawLine(start, end, Color.white);
     }
 
-    public static void DrawLine(Vector3 start, Vector3 end, Color color)
+    public static void DrawLine(PressPlay.FFWD.Components.Camera cam, Vector3 start, Vector3 end, Color color, float duration = 0.0f)
     {
     }
 
@@ -87,7 +87,7 @@ namespace PressPlay.FFWD
     {
     }
 
-    internal static void DrawLines(GraphicsDevice device, Camera cam)
+    internal static void DrawLines(GraphicsDevice device, PressPlay.FFWD.Components.Camera cam)
     {
       if (Debug.lines == null || Debug.lines.Count == 0)
         return;

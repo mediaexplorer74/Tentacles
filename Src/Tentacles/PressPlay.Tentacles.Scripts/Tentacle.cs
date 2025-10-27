@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.Tentacle
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -20,9 +21,9 @@ namespace PressPlay.Tentacles.Scripts
     private TentacleJoint body;
     private TentacleJoint tip;
     private LineDrawerXZ lineDrawer;
-    private Vector3 bodyNormal;
-    private Vector3 tipNormal;
-    private Vector3[] jointPositions;
+    private Microsoft.Xna.Framework.Vector3 bodyNormal;
+    private Microsoft.Xna.Framework.Vector3 tipNormal;
+    private Microsoft.Xna.Framework.Vector3[] jointPositions;
     private bool doHoseMechanics;
 
     public virtual void Initialize(
@@ -67,13 +68,13 @@ namespace PressPlay.Tentacles.Scripts
     {
     }
 
-    public void SetBodyNormal(Vector3 _normal)
+    public void SetBodyNormal(Microsoft.Xna.Framework.Vector3 _normal) 
     {
       this.bodyNormal = _normal;
       this.body.SetNormal(this.bodyNormal);
     }
 
-    public void SetTipNormal(Vector3 _normal)
+    public void SetTipNormal(Microsoft.Xna.Framework.Vector3 _normal) 
     {
       this.tipNormal = _normal;
       this.tip.SetNormal(this.tipNormal);
@@ -92,7 +93,7 @@ namespace PressPlay.Tentacles.Scripts
       this.DestroyJoints();
       int length = Mathf.Max(this.visualStats.joints, 2);
       this.joints = new TentacleJoint[length];
-      this.jointPositions = new Vector3[length];
+      this.jointPositions = new Microsoft.Xna.Framework.Vector3[length]; 
       for (int index = 0; index < this.joints.Length; ++index)
       {
         TentacleJoint tentacleJoint = (TentacleJoint) new GameObject()
@@ -100,7 +101,7 @@ namespace PressPlay.Tentacles.Scripts
           name = ("Tentacle Joint " + (object) index)
         }.AddComponent(typeof (TentacleJoint));
         this.joints[index] = tentacleJoint;
-        this.jointPositions[index] = new Vector3(0.0f, 0.0f, 0.0f);
+        this.jointPositions[index] = new Microsoft.Xna.Framework.Vector3(0.0f, 0.0f, 0.0f); 
       }
       for (int _index = 0; _index < this.joints.Length; ++_index)
       {
@@ -125,7 +126,7 @@ namespace PressPlay.Tentacles.Scripts
             if (index2 == 0)
               this.joints[index2].DoHoseMechanicUpdate(this.bodyNormal, this.joints[index2].frontConnection.directionFromFront);
             else if (index2 == this.joints.Length - 1)
-              this.joints[index2].DoHoseMechanicUpdate(this.joints[index2].backConnection.directionFromBack, this.tip.transform.forward * 1.8f);
+              this.joints[index2].DoHoseMechanicUpdate(this.joints[index2].backConnection.directionFromBack, Microsoft.Xna.Framework.Vector3.Forward);
             else
               this.joints[index2].DoHoseMechanicUpdate(this.joints[index2].backConnection.directionFromBack, this.joints[index2].frontConnection.directionFromFront);
           }
@@ -136,7 +137,7 @@ namespace PressPlay.Tentacles.Scripts
       if (this.lineDrawer == null)
         return;
       if (this.jointPositions == null || this.jointPositions.Length != this.joints.Length + 2)
-        this.jointPositions = new Vector3[this.joints.Length + 2];
+        this.jointPositions = new Microsoft.Xna.Framework.Vector3[this.joints.Length + 2]; 
       this.jointPositions[0] = this.body.transform.position;
       this.jointPositions[this.joints.Length + 1] = this.tip.transform.position;
       for (int index = 0; index < this.joints.Length; ++index)

@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.TentacleActivatedExplosiveMine
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
@@ -22,18 +23,18 @@ namespace PressPlay.Tentacles.Scripts
 
     public override void Start()
     {
-      Collider[] componentsInChildren = this.GetComponentsInChildren<Collider>();
+      Component[] componentsInChildren = this.GetComponentsInChildren<Component>();
       for (int index = 0; index < componentsInChildren.Length; ++index)
       {
-        componentsInChildren[index].connectedBody.BodyType = BodyType.Kinematic;
-        componentsInChildren[index].allowTurnOff = true;
+        // componentsInChildren[index].connectedBody.BodyType = BodyType.Kinematic;
+        // componentsInChildren[index].allowTurnOff = true;
       }
       foreach (OnClawBehaviourConnect tentacleTipCollider in this.tentacleTipColliders)
         tentacleTipCollider.doOnConnectDelegate = new OnClawBehaviourConnect.DoOnConnectDelegate(this.OnTentacleConnect);
       ObjectPool.Instance.Grow((PoolableObject) this.particlesOnExplosion, 1, 5);
     }
 
-    public void OnTentacleConnect(ClawBehaviour _clawBehaviour, Vector3 _hitDir)
+    public void OnTentacleConnect(ClawBehaviour _clawBehaviour, Microsoft.Xna.Framework.Vector3 _hitDir)
     {
       Debug.Log((object) "TentacleActivatedExplosiveMine.OnTentacleConnect");
       this.tentacleWasConnected = true;

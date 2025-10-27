@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Color
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -44,32 +44,42 @@ namespace PressPlay.FFWD
 
     public float greyscale => throw new NotImplementedException("Not implemented");
 
-    public static Color red => new Color(1f, 0.0f, 0.0f, 1f);
-
-    public static Color green => new Color(0.0f, 1f, 0.0f, 1f);
-
-    public static Color blue => new Color(0.0f, 0.0f, 1f, 1f);
-
-    public static Color white => new Color(1f, 1f, 1f, 1f);
-
-    public static Color black => new Color(0.0f, 0.0f, 0.0f, 1f);
-
-    public static Color yellow => new Color(1f, 0.0f, 0.0f, 1f);
-
-    public static Color cyan => new Color(0.0f, 1f, 1f, 1f);
-
-    public static Color magenta => new Color(1f, 0.0f, 1f, 1f);
-
-    public static Color gray => new Color(0.5f, 0.5f, 0.5f, 1f);
-
-    public static Color grey => new Color(0.5f, 0.5f, 0.5f, 1f);
-
-    public static Color clear => new Color(0.0f, 0.0f, 0.0f, 0.0f);
-
-    public Color(float r, float g, float b)
-      : this(r, g, b, 1f)
+    static Color()
     {
+      _red = new Color(1f, 0.0f, 0.0f, 1f);
+      _green = new Color(0.0f, 1f, 0.0f, 1f);
+      _blue = new Color(0.0f, 0.0f, 1f, 1f);
+      _white = new Color(1f, 1f, 1f, 1f);
+      _black = new Color(0.0f, 0.0f, 0.0f, 1f);
+      _yellow = new Color(1f, 0.0f, 0.0f, 1f);
+      _cyan = new Color(0.0f, 1f, 1f, 1f);
+      _magenta = new Color(1f, 0.0f, 1f, 1f);
+      _gray = new Color(0.5f, 0.5f, 0.5f, 1f);
+      _grey = new Color(0.5f, 0.5f, 0.5f, 1f);
+      _clear = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
+
+    public static Color red => Color._red;
+
+    public static Color green => Color._green;
+
+    public static Color blue => Color._blue;
+
+    public static Color white => Color._white;
+
+    public static Color black => Color._black;
+
+    public static Color yellow => Color._yellow;
+
+    public static Color cyan => Color._cyan;
+
+    public static Color magenta => Color._magenta;
+
+    public static Color gray => Color._gray;
+
+    public static Color grey => Color._grey;
+
+    public static Color clear => Color._clear;
 
     public static Color operator *(float d, Color c)
     {
@@ -91,11 +101,6 @@ namespace PressPlay.FFWD
     public static implicit operator Color(Microsoft.Xna.Framework.Color c) => (Color) c.ToVector4();
 
     public static implicit operator Vector3(Color c) => new Vector3(c.r, c.g, c.b);
-
-    public static implicit operator Microsoft.Xna.Framework.Vector3(Color c)
-    {
-      return new Microsoft.Xna.Framework.Vector3(c.r, c.g, c.b);
-    }
 
     public static Color Lerp(Color a, Color b, float t)
     {

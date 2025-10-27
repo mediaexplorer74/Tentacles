@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LevelSession
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -27,12 +27,12 @@ namespace PressPlay.Tentacles.Scripts
     public int numberOfPickupsCollected;
     private float lastPickupTime;
     private int pickupCounter;
-    private int pickupScore;
+    public int pickupScore;
     public int subtractScorePerDamage = 5;
     public int subtractScoreOnDeath = 500;
     public int maxPickupCombo;
     private int tempScore;
-    private PoolableText tempFeedback;
+    public PressPlay.Tentacles.Scripts.PoolableText scoreText;
     private bool isStarted;
     private bool isPaused;
     private float pauseTime;

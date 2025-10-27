@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Components.CapsuleCollider
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -16,7 +16,7 @@ namespace PressPlay.FFWD.Components
     public float height;
     public int direction;
 
-    protected override void DoAddCollider(Body body, float mass)
+    protected override void DoAddCollider(PressPlay.FFWD.Body body, float mass)
     {
       this.connectedBody = body;
       Vector3 position = this.center * this.transform.lossyScale;

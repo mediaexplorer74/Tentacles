@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ObjectPool
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -53,7 +53,7 @@ namespace PressPlay.Tentacles.Scripts
       return this.Draw(prefab, prefab.transform.position, prefab.transform.rotation);
     }
 
-    public PoolableObject Draw(PoolableObject prefab, Vector3 position, Quaternion rotation)
+    public PoolableObject Draw(PoolableObject prefab, Vector3 position, PressPlay.FFWD.Quaternion rotation)
     {
       if (!this.pool.ContainsKey(prefab.guid))
         this.Grow(prefab, this.defaultNumberOfInstances);

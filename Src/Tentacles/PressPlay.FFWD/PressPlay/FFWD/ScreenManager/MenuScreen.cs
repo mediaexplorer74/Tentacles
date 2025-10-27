@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.ScreenManager.MenuScreen
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 #nullable disable
 namespace PressPlay.FFWD.ScreenManager
 {
-  public abstract class MenuScreen : GameScreen
+  public class MenuScreen : PressPlay.FFWD.ScreenManager.GameScreen
   {
     private const int menuEntryPadding = 10;
     private List<MenuEntry> menuEntries = new List<MenuEntry>();
@@ -54,14 +54,14 @@ namespace PressPlay.FFWD.ScreenManager
       }
     }
 
-    protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
+    protected virtual void OnSelectEntry(int entryIndex, PressPlay.FFWD.ScreenManager.PlayerIndex playerIndex)
     {
       this.menuEntries[entryIndex].OnSelectEntry(playerIndex);
     }
 
-    protected virtual void OnCancel(PlayerIndex playerIndex) => this.ExitScreen();
+    protected virtual void OnCancel(PressPlay.FFWD.ScreenManager.PlayerIndex playerIndex) => this.ExitScreen();
 
-    protected void OnCancel(object sender, PlayerIndexEventArgs e) => this.OnCancel(e.PlayerIndex);
+    protected void OnCancel(object sender, PressPlay.FFWD.ScreenManager.PlayerIndexEventArgs e) => this.OnCancel(e.PlayerIndex);
 
     protected virtual void UpdateMenuEntryLocations()
     {

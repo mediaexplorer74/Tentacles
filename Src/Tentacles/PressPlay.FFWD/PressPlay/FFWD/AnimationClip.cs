@@ -1,10 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.AnimationClip
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.FFWD.dll
 
 using Microsoft.Xna.Framework.Content;
+using PressPlay.FFWD;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,7 @@ namespace PressPlay.FFWD
   public class AnimationClip
   {
     public string name;
-    public WrapMode wrapMode;
+    public PressPlay.FFWD.WrapMode wrapMode;
     internal float timeOffset;
 
     internal AnimationClip(AnimationClip clip, string newName, int firstFrame, int lastFrame)

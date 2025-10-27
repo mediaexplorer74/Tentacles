@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.MainMenu
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -20,19 +20,19 @@ namespace PressPlay.Tentacles.Scripts
   {
     [ContentSerializerIgnore]
     public static bool openUpsellOnMainMenuLoad;
-    public MusicController musicController;
-    private PanelControl buttonColumn;
-    private ImageControl logo;
+    public PressPlay.Tentacles.Scripts.MusicController musicController;
+    private PressPlay.FFWD.UI.Controls.PanelControl buttonColumn;
+    private PressPlay.FFWD.UI.Controls.ImageControl logo;
     private Texture2D buttonsSpriteSheet;
-    private TextControl trialText;
-    private ButtonControl playButton;
-    private ButtonControl buyButton;
+    private PressPlay.FFWD.UI.Controls.TextControl trialText;
+    public PressPlay.FFWD.UI.Controls.ButtonControl playButton;
+    private PressPlay.FFWD.UI.Controls.ButtonControl buyButton;
     private ButtonControl levelSelectButton;
     private ButtonControl helpAndOptionsButton;
     private ButtonControl achievementsButton;
     private ButtonControl leaderboardsButton;
     private bool layoutIsTrial;
-    private List<ButtonControl> buttons = new List<ButtonControl>();
+    private List<PressPlay.FFWD.UI.Controls.ButtonControl> buttons = new List<PressPlay.FFWD.UI.Controls.ButtonControl>();
 
     public MainMenu()
       : base("Textures/Menu/Main/MainMenuBg")
@@ -45,8 +45,8 @@ namespace PressPlay.Tentacles.Scripts
       base.LoadContent();
       GlobalManager.Instance.fullscreenImageHandler.DoInstantBlackScreen();
       GlobalManager.Instance.fullscreenImageHandler.FadeFromBlack(0.5f);
-      this.logo = new ImageControl(Application.Load<Texture2D>("Textures/Menu/Main/mainMenu_logo_" + (object) GlobalManager.Instance.deviceLanguage), SpritePositions.logo);
-      this.rootControl.AddChild((Control) this.logo);
+      this.logo = new PressPlay.FFWD.UI.Controls.ImageControl(Application.Load<Texture2D>("Textures/Menu/Main/mainMenu_logo_" + (object) GlobalManager.Instance.deviceLanguage), SpritePositions.logo);
+      this.rootControl.AddChild((PressPlay.FFWD.UI.Controls.Control) this.logo);
       this.musicController = new GameObject().AddComponent<MusicController>();
       this.musicController.playMusicOnStart = true;
       this.musicController.musicToPlayOnStart = MusicController.BackgroundLoopId.loop1;
@@ -55,44 +55,44 @@ namespace PressPlay.Tentacles.Scripts
       this.musicController.FadeFromTo(0.0f, 1f, 1.5f);
       AudioClip audioClip = new AudioClip(GUIAssets.menuClick);
       this.buttonsSpriteSheet = Application.Load<Texture2D>("Textures/Menu/Main/mainMenu_buttonAtlas_" + (object) GlobalManager.Instance.deviceLanguage);
-      this.playButton = (ButtonControl) new MenuButton(new ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuPlayButtonNormal, SpritePositions.mainMenuPlayButtonActive), "play");
+      this.playButton = (PressPlay.FFWD.UI.Controls.ButtonControl) new MenuButton(new PressPlay.FFWD.UI.Controls.ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuPlayButtonNormal, SpritePositions.mainMenuPlayButtonActive), "play");
       this.playButton.transform.position = new PressPlay.FFWD.Vector3(140f, 100f, 235f);
       this.playButton.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       this.playButton.buttonSound = audioClip;
-      this.rootControl.AddChild((Control) this.playButton);
+      this.rootControl.AddChild((PressPlay.FFWD.UI.Controls.Control) this.playButton);
       if (GlobalManager.isTrialMode)
       {
         this.layoutIsTrial = true;
         this.playButton.transform.position = new PressPlay.FFWD.Vector3(140f, 100f, 170f);
-        this.buyButton = (ButtonControl) new MenuButton(new ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuPurchaseButtonNormal, SpritePositions.mainMenuPurchaseButtonActive), "buygame");
+        this.buyButton = (PressPlay.FFWD.UI.Controls.ButtonControl) new MenuButton(new PressPlay.FFWD.UI.Controls.ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuPurchaseButtonNormal, SpritePositions.mainMenuPurchaseButtonActive), "buygame");
         this.buyButton.transform.position = new PressPlay.FFWD.Vector3(0.0f, 0.0f, 355f);
         this.buyButton.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
         this.buyButton.buttonSound = audioClip;
-        this.rootControl.AddChild((Control) this.buyButton);
-        this.trialText = new TextControl(LocalisationManager.Instance.GetString("label_trial"), GUIAssets.berlinsSans40);
-        this.logo.AddChild((Control) this.trialText);
+        this.rootControl.AddChild((PressPlay.FFWD.UI.Controls.Control) this.buyButton);
+        this.trialText = new PressPlay.FFWD.UI.Controls.TextControl(LocalisationManager.Instance.GetString("label_trial"), GUIAssets.berlinsSans40);
+        this.logo.AddChild((PressPlay.FFWD.UI.Controls.Control) this.trialText);
         this.trialText.AlignCenter(new PressPlay.FFWD.Vector2(10f, 20f));
       }
-      this.buttonColumn = new PanelControl();
-      this.levelSelectButton = (ButtonControl) new MenuButton(new ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonOneNormal, SpritePositions.mainMenuButtonOneActive), "level");
+      this.buttonColumn = new PressPlay.FFWD.UI.Controls.PanelControl();
+      this.levelSelectButton = (PressPlay.FFWD.UI.Controls.ButtonControl) new MenuButton(new PressPlay.FFWD.UI.Controls.ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonOneNormal, SpritePositions.mainMenuButtonOneActive), "level");
       this.levelSelectButton.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       this.levelSelectButton.buttonSound = audioClip;
-      this.buttonColumn.AddChild((Control) this.levelSelectButton);
-      this.helpAndOptionsButton = (ButtonControl) new MenuButton(new ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonTwoNormal, SpritePositions.mainMenuButtonTwoActive), "help");
+      this.buttonColumn.AddChild((PressPlay.FFWD.UI.Controls.Control) this.levelSelectButton);
+      this.helpAndOptionsButton = (PressPlay.FFWD.UI.Controls.ButtonControl) new MenuButton(new PressPlay.FFWD.UI.Controls.ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonTwoNormal, SpritePositions.mainMenuButtonTwoActive), "help");
       this.helpAndOptionsButton.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       this.helpAndOptionsButton.buttonSound = audioClip;
-      this.buttonColumn.AddChild((Control) this.helpAndOptionsButton);
-      this.achievementsButton = (ButtonControl) new MenuButton(new ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonThreeNormal, SpritePositions.mainMenuButtonThreeActive), "achievements");
+      this.buttonColumn.AddChild((PressPlay.FFWD.UI.Controls.Control) this.helpAndOptionsButton);
+      this.achievementsButton = (PressPlay.FFWD.UI.Controls.ButtonControl) new MenuButton(new PressPlay.FFWD.UI.Controls.ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonThreeNormal, SpritePositions.mainMenuButtonThreeActive), "achievements");
       this.achievementsButton.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       this.achievementsButton.buttonSound = audioClip;
-      this.buttonColumn.AddChild((Control) this.achievementsButton);
-      this.leaderboardsButton = (ButtonControl) new MenuButton(new ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonFourNormal, SpritePositions.mainMenuButtonFourActive), "leaderboard");
+      this.buttonColumn.AddChild((PressPlay.FFWD.UI.Controls.Control) this.achievementsButton);
+      this.leaderboardsButton = (PressPlay.FFWD.UI.Controls.ButtonControl) new MenuButton(new PressPlay.FFWD.UI.Controls.ButtonStyle(this.buttonsSpriteSheet, SpritePositions.mainMenuButtonFourNormal, SpritePositions.mainMenuButtonFourActive), "leaderboard");
       this.leaderboardsButton.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       this.leaderboardsButton.buttonSound = audioClip;
-      this.buttonColumn.AddChild((Control) this.leaderboardsButton);
+      this.buttonColumn.AddChild((PressPlay.FFWD.UI.Controls.Control) this.leaderboardsButton);
       this.buttonColumn.LayoutColumn(0.0f, 0.0f, 20f);
       this.buttonColumn.transform.position = (PressPlay.FFWD.Vector3) new PressPlay.FFWD.Vector2((float) (PressPlay.FFWD.ScreenManager.ScreenManager.Viewport.Width - 280), 35f);
-      this.rootControl.AddChild((Control) this.buttonColumn);
+      this.rootControl.AddChild((PressPlay.FFWD.UI.Controls.Control) this.buttonColumn);
       this.ScreenManager.NotifyOtherScreens((GameScreen) this);
     }
 
@@ -147,36 +147,36 @@ namespace PressPlay.Tentacles.Scripts
 
     private void OnButtonPress(object sender, EventArgs e)
     {
-      switch (((ButtonControlEventArgs) e).link)
+      switch (((PressPlay.FFWD.UI.Controls.ButtonControlEventArgs) e).link)
       {
         case "play":
           if (GlobalManager.Instance.currentProfile.globalData.playButtonOpensThisLevel == -1)
           {
-            this.ScreenManager.AddScreen((GameScreen) new LevelSelection(), new PlayerIndex?(PlayerIndex.One));
+            this.ScreenManager.AddScreen((GameScreen) new LevelSelection(), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
             break;
           }
           if (GlobalManager.isTrialMode && !GlobalManager.Instance.currentProfile.IsLevelPartOfTrial(GlobalManager.Instance.currentProfile.globalData.playButtonOpensThisLevel))
           {
-            this.ScreenManager.AddScreen((GameScreen) new LevelSelection(), new PlayerIndex?(PlayerIndex.One));
+            this.ScreenManager.AddScreen((GameScreen) new LevelSelection(), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
             break;
           }
           MusicController.Instance.FadeTo(0.0f, 0.25f);
           GlobalManager.Instance.fullscreenImageHandler.FadeToBlack(0.25f, new EventHandler<EventArgs>(this.OnPlayButtonFadeComplete));
           break;
         case "level":
-          this.ScreenManager.AddScreen((GameScreen) new LevelSelection(), new PlayerIndex?(PlayerIndex.One));
+          this.ScreenManager.AddScreen((GameScreen) new LevelSelection(), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
           break;
         case "story":
-          this.ScreenManager.AddScreen((GameScreen) new NotImplementedScreen("Textures/Menu/Main/background_mainmenu"), new PlayerIndex?(PlayerIndex.One));
+          this.ScreenManager.AddScreen((GameScreen) new NotImplementedScreen("Textures/Menu/Main/background_mainmenu"), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
           break;
         case "achievements":
-          this.ScreenManager.AddScreen((GameScreen) new AchievementScreen("Textures/Menu/Achievements/AchievementsBg"), new PlayerIndex?(PlayerIndex.One));
+          this.ScreenManager.AddScreen((GameScreen) new AchievementScreen("Textures/Menu/Achievements/AchievementsBg"), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
           break;
         case "leaderboard":
-          this.ScreenManager.AddScreen((GameScreen) new LeaderBoardScreen("Textures/Menu/Leaderboards/LeaderboardsBg"), new PlayerIndex?(PlayerIndex.One));
+          this.ScreenManager.AddScreen((GameScreen) new LeaderBoardScreen("Textures/Menu/Leaderboards/LeaderboardsBg"), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
           break;
         case "help":
-          this.ScreenManager.AddScreen((GameScreen) new OptionsScreen("Textures/Menu/HelpNOptions/HelpNOptionsBg"), new PlayerIndex?(PlayerIndex.One));
+          this.ScreenManager.AddScreen((GameScreen) new OptionsScreen("Textures/Menu/HelpNOptions/HelpNOptionsBg"), new Microsoft.Xna.Framework.PlayerIndex?(Microsoft.Xna.Framework.PlayerIndex.One));
           break;
         case "buygame":
           // Guide.ShowMarketplace is not available in MonoGame, so we skip this functionality
@@ -185,7 +185,7 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public override void HandleInput(InputState input)
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
       if (MainMenu.openUpsellOnMainMenuLoad)
       {
@@ -197,7 +197,7 @@ namespace PressPlay.Tentacles.Scripts
       base.HandleInput(input);
     }
 
-    protected override void OnCancel(PlayerIndex playerIndex)
+    protected override void OnCancel(Microsoft.Xna.Framework.PlayerIndex playerIndex)
     {
       this.ScreenManager.AddScreen((GameScreen) new ConfirmPopup(LocalisationManager.Instance.GetString("conf_quit"), new Action(this.OnDoQuit), (Action) null));
     }

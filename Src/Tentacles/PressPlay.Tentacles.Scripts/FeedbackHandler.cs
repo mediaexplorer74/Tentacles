@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.FeedbackHandler
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -28,13 +28,13 @@ namespace PressPlay.Tentacles.Scripts
       return ObjectPool.Instance.Draw(prefab, position, rotation);
     }
 
-    public PoolableText Show(
-      PoolableText prefab,
+    public PressPlay.Tentacles.Scripts.PoolableText Show(
+      PressPlay.Tentacles.Scripts.PoolableText prefab,
       Vector3 position,
       Quaternion rotation,
       string text)
     {
-      PoolableText poolableText = (PoolableText) ObjectPool.Instance.Draw((PoolableObject) prefab, position, rotation);
+      PressPlay.Tentacles.Scripts.PoolableText poolableText = (PressPlay.Tentacles.Scripts.PoolableText) ObjectPool.Instance.Draw((PoolableObject) prefab, position, rotation);
       poolableText.SetText(text);
       return poolableText;
     }

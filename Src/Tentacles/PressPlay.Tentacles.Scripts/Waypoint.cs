@@ -1,10 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.Waypoint
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -49,13 +50,13 @@ namespace PressPlay.Tentacles.Scripts
       this.sequenceTime = this._sequenceEndTime - this._sequenceStartTime;
     }
 
-    public Vector3 GetPositionOnPath(float _sequenceTime)
+    public Microsoft.Xna.Framework.Vector3 GetPositionOnPath(float _sequenceTime)
     {
-      return this.nextWaypoint == null ? this.transform.position : Vector3.Lerp(this.transform.position, this.nextWaypoint.transform.position, Equations.ChangeFloat(_sequenceTime - this.sequenceStartTime, 0.0f, 1f, this.sequenceTime, this.easeToNextWaypoint));
+      return this.nextWaypoint == null ? this.transform.position : Microsoft.Xna.Framework.Vector3.Lerp(this.transform.position, this.nextWaypoint.transform.position, Equations.ChangeFloat(_sequenceTime - this.sequenceStartTime, 0.0f, 1f, this.sequenceTime, this.easeToNextWaypoint));
     }
 
     public static Waypoint CreateWaypoint(
-      Vector3 _position,
+      Microsoft.Xna.Framework.Vector3 _position,
       Transform _parent,
       Waypoint _lastWaypoint)
     {
@@ -64,7 +65,7 @@ namespace PressPlay.Tentacles.Scripts
       return waypoint;
     }
 
-    public static Waypoint CreateWaypoint(Vector3 _position, Transform _parent)
+    public static Waypoint CreateWaypoint(Microsoft.Xna.Framework.Vector3 _position, Transform _parent)
     {
       return (Waypoint) new GameObject()
       {

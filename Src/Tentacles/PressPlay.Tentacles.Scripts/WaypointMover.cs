@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.WaypointMover
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -19,7 +20,7 @@ namespace PressPlay.Tentacles.Scripts
     protected bool isCyclic;
     protected Waypoint[] waypoints;
     protected BezierCurve bezierCurve;
-    protected Vector3[] bezierPoints;
+    protected Microsoft.Xna.Framework.Vector3[] bezierPoints;
     protected float totalPathLength;
     protected float totalSequenceTime;
     private float _sequenceTime;
@@ -27,10 +28,10 @@ namespace PressPlay.Tentacles.Scripts
     public GameObject waypointParent;
     public Waypoint startWaypoint;
     public bool rotateToMovementDirection;
-    protected Vector3 lastPosition;
+    protected Microsoft.Xna.Framework.Vector3 lastPosition;
     public bool automaticMovement = true;
     protected bool isMoving;
-    private Vector3 zeroVector = Vector3.zero;
+    private Microsoft.Xna.Framework.Vector3 zeroVector = Microsoft.Xna.Framework.Vector3.Zero;
     public WaypointMover.Mode mode;
     public bool autoInitialize = true;
 
@@ -67,7 +68,7 @@ namespace PressPlay.Tentacles.Scripts
       this.lastPosition = this.movementTarget.position;
     }
 
-    protected Vector3 GetPositionFromGlobalTime(float _globalTime)
+    protected Microsoft.Xna.Framework.Vector3 GetPositionFromGlobalTime(float _globalTime)
     {
       this._sequenceTime = (_globalTime - this.sequenceOffset) % this.totalSequenceTime;
       if ((double) this._sequenceTime < 0.0)
@@ -75,7 +76,7 @@ namespace PressPlay.Tentacles.Scripts
       return this.GetPositionFromSequenceTime(this.sequenceTime);
     }
 
-    protected Vector3 GetPositionFromSequenceTime(float _sequenceTime)
+    protected Microsoft.Xna.Framework.Vector3 GetPositionFromSequenceTime(float _sequenceTime)
     {
       switch (this.mode)
       {
@@ -88,17 +89,17 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    protected Vector3 GetBezierPositionFromSequenceTime(float _sequenceTime)
+    protected Microsoft.Xna.Framework.Vector3 GetBezierPositionFromSequenceTime(float _sequenceTime)
     {
       if ((double) _sequenceTime < 0.0)
         return this.waypoints[0].transform.position;
       return (double) _sequenceTime > (double) this.totalSequenceTime ? this.waypoints[this.waypoints.Length - 1].transform.position : this.bezierCurve.PointOnPath(_sequenceTime / this.totalSequenceTime);
     }
 
-    protected Vector3 GetLinearPositionFromSequenceTime(float _sequenceTime)
+    protected Microsoft.Xna.Framework.Vector3 GetLinearPositionFromSequenceTime(float _sequenceTime)
     {
       if (this.waypoints == null)
-        return Vector3.zero;
+        return Microsoft.Xna.Framework.Vector3.Zero;
       for (int index = 0; index < this.waypoints.Length; ++index)
       {
         if ((double) _sequenceTime >= (double) this.waypoints[index].sequenceStartTime && (double) _sequenceTime <= (double) this.waypoints[index].sequenceEndTime)
@@ -118,7 +119,7 @@ namespace PressPlay.Tentacles.Scripts
         Waypoint[] waypointArray = this.waypointParent != null ? this.waypointParent.GetComponentsInChildren<Waypoint>() : this.gameObject.GetComponentsInChildren<Waypoint>();
         this.waypoints = new Waypoint[waypointArray.Length];
         this.waypoints[0] = this.startWaypoint;
-        this.bezierPoints = new Vector3[waypointArray.Length];
+        this.bezierPoints = new Microsoft.Xna.Framework.Vector3[waypointArray.Length];
         if (this.waypoints.Length == 0)
           return;
         int index = 1;
@@ -146,7 +147,7 @@ namespace PressPlay.Tentacles.Scripts
           UnityObject.Destroy((UnityObject) this.waypoints[index]);
       }
       this.waypoints = tmpWaypoints;
-      this.bezierPoints = !this.isCyclic ? new Vector3[this.waypoints.Length] : new Vector3[this.waypoints.Length + 1];
+      this.bezierPoints = !this.isCyclic ? new PressPlay.FFWD.Vector3[this.waypoints.Length] : new PressPlay.FFWD.Vector3[this.waypoints.Length + 1];
       for (int index = 0; index < this.waypoints.Length; ++index)
       {
         if (this.waypoints[index] == null)

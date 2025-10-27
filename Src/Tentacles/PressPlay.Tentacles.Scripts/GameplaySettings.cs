@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.GameplaySettings
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 
 #nullable disable
@@ -35,9 +36,9 @@ namespace PressPlay.Tentacles.Scripts
     public int defaultNumberOfLives = 3;
     public int numberOfLevelsToUnlockInTrialMode = 5;
 
-    public Color GetMultiplierColor(int multiplier)
+    public Microsoft.Xna.Framework.Color GetMultiplierColor(int multiplier)
     {
-      return multiplier - 1 > this.multiplierColors.Length - 1 ? Color.white : this.multiplierColors[multiplier - 1];
+      return multiplier - 1 > this.multiplierColors.Length - 1 ? Microsoft.Xna.Framework.Color.White : this.multiplierColors[multiplier - 1];
     }
 
     public int GetPickupScore(int combo)
@@ -45,7 +46,7 @@ namespace PressPlay.Tentacles.Scripts
       return combo < this.pickupScoreTable.Length ? this.pickupScoreTable[combo].score : this.pickupScoreTable[this.pickupScoreTable.Length - 1].score;
     }
 
-    public Color GetPickupColor(int combo)
+    public Microsoft.Xna.Framework.Color GetPickupColor(int combo)
     {
       return combo < this.pickupScoreTable.Length ? this.pickupScoreTable[combo].color : this.pickupScoreTable[this.pickupScoreTable.Length - 1].color;
     }

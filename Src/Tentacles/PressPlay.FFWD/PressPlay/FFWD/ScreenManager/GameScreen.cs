@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.ScreenManager.GameScreen
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -6,6 +6,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
+using PressPlay.FFWD;
 using System;
 using System.IO;
 
@@ -15,11 +16,11 @@ namespace PressPlay.FFWD.ScreenManager
   public abstract class GameScreen
   {
     private bool isPopup;
-    private static CachedContent content;
+    private static PressPlay.FFWD.CachedContent content;
     private TimeSpan transitionOnTime = TimeSpan.Zero;
     private TimeSpan transitionOffTime = TimeSpan.Zero;
     private float transitionPosition = 1f;
-    private ScreenState screenState;
+    private PressPlay.FFWD.ScreenManager.ScreenState screenState;
     private bool isExiting;
     private bool otherScreenHasFocus;
     private PressPlay.FFWD.ScreenManager.ScreenManager screenManager;
@@ -78,7 +79,7 @@ namespace PressPlay.FFWD.ScreenManager
       {
         if (this.otherScreenHasFocus)
           return false;
-        return this.screenState == ScreenState.TransitionOn || this.screenState == ScreenState.Active;
+        return this.screenState == PressPlay.FFWD.ScreenManager.ScreenState.TransitionOn || this.screenState == PressPlay.FFWD.ScreenManager.ScreenState.Active; 
       }
     }
 
@@ -100,7 +101,7 @@ namespace PressPlay.FFWD.ScreenManager
       protected set
       {
         this.enabledGestures = value;
-        if (this.ScreenState != ScreenState.Active)
+        if (this.ScreenState != PressPlay.FFWD.ScreenManager.ScreenState.Active)
           return;
         TouchPanel.EnabledGestures = value;
       }

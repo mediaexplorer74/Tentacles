@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.TurnOffAtDistanceHandler
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -16,7 +16,7 @@ namespace PressPlay.Tentacles.Scripts
   {
     public float turnOffDistance = 12f;
     [ContentSerializerIgnore]
-    public Bounds turnOffBounds;
+    public PressPlay.FFWD.Bounds turnOffBounds;
     private float turnOffDistanceSqrt;
     private TurnOffAtDistance[] turnOffAtDistanceObjects;
     public int turnOffFrameSkip = 10;
@@ -38,8 +38,8 @@ namespace PressPlay.Tentacles.Scripts
     {
       if (this.turnOffAtDistanceObjects.Length == 0)
         return;
-      Vector3 position1 = this.turnOffAtDistanceObjects[0].transform.position;
-      Vector3 position2 = this.turnOffAtDistanceObjects[0].transform.position;
+      PressPlay.FFWD.Vector3 position1 = this.turnOffAtDistanceObjects[0].transform.position;
+      PressPlay.FFWD.Vector3 position2 = this.turnOffAtDistanceObjects[0].transform.position;
       for (int index = 0; index < this.turnOffAtDistanceObjects.Length; ++index)
       {
         this.turnOffAtDistanceObjects[index].Initialize();
@@ -67,7 +67,7 @@ namespace PressPlay.Tentacles.Scripts
       this.turnOffAtDistanceObjects = new TurnOffAtDistance[turnOffAtDistanceList.Count];
       for (int index = 0; index < this.turnOffAtDistanceObjects.Length; ++index)
         this.turnOffAtDistanceObjects[index] = turnOffAtDistanceList[index];
-      this.turnOffBounds = new Bounds(_distanceObject.transform.position, Vector3.one * this.turnOffDistance * 2f);
+      this.turnOffBounds = new PressPlay.FFWD.Bounds(_distanceObject.transform.position, PressPlay.FFWD.Vector3.one * this.turnOffDistance * 2f);
     }
 
     public void UpdateAllObjectsImmediatly(GameObject _distanceObject)

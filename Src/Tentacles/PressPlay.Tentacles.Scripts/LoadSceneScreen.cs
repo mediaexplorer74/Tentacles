@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LoadSceneScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -12,7 +12,7 @@ using System;
 #nullable disable
 namespace PressPlay.Tentacles.Scripts
 {
-  public class LoadSceneScreen : GameScreen
+  public class LoadSceneScreen : PressPlay.FFWD.ScreenManager.GameScreen
   {
     private string sceneName;
     private bool hasStartedLoad;
@@ -34,7 +34,7 @@ namespace PressPlay.Tentacles.Scripts
       base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
     }
 
-    public override void HandleInput(InputState input)
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
       base.HandleInput(input);
       PlayerIndex playerIndex;

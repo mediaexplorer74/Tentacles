@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.InGamePauseMenu
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -19,7 +19,7 @@ namespace PressPlay.Tentacles.Scripts
   {
     private ImageControl bgTop;
     private ImageControl bgBottom;
-    private List<ButtonControl> buttons = new List<ButtonControl>();
+    private List<PressPlay.FFWD.UI.Controls.ButtonControl> buttons = new List<PressPlay.FFWD.UI.Controls.ButtonControl>();
 
     public InGamePauseMenu()
       : base("Textures/Menu/EndLevel/EndLevelScreen")

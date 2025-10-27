@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Application
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -26,7 +26,9 @@ namespace PressPlay.FFWD
     private int frameCounter;
     private TimeSpan elapsedTime = TimeSpan.Zero;
     private static string sceneToLoad = "";
-    public static PressPlay.FFWD.ScreenManager.ScreenManager screenManager;
+    private static PressPlay.FFWD.ScreenManager.ScreenManager screenManager;
+    public static PressPlay.FFWD.Interfaces.IFixedUpdateable[] fixedUpdateables = new PressPlay.FFWD.Interfaces.IFixedUpdateable[0];
+    public static PressPlay.FFWD.Scene currentScene;
     private static readonly Dictionary<int, UnityObject> objects = new Dictionary<int, UnityObject>(5000);
     internal static readonly List<Asset> newAssets = new List<Asset>(100);
     internal static readonly List<Component> newComponents = new List<Component>();

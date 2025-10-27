@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LemmySquishedTester
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -19,12 +19,13 @@ namespace PressPlay.Tentacles.Scripts
     public bool instaKill;
     public float pushOnEnter = 150f;
     public float pushOnStay = 500f;
+    private PressPlay.FFWD.Collision currentCollision;
     private bool isInitialized;
     private List<Collider> squishingColliders = new List<Collider>();
 
     public void Initialize() => this.isInitialized = true;
 
-    public override void OnCollisionEnter(Collision collision) => base.OnCollisionEnter(collision);
+    public override void OnCollisionEnter(PressPlay.FFWD.Collision collision) => base.OnCollisionEnter(collision);
 
     public override void OnTriggerExit(Collider collider)
     {

@@ -133,12 +133,64 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Debugging\Accelerometer.cs" />
-    <Compile Include="Debugging\AccelerometerState.cs" />
-    <Compile Include="DebugViewXNA.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UnityObject.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\GameObject.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Component.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Transform.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\CachedContent.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Vector2.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Bounds.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\AudioClip.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\AudioSource.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\LayerMask.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Quaternion.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\InvokeCall.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Asset.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\AssetHelper.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Mesh.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Behaviour.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\TypeSet.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\MonoBehaviour.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Space.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Scene.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\TextRenderer.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\MeshRenderer.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\Controls\Control.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\Controls\TextControl.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\Controls\ImageControl.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\Controls\PanelControl.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\Controls\ButtonControlEventArgs.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\Animation.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\AnimationClip.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\TextRenderer3D.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Random.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\UITextRenderer.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\WrapMode.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Body.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Interfaces\IFixedUpdateable.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\ParticleEmitter.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\ParticleAnimator.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\UI\UIRenderer.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Material.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\MeshFilter.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\MeshCollider.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Ray.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\RaycastHit.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\Rigidbody.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\BoxCollider.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\SkinnedMeshRenderer.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\CapsuleCollider.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\Components\Renderer.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\ScreenManager\InputState.cs" />
+    <Compile Include="PressPlay.FFWD\PressPlay\FFWD\iTween.cs" />
+  
+    <Compile Include="Debugging\Accelerometer.cs" />
+    <Compile Include="Debugging\AccelerometerState.cs" />
+    <Compile Include="DebugViewXNA.cs" />
+   
     <Compile Include="PressPlay.FFWD\Element`1.cs" />
     <Compile Include="PressPlay.FFWD\FarseerPhysics\Collision\AABB.cs" />
     <Compile Include="PressPlay.FFWD\FarseerPhysics\Collision\ClipVertex.cs" />
@@ -149,7 +201,7 @@
     <Compile Include="PressPlay.Tentacles.Scripts\ABaseBehaviour.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\ABaseWeapon.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AchievementDescription.cs" />
-    <Compile Include="PressPlay.Tentacles.Scripts\AchievementListItem.cs" Condition="'1'=='0'" />
+    <Compile Include="PressPlay.Tentacles.Scripts\AchievementsHandler.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AcidPenetratorFrontParticle.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AcidPenetratorMainBody.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AlertPopup.cs" />
@@ -157,8 +209,8 @@
     <Compile Include="PressPlay.Tentacles.Scripts\AnimatedClawCollider.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AnimatedLemmyDamager.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AnimatedTentacleTipCollider.cs" />
-    <Compile Include="PressPlay.Tentacles.Scripts\AudioManager.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AudioObject.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\UpsellScreen.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AudioSettings.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AudioWrapper.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\AudioWrapperComponent.cs" />
@@ -299,11 +351,11 @@
     <Compile Include="PressPlay.Tentacles.Scripts\Menu\MainMenu\EndLevelStar.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\Mine.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\MiniTentacle.cs" />
-    <Compile Include="PressPlay.Tentacles.Scripts\MoveToAndPullLemmy.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MusicController.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\MovingBullet.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\MovingCreature.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\MultipleStreamsSoundLoop.cs" />
-    <Compile Include="PressPlay.Tentacles.Scripts\MusicController.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\MoviePlayer.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\MusicControllerTrigger.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\NotImplementedScreen.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\NumberUtil.cs" />
@@ -328,7 +380,7 @@
     <Compile Include="PressPlay.Tentacles.Scripts\PoolableObject.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\PoolableParticle.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\PoolablePickup.cs" />
-    <Compile Include="PressPlay.Tentacles.Scripts\PoolableText.cs" />
+    <Compile Include="PressPlay.Tentacles.Scripts\StreamedSoundLoop.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\PPAnimationClip.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\PPAnimationHandler.cs" />
     <Compile Include="PressPlay.Tentacles.Scripts\PreloaderScreen.cs" />
@@ -565,14 +617,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.14</Version>
-    </PackageReference>
-    <PackageReference Include="MonoGame.Framework.WindowsUniversal">
-      <Version>3.8.0.1641</Version>
-    </PackageReference>
-  </ItemGroup>
+ 
   <ItemGroup>
     <Content Include="Content\font.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -2160,6 +2205,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="MonoGame.Framework.WindowsUniversal">
+      <Version>3.8.0.1641</Version>
+    </PackageReference>
+  </ItemGroup>
+
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.NotImplementedScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -15,9 +15,9 @@ namespace PressPlay.Tentacles.Scripts
   {
     public override void LoadContent() => base.LoadContent();
 
-    private void OnButtonPress(object sender, ButtonControlEventArgs e) => this.ExitScreen();
+    private void OnButtonPress(object sender, PressPlay.FFWD.UI.Controls.ButtonControlEventArgs e) => this.ExitScreen();
 
-    public override void HandleInput(InputState input) => base.HandleInput(input);
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input) => base.HandleInput(input);
 
     public override void Update(
       GameTime gameTime,

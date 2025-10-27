@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.PoolableText
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
@@ -15,16 +16,16 @@ namespace PressPlay.Tentacles.Scripts
   {
     private float moveStartTime;
     private float moveDuration;
-    private Vector3 moveStartPosition;
-    private Vector3 moveEndPosition;
+    private Microsoft.Xna.Framework.Vector3 moveStartPosition;
+    private Microsoft.Xna.Framework.Vector3 moveEndPosition;
     private bool isMoving;
     private float lingerStartTime;
     private float lingerDuration;
     private bool isLingering;
     private float fadeStartTime;
     private float fadeDuration;
-    private Color fadeStartColor;
-    private Color fadeEndColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+    private Microsoft.Xna.Framework.Color fadeStartColor;
+    private Microsoft.Xna.Framework.Color fadeEndColor = new Microsoft.Xna.Framework.Color(0.0f, 0.0f, 0.0f, 0.0f);
     private bool isFading;
     private TextRenderer3D _textRenderer;
 

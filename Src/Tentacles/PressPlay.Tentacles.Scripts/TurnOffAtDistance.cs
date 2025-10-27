@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.TurnOffAtDistance
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -12,24 +13,16 @@ namespace PressPlay.Tentacles.Scripts
 {
   public class TurnOffAtDistance : MonoBehaviour
   {
-    private static float lLeft;
-    private static float rLeft;
-    private static float rRight;
-    private static float lRight;
-    private static float lTop;
-    private static float rTop;
-    private static float lBottom;
-    private static float rBottom;
     public bool notifyGameObjectOnStatusChange;
     public bool useColliderBounds;
     public bool createBoundsFromChildTurnOff = true;
     public float distanceMod;
     public float distanceModX = -1f;
     public float distanceModY = -1f;
-    public Vector3 distanceModPos;
-    private Bounds ownBounds;
+    private Microsoft.Xna.Framework.Vector3 distanceModPos;
+    private Microsoft.Xna.Framework.BoundingBox ownBounds;
     private bool boundsAreImportant;
-    private Vector2 distanceVector = new Vector2();
+    private Microsoft.Xna.Framework.Vector2 distanceVector = new Microsoft.Xna.Framework.Vector2();
     public bool markedForDestruction;
     private bool isInitialized;
 
@@ -42,7 +35,7 @@ namespace PressPlay.Tentacles.Scripts
         this.distanceModX = this.distanceMod;
       if ((double) this.distanceModY == -1.0)
         this.distanceModY = this.distanceMod;
-      this.ownBounds = new Bounds(this.transform.position + this.distanceModPos, new Vector3(this.distanceModX, 0.0f, this.distanceModY));
+      this.ownBounds = new Microsoft.Xna.Framework.BoundingBox((Microsoft.Xna.Framework.Vector3) (this.transform.position + this.distanceModPos - new Microsoft.Xna.Framework.Vector3(this.distanceModX / 2f, 0.0f, this.distanceModY / 2f)), (Microsoft.Xna.Framework.Vector3) (this.transform.position + this.distanceModPos + new Microsoft.Xna.Framework.Vector3(this.distanceModX / 2f, 0.0f, this.distanceModY / 2f)));
       if ((double) this.distanceModY > 0.0 || (double) this.distanceModX > 0.0)
         this.boundsAreImportant = true;
       Component[] componentsInChildren = this.GetComponentsInChildren(typeof (TurnOffAtDistance));
@@ -54,58 +47,16 @@ namespace PressPlay.Tentacles.Scripts
       if (!this.useColliderBounds && (!this.createBoundsFromChildTurnOff || componentsInChildren.Length <= 1))
         return;
       if ((bool) (UnityObject) this.collider)
-        this.ownBounds = this.collider.bounds;
-      Vector3 max = this.ownBounds.max;
-      Vector3 min = this.ownBounds.min;
-      for (int index = 0; index < componentsInChildren.Length; ++index)
-      {
-        if (!((TurnOffAtDistance) componentsInChildren[index]).isInitialized)
-          ((TurnOffAtDistance) componentsInChildren[index]).Initialize();
-        if ((double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.max.x > (double) this.ownBounds.max.x)
-        {
-          double x1 = (double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.max.x;
-        }
-        if ((double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.max.y > (double) this.ownBounds.max.y)
-        {
-          double y1 = (double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.max.y;
-        }
-        if ((double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.max.z > (double) this.ownBounds.max.z)
-        {
-          double z1 = (double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.max.z;
-        }
-        if ((double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.min.x < (double) this.ownBounds.min.x)
-        {
-          double x2 = (double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.min.x;
-        }
-        if ((double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.min.y < (double) this.ownBounds.min.y)
-        {
-          double y2 = (double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.min.y;
-        }
-        if ((double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.min.z < (double) this.ownBounds.min.z)
-        {
-          double z2 = (double) ((TurnOffAtDistance) componentsInChildren[index]).ownBounds.min.z;
-        }
-      }
-      this.boundsAreImportant = true;
+        this.ownBounds = new Microsoft.Xna.Framework.BoundingBox((Microsoft.Xna.Framework.Vector3) this.collider.bounds.min, (Microsoft.Xna.Framework.Vector3) this.collider.bounds.max);
     }
 
-    public bool CheckBounds(Bounds _bounds)
+    public bool CheckBounds(Microsoft.Xna.Framework.BoundingBox _bounds)
     {
       if (!this.isInitialized)
         return false;
-      return this.boundsAreImportant ? this.CheckBoundsIntersect(_bounds) : this.CheckInsideBounds(_bounds);
-    }
-
-    public bool CheckInsideBounds(Bounds _bounds)
-    {
-      return TurnOffAtDistance.PointInsideBoundsXZ(this.transform.position, _bounds);
-    }
-
-    public bool CheckBoundsIntersect(Bounds _bounds)
-    {
-      if (this.collider != null && this.useColliderBounds)
-        this.ownBounds = this.collider.bounds;
-      return TurnOffAtDistance.BoundsIntersectXZ(this.ownBounds, _bounds);
+      return (double) Microsoft.Xna.Framework.Vector3.Distance(this.transform.position, (Microsoft.Xna.Framework.Vector3) _bounds.Min) < (double) this.distanceMod ||
+             (double) Microsoft.Xna.Framework.Vector3.Distance(this.transform.position, (Microsoft.Xna.Framework.Vector3) _bounds.Max) < (double) this.distanceMod ||
+             _bounds.Contains((Microsoft.Xna.Framework.Vector3) this.transform.position) != Microsoft.Xna.Framework.ContainmentType.Disjoint;
     }
 
     public void SetActiveState(bool state)
@@ -125,13 +76,13 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public void CheckDistance(float distanceSqrt, Vector3 _pos)
+    public void CheckDistance(float distanceSqrt, Microsoft.Xna.Framework.Vector3 _pos)
     {
       if (!this.isInitialized)
         return;
-      this.distanceVector.x = _pos.x - this.transform.position.x;
-      this.distanceVector.y = _pos.z - this.transform.position.z;
-      if ((double) this.distanceVector.sqrMagnitude > (double) distanceSqrt + (double) this.distanceMod)
+      this.distanceVector.X = _pos.X - this.transform.position.X; 
+      this.distanceVector.Y = _pos.Z - this.transform.position.Z; 
+      if ((double) this.distanceVector.LengthSquared() > (double) distanceSqrt + (double) this.distanceMod) 
       {
         if (!this.gameObject.active)
           return;
@@ -145,40 +96,14 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public static bool BoundsIntersectXZ(Bounds b1, Bounds b2)
+    public static bool PointInsideBoundsXY(Microsoft.Xna.Framework.Vector3 p, Microsoft.Xna.Framework.BoundingBox bounds)
     {
-      TurnOffAtDistance.lLeft = b1.center.x - b1.extents.x;
-      TurnOffAtDistance.rLeft = b2.center.x - b2.extents.x;
-      TurnOffAtDistance.lRight = b1.center.x + b1.extents.x;
-      TurnOffAtDistance.rRight = b2.center.x + b2.extents.x;
-      TurnOffAtDistance.lTop = b1.center.z - b1.extents.z;
-      TurnOffAtDistance.rTop = b2.center.z - b2.extents.z;
-      TurnOffAtDistance.lBottom = b1.center.z + b1.extents.z;
-      TurnOffAtDistance.rBottom = b2.center.z + b2.extents.z;
-      return (double) TurnOffAtDistance.lLeft <= (double) TurnOffAtDistance.rRight && (double) TurnOffAtDistance.lRight >= (double) TurnOffAtDistance.rLeft && (double) TurnOffAtDistance.lTop <= (double) TurnOffAtDistance.rBottom && (double) TurnOffAtDistance.lBottom >= (double) TurnOffAtDistance.rTop;
+      return p.X >= bounds.Min.X && p.X <= bounds.Max.X && p.Y >= bounds.Min.Y && p.Y <= bounds.Max.Y;
     }
 
-    public static bool BoundsIntersectXY(Bounds b1, Bounds b2)
+    public static bool PointInsideBoundsXZ(Microsoft.Xna.Framework.Vector3 p, Microsoft.Xna.Framework.BoundingBox bounds)
     {
-      TurnOffAtDistance.lLeft = b1.center.x - b1.extents.x;
-      TurnOffAtDistance.rLeft = b2.center.x - b2.extents.x;
-      TurnOffAtDistance.lRight = b1.center.x + b1.extents.x;
-      TurnOffAtDistance.rRight = b2.center.x + b2.extents.x;
-      TurnOffAtDistance.lTop = b1.center.y - b1.extents.y;
-      TurnOffAtDistance.rTop = b2.center.y - b2.extents.y;
-      TurnOffAtDistance.lBottom = b1.center.y + b1.extents.y;
-      TurnOffAtDistance.rBottom = b2.center.y + b2.extents.y;
-      return (double) TurnOffAtDistance.lLeft <= (double) TurnOffAtDistance.rRight && (double) TurnOffAtDistance.lRight >= (double) TurnOffAtDistance.rLeft && (double) TurnOffAtDistance.lTop <= (double) TurnOffAtDistance.rBottom && (double) TurnOffAtDistance.lBottom >= (double) TurnOffAtDistance.rTop;
-    }
-
-    public static bool PointInsideBoundsXY(Vector3 p, Bounds bounds)
-    {
-      return (double) p.x >= (double) bounds.center.x - (double) bounds.extents.x && (double) p.x <= (double) bounds.center.x + (double) bounds.extents.x && (double) p.y >= (double) bounds.center.y - (double) bounds.extents.y && (double) p.y <= (double) bounds.center.y + (double) bounds.extents.y;
-    }
-
-    public static bool PointInsideBoundsXZ(Vector3 p, Bounds bounds)
-    {
-      return (double) p.x >= (double) bounds.center.x - (double) bounds.extents.x && (double) p.x <= (double) bounds.center.x + (double) bounds.extents.x && (double) p.z >= (double) bounds.center.z - (double) bounds.extents.z && (double) p.z <= (double) bounds.center.z + (double) bounds.extents.z;
+      return p.X >= bounds.Min.X && p.X <= bounds.Max.X && p.Z >= bounds.Min.Z && p.Z <= bounds.Max.Z;
     }
   }
 }

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ConfirmPopup
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -99,7 +99,7 @@ namespace PressPlay.Tentacles.Scripts
       this.ExitScreen();
     }
 
-    protected override void OnCancel(PlayerIndex playerIndex)
+    protected override void OnCancel(Microsoft.Xna.Framework.PlayerIndex playerIndex)
     {
       if (this.negativeCallback != null)
         this.negativeCallback();

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.RifleWeapon
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -51,7 +51,14 @@ namespace PressPlay.Tentacles.Scripts
       return (BaseBullet) null;
     }
 
-    protected override void FireWeapon(Vector3 _position, Vector3 _direction, Quaternion _rotation)
+    public void ShootInDirection(Vector3 direction, PressPlay.FFWD.Quaternion rotation)
+    {
+      BaseBullet baseBullet = !this.useAmmoCache ? (BaseBullet) UnityObject.Instantiate((UnityObject) this.ammo, Vector3.zero, rotation) : (BaseBullet) ObjectPool.Instance.Draw((PoolableObject) this.ammo, Vector3.zero, rotation);
+      baseBullet.init(this.bulletData, direction);
+      this.shooter.IgnoreCollision(baseBullet.collider, true);
+    }
+
+    protected override void FireWeapon(Vector3 _position, Vector3 _direction, PressPlay.FFWD.Quaternion _rotation)
     {
       BaseBullet baseBullet = !this.useAmmoCache ? (BaseBullet) UnityObject.Instantiate((UnityObject) this.ammo, _position, _rotation) : (BaseBullet) ObjectPool.Instance.Draw((PoolableObject) this.ammo, _position, _rotation);
       baseBullet.init(this.bulletData, _direction);

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.JumpPosition
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -12,7 +12,7 @@ namespace PressPlay.Tentacles.Scripts
   public struct JumpPosition
   {
     public Vector3 position;
-    public Quaternion rotation;
+    public PressPlay.FFWD.Quaternion rotation;
     public bool jumpPossible;
   }
 }

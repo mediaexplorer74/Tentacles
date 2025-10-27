@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.PreloaderScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -16,7 +16,7 @@ using System.Diagnostics;
 #nullable disable
 namespace PressPlay.Tentacles.Scripts
 {
-  public class PreloaderScreen : GameScreen
+  public class PreloaderScreen : PressPlay.FFWD.ScreenManager.GameScreen
   {
     private Texture2D splash;
     private Stopwatch stopwatch;

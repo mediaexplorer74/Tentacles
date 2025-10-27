@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Collision
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -11,15 +11,15 @@ namespace PressPlay.FFWD
 {
   public class Collision
   {
-    public Vector3 relativeVelocity { get; internal set; }
+    public PressPlay.FFWD.Vector3 relativeVelocity { get; internal set; }
 
     public Collider collider { get; internal set; }
 
-    public ContactPoint[] contacts { get; set; }
+    public PressPlay.FFWD.ContactPoint[] contacts { get; set; }
 
     public Transform transform => this.collider.transform;
 
-    public Rigidbody rigidbody => this.collider.rigidbody;
+    public PressPlay.FFWD.Components.Rigidbody rigidbody => this.collider.rigidbody;
 
     public GameObject gameObject => this.collider.gameObject;
 

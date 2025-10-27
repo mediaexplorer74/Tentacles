@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.GlobalManager
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -36,7 +36,7 @@ namespace PressPlay.Tentacles.Scripts
     public static bool isLoaded = false;
     public GameplaySettings gameplaySettings;
     public GameDatabase database;
-    public Camera guiCamera;
+    public PressPlay.FFWD.Components.Camera guiCamera;
     public FullScreenImageHandler fullscreenImageHandler;
     public bool useDebugMenu;
     [ContentSerializerIgnore]
@@ -248,7 +248,7 @@ namespace PressPlay.Tentacles.Scripts
       SceneLoaderManager.Instance.LoadMainMenu();
     }
 
-    public void GotoTrialUpsellScreen(UpsellScreen.DoOncancel doOnCancel)
+    public void GotoTrialUpsellScreen(PressPlay.Tentacles.Scripts.UpsellScreen.DoOncancel doOnCancel)
     {
       MainMenu.openUpsellOnMainMenuLoad = true;
       this.OpenMainMenu();

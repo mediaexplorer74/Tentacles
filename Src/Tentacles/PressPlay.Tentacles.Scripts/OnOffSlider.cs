@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.OnOffSlider
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -19,14 +19,15 @@ namespace PressPlay.Tentacles.Scripts
     private OnOffSlider.ControlStates _state;
     public AudioClip buttonSound;
     private ImageControl background;
-    private ButtonStyle buttonStyle;
-    private string link;
+    private PressPlay.FFWD.UI.Controls.ButtonStyle onButtonStyle;
+    private PressPlay.FFWD.UI.Controls.ButtonStyle offButtonStyle;
 
-    public OnOffSlider(Texture2D texture, ButtonStyle style, string link)
+    public OnOffSlider(Texture2D texture, PressPlay.FFWD.UI.Controls.ButtonStyle onStyle, PressPlay.FFWD.UI.Controls.ButtonStyle offStyle, string link)
     {
       this.link = link;
-      this.buttonStyle = style;
-      this.background = new ImageControl(texture, style.GetSourceRect((int) this.state));
+      this.onButtonStyle = onStyle;
+      this.offButtonStyle = offStyle;
+      this.background = new ImageControl(texture, this.onButtonStyle.GetSourceRect((int) this.state));
       this.AddChild((Control) this.background);
     }
 
@@ -51,7 +52,7 @@ namespace PressPlay.Tentacles.Scripts
       this.OnClickEvent((object) this, (EventArgs) new ButtonControlEventArgs(this.link));
     }
 
-    public override void HandleInput(InputState input)
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
       base.HandleInput(input);
       if (this.isMouseWithinBounds(input))

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.MenuSceneScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using PressPlay.FFWD;
-using PressPlay.FFWD.Components;
 using PressPlay.FFWD.ScreenManager;
 using PressPlay.FFWD.UI.Controls;
 using System;
@@ -17,7 +16,7 @@ using System.Collections.Generic;
 #nullable disable
 namespace PressPlay.Tentacles.Scripts
 {
-  public abstract class MenuSceneScreen : GameScreen
+  public abstract class MenuSceneScreen : PressPlay.FFWD.ScreenManager.GameScreen
   {
     protected List<Control> controls = new List<Control>();
     protected Control rootControl;
@@ -45,7 +44,7 @@ namespace PressPlay.Tentacles.Scripts
     public override void HandleInput(InputState input)
     {
       base.HandleInput(input);
-      PlayerIndex playerIndex;
+      Microsoft.Xna.Framework.PlayerIndex playerIndex;
       if (input.IsMenuCancel(this.ControllingPlayer, out playerIndex))
         this.OnCancel(playerIndex);
       foreach (Control control in this.controls)
@@ -58,18 +57,18 @@ namespace PressPlay.Tentacles.Scripts
       return pointer.X > renderer.bounds.Left && pointer.X < renderer.bounds.Right && pointer.Y > renderer.bounds.Top && pointer.Y < renderer.bounds.Bottom;
     }
 
-    protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
+    protected virtual void OnSelectEntry(int entryIndex, Microsoft.Xna.Framework.PlayerIndex playerIndex)
     {
       this.menuEntries[entryIndex].OnSelectEntry(playerIndex);
     }
 
-    protected virtual void OnCancel(PlayerIndex playerIndex)
+    protected virtual void OnCancel(Microsoft.Xna.Framework.PlayerIndex playerIndex)
     {
       AudioManager.Instance.Play(new AudioClip(GUIAssets.menuBackSound));
       this.ExitScreen();
     }
 
-    protected void OnCancel(object sender, PlayerIndexEventArgs e) => this.OnCancel(e.PlayerIndex);
+    protected void OnCancel(object sender, PressPlay.FFWD.ScreenManager.PlayerIndexEventArgs e) => this.OnCancel(e.PlayerIndex);
 
     public override void Update(
       GameTime gameTime,

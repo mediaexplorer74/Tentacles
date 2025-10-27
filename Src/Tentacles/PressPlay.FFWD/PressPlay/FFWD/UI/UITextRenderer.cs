@@ -1,10 +1,12 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.UI.UITextRenderer
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.FFWD.dll
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using PressPlay.FFWD.UI.Controls;
 using System;
@@ -20,7 +22,7 @@ namespace PressPlay.FFWD.UI
     private PressPlay.FFWD.Vector2 textSize = PressPlay.FFWD.Vector2.zero;
     public TextControl.TextOrigin textOrigin;
     public PressPlay.FFWD.Vector2 textOffset = PressPlay.FFWD.Vector2.zero;
-    public PressPlay.FFWD.Color color = PressPlay.FFWD.Color.white;
+    public Microsoft.Xna.Framework.Color color = Microsoft.Xna.Framework.Color.White;
     public SpriteEffects effects;
     private bool hasDoneWordWrap = true;
     private string _text = "";
@@ -78,12 +80,12 @@ namespace PressPlay.FFWD.UI
       this.text = text;
     }
 
-    public override int Draw(GraphicsDevice device, Camera cam)
+    public override int Draw(GraphicsDevice device, PressPlay.FFWD.Components.Camera cam)
     {
       if (this.font == null)
         return 0;
       float layerDepth = (float) (1.0 - (double) (float) this.transform.position / 10000.0);
-      Camera.spriteBatch.DrawString(this.font, this.text, (Microsoft.Xna.Framework.Vector2) this.transform.position, (Microsoft.Xna.Framework.Color) this.material.color, this.transform.rotation.eulerAngles.y, this.GetOrigin(), (Microsoft.Xna.Framework.Vector2) this.transform.lossyScale, this.effects, layerDepth);
+      PressPlay.FFWD.Components.Camera.spriteBatch.DrawString(this.font, this.text, (Microsoft.Xna.Framework.Vector2) this.transform.position, (Microsoft.Xna.Framework.Color) this.material.color, this.transform.rotation.eulerAngles.y, this.GetOrigin(), (Microsoft.Xna.Framework.Vector2) this.transform.lossyScale, this.effects, layerDepth);
       return 0;
     }
 

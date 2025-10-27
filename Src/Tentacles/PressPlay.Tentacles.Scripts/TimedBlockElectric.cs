@@ -1,9 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.TimedBlockElectric
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
+using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
 #nullable disable
@@ -15,13 +17,13 @@ namespace PressPlay.Tentacles.Scripts
     public bool playSound = true;
     public float fullVolumeRadius;
     public float volumeRadius;
-    private AudioObject sndElectricObj;
+    public PressPlay.Tentacles.Scripts.AudioObject audioObject;
     public float friendlyTime = 2f;
     public float dangerTime = 2f;
     private float sequenceLength;
     public float sequenceOffset;
     public LightningRenderer[] lightningRenderers;
-    public Collider tentacleCollisionCollider;
+    public Component tentacleCollisionCollider;
     public BasicLemmyDamager[] damagers;
     public TentacleTipDamager[] tipColliders;
     private bool isDangerous;

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.IntroSequence
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -14,9 +14,9 @@ namespace PressPlay.Tentacles.Scripts
   {
     public IntroTutorialSequence tutorialSequence;
     public BaseCondition continueFromPetriDishCondition;
-    public MoviePlayer moviePlayer;
-    public MoviePlayer.Movies firstMovie;
-    public MoviePlayer.Movies secondMovie;
+    public PressPlay.Tentacles.Scripts.MoviePlayer moviePlayer;
+    public PressPlay.Tentacles.Scripts.MoviePlayer.Movies outroMovie;
+    public PressPlay.Tentacles.Scripts.MoviePlayer.Movies outroMovie2;
     private LevelHandler.CutsceneState cutsceneState;
     private float stateChangeTime;
     private IntroSequence.IntroSequenceState introSequenceState;

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.PPAnimationHandler
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -147,12 +147,12 @@ namespace PressPlay.Tentacles.Scripts
 
     public void Play(string id) => this.Play(id, (PPAnimationHandler.PPAnimationCallback) null);
 
-    public void PlayQueued(string id, QueueMode mode)
+    public void PlayQueued(string animation, PressPlay.FFWD.QueueMode queueMode)
     {
-      if (this.animationComponent == null || this.animationComponent[id] == null)
+      if (this.animationComponent == null || this.animationComponent[animation] == null)
         return;
-      this.currentClip = this.GetAnimation(id);
-      this.animationComponent.PlayQueued(id, mode);
+      this.currentClip = this.GetAnimation(animation);
+      this.animationComponent.PlayQueued(animation, queueMode);
     }
 
     public AnimationClip GetAnimation(string id) => this.animationComponent.GetClip(id);

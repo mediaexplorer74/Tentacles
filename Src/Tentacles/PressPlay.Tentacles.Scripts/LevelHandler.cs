@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LevelHandler
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -37,7 +37,7 @@ namespace PressPlay.Tentacles.Scripts
     [ContentSerializerIgnore]
     public PathFollowCam cam;
     [ContentSerializerIgnore]
-    public Camera feedbackCam;
+    public PressPlay.FFWD.Components.Camera feedbackCam;
     [ContentSerializerIgnore]
     public IngameGUI ingameGUI;
     private ResetOnLemmyDeath[] resetOnDeathObjects;
@@ -76,7 +76,7 @@ namespace PressPlay.Tentacles.Scripts
     private float _globalLevelTime;
     private float _globalLevelDeltaTime;
     [ContentSerializerIgnore]
-    public MusicController musicController;
+    public PressPlay.Tentacles.Scripts.MusicController musicController;
     [ContentSerializerIgnore]
     public InGamePauseMenu pauseMenu;
     [ContentSerializerIgnore]
@@ -615,9 +615,9 @@ namespace PressPlay.Tentacles.Scripts
 
     private void DoGameOverCallback() => GlobalManager.Instance.RestartCurrentLevel();
 
-    public Quaternion GetCameraRelativeRotation(Vector3 direction)
+    public PressPlay.FFWD.Quaternion GetCameraRelativeRotation(Vector3 direction)
     {
-      return Quaternion.LookRotation(LevelHandler.Instance.feedbackCam.transform.TransformDirection(direction));
+      return PressPlay.FFWD.Quaternion.LookRotation(LevelHandler.Instance.feedbackCam.transform.TransformDirection(direction));
     }
 
     private LevelTypeSettings GetLevelTypeSettings(Level.LevelType _type)

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Components.Camera
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -7,25 +7,26 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using PressPlay.FFWD;
 using PressPlay.FFWD.UI;
 using System.Collections.Generic;
 
 #nullable disable
 namespace PressPlay.FFWD.Components
 {
-  public class Camera : Component, IComparer<Camera>, IComparer<Renderer>
+  public class Camera : Component, IComparer<Camera>, IComparer<PressPlay.FFWD.Components.Renderer>
   {
     public static bool wireframeRender = false;
     private static int estimatedDrawCalls = 0;
-    private static DynamicBatchRenderer dynamicBatchRenderer;
+    private static PressPlay.FFWD.Components.DynamicBatchRenderer dynamicBatchRenderer;
     internal static SpriteBatch spriteBatch;
     internal static BasicEffect basicEffect;
     private PressPlay.FFWD.Color _backgroundColor = PressPlay.FFWD.Color.black;
     private static List<Camera> _allCameras = new List<Camera>();
     public static Viewport FullScreen;
     private Matrix _projectionMatrix = Matrix.Identity;
-    internal static List<Renderer> nonAssignedRenderers = new List<Renderer>();
-    private readonly List<Renderer> renderQueue = new List<Renderer>(50);
+    internal static List<PressPlay.FFWD.Components.Renderer> nonAssignedRenderers = new List<PressPlay.FFWD.Components.Renderer>();
+    private readonly List<PressPlay.FFWD.Components.Renderer> renderQueue = new List<PressPlay.FFWD.Components.Renderer>(50);
 
     public Camera()
     {
@@ -123,11 +124,11 @@ namespace PressPlay.FFWD.Components
       return (PressPlay.FFWD.Vector3) this.viewPort.Project((Microsoft.Xna.Framework.Vector3) position, this.projectionMatrix, this.view, Matrix.Identity);
     }
 
-    internal static void AddRenderer(Renderer renderer)
+    internal static void AddRenderer(PressPlay.FFWD.Components.Renderer renderer)
     {
       if (renderer is UIRenderer)
       {
-        UIRenderer.AddRenderer(renderer as UIRenderer);
+        PressPlay.FFWD.UI.UIRenderer.AddRenderer(renderer as PressPlay.FFWD.UI.UIRenderer);
       }
       else
       {
@@ -146,7 +147,7 @@ namespace PressPlay.FFWD.Components
         return true;
       if ((this.cullingMask & 1 << renderer.gameObject.layer) <= 0)
         return false;
-      int index = this.renderQueue.BinarySearch(renderer, (IComparer<Renderer>) this);
+      int index = this.renderQueue.BinarySearch(renderer, (IComparer<PressPlay.FFWD.Components.Renderer>) this);
       if (index < 0)
         this.renderQueue.Insert(~index, renderer);
       else
@@ -154,11 +155,11 @@ namespace PressPlay.FFWD.Components
       return true;
     }
 
-    internal static void RemoveRenderer(Renderer renderer)
+    internal static void RemoveRenderer(PressPlay.FFWD.Components.Renderer renderer)
     {
       if (renderer is UIRenderer)
       {
-        UIRenderer.RemoveRenderer(renderer as UIRenderer);
+        PressPlay.FFWD.UI.UIRenderer.RemoveRenderer(renderer as PressPlay.FFWD.UI.UIRenderer);
       }
       else
       {
@@ -167,12 +168,12 @@ namespace PressPlay.FFWD.Components
       }
     }
 
-    private void removeRenderer(Renderer renderer) => this.renderQueue.Remove(renderer);
+    private void removeRenderer(PressPlay.FFWD.Components.Renderer renderer) => this.renderQueue.Remove(renderer);
 
     internal static void DoRender(GraphicsDevice device)
     {
       if (Camera.dynamicBatchRenderer == null)
-        Camera.dynamicBatchRenderer = new DynamicBatchRenderer(device);
+        Camera.dynamicBatchRenderer = new PressPlay.FFWD.Components.DynamicBatchRenderer(device);
       Camera.estimatedDrawCalls = 0;
       if (device == null)
         return;
@@ -189,7 +190,7 @@ namespace PressPlay.FFWD.Components
       }
       if (Camera.wireframeRender)
         device.RasterizerState = RasterizerState.CullCounterClockwise;
-      Camera.estimatedDrawCalls += UIRenderer.doRender(device);
+      Camera.estimatedDrawCalls += PressPlay.FFWD.UI.UIRenderer.doRender(device);
     }
 
     internal void doRender(GraphicsDevice device)
@@ -198,13 +199,13 @@ namespace PressPlay.FFWD.Components
       this.view = Matrix.CreateLookAt((Microsoft.Xna.Framework.Vector3) this.transform.position, (Microsoft.Xna.Framework.Vector3) (this.transform.position + this.transform.forward), (Microsoft.Xna.Framework.Vector3) this.transform.up);
       this.frustum.Matrix = this.view * this.projectionMatrix;
       if (Camera.wireframeRender)
-        TextRenderer3D.batch.Begin(SpriteSortMode.Deferred, (BlendState) null, (SamplerState) null, DepthStencilState.DepthRead, new RasterizerState()
+        PressPlay.FFWD.Components.TextRenderer3D.batch.Begin(SpriteSortMode.Deferred, (BlendState) null, (SamplerState) null, DepthStencilState.DepthRead, new RasterizerState()
         {
           FillMode = FillMode.WireFrame,
           CullMode = CullMode.None
-        }, (Effect) TextRenderer3D.basicEffect);
+        }, (Effect) PressPlay.FFWD.Components.TextRenderer3D.basicEffect);
       else
-        TextRenderer3D.batch.Begin(SpriteSortMode.Deferred, (BlendState) null, (SamplerState) null, DepthStencilState.DepthRead, RasterizerState.CullNone, (Effect) TextRenderer3D.basicEffect);
+        PressPlay.FFWD.Components.TextRenderer3D.batch.Begin(SpriteSortMode.Deferred, (BlendState) null, (SamplerState) null, DepthStencilState.DepthRead, RasterizerState.CullNone, (Effect) PressPlay.FFWD.Components.TextRenderer3D.basicEffect);
       this.BasicEffect.View = this.view;
       this.BasicEffect.Projection = this.projectionMatrix;
       int num = 0;
@@ -222,7 +223,7 @@ namespace PressPlay.FFWD.Components
             Camera.estimatedDrawCalls += this.renderQueue[index].Draw(device, this);
         }
       }
-      TextRenderer3D.batch.End();
+      PressPlay.FFWD.Components.TextRenderer3D.batch.End();
       Camera.estimatedDrawCalls += Camera.dynamicBatchRenderer.DoDraw(device, this);
     }
 
@@ -244,7 +245,7 @@ namespace PressPlay.FFWD.Components
 
     public int Compare(Camera x, Camera y) => x.depth.CompareTo(y.depth);
 
-    public int Compare(Renderer x, Renderer y) => x.renderQueue.CompareTo(y.renderQueue);
+    public int Compare(PressPlay.FFWD.Components.Renderer x, PressPlay.FFWD.Components.Renderer y) => x.renderQueue.CompareTo(y.renderQueue);
 
     internal static Camera FindByName(string name)
     {

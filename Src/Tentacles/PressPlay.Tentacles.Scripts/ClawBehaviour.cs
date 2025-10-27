@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ClawBehaviour
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -19,23 +19,23 @@ namespace PressPlay.Tentacles.Scripts
     protected GameObject grabbedObject;
     protected float grabTime;
     protected OnClawBehaviourConnect doOnClawBehaviourConnect;
-    protected RaycastHit rh;
-    protected Ray ray;
+    protected PressPlay.FFWD.RaycastHit rh;
+    protected PressPlay.FFWD.Ray ray; 
     protected Lemmy lemmy;
     public float eatTime = 0.5f;
     public float eatSpeed = 15f;
-    private Vector3 dist;
-    private Vector3 dir;
+    private PressPlay.FFWD.Vector3 dist; 
+    private PressPlay.FFWD.Vector3 dir; 
     protected GameObject grabbedObjectHolder;
     protected RipableObject connectedObjectRipScript;
-    protected Vector3 connectionPosition;
-    protected Vector3 connectionNormal;
+    protected PressPlay.FFWD.Vector3 connectionPosition; 
+    protected PressPlay.FFWD.Vector3 connectionNormal; 
     protected float connectionTime;
-    protected Collider connectedCollider;
+    protected PressPlay.FFWD.Components.Collider connectedCollider; 
     protected GameObject connectionPointerObject;
-    protected Vector3 accumulatedTraversal = Vector3.zero;
-    protected Vector3 lastPosition;
-    protected Vector3 traversedVector;
+    protected PressPlay.FFWD.Vector3 accumulatedTraversal = PressPlay.FFWD.Vector3.zero; 
+    protected PressPlay.FFWD.Vector3 lastPosition; 
+    protected PressPlay.FFWD.Vector3 traversedVector; 
     protected float lastDeltaTime;
     public PoolableObject createAtConnect;
     public PoolableObject createAtSlipperyConnect;
@@ -189,7 +189,7 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    private void HitWall(Vector3 hitPosition, Vector3 hitNormal, Collider hitCollider)
+    private void HitWall(PressPlay.FFWD.Vector3 hitPosition, PressPlay.FFWD.Vector3 hitNormal, PressPlay.FFWD.Components.Collider hitCollider) 
     {
       if (hitCollider != null && hitCollider.gameObject.layer == GlobalSettings.Instance.shieldLayer)
       {
@@ -211,7 +211,7 @@ namespace PressPlay.Tentacles.Scripts
       this.ChangeClawState(ClawBehaviour.ClawStates.idle);
     }
 
-    private void HitEnergyCell(EnergyCell cell, Vector3 hitPosition, Vector3 hitNormal)
+    private void HitEnergyCell(EnergyCell cell, PressPlay.FFWD.Vector3 hitPosition, PressPlay.FFWD.Vector3 hitNormal) 
     {
       this.rigidbody.velocity = Vector3.zero;
       this.transform.position = hitPosition;
@@ -228,18 +228,11 @@ namespace PressPlay.Tentacles.Scripts
       RipableObject connectedObjectRipScript = this.connectedObjectRipScript;
     }
 
-    protected void ConnectToRipableObject(Vector3 _pos, Vector3 _normal, RipableObject ripObj)
+    protected void ConnectToRipableObject(PressPlay.FFWD.Vector3 _pos, PressPlay.FFWD.Vector3 _normal, RipableObject ripObj) 
     {
       this.connectedObjectRipScript = ripObj;
       ripObj.ConnectToClaw(this);
       this.ConnectToAtPosition(_pos, _normal, ripObj.gameObject);
-    }
-
-    protected void ConnectToRipableObject(RaycastHit rh, RipableObject ripObj)
-    {
-      this.connectedObjectRipScript = ripObj;
-      ripObj.ConnectToClaw(this);
-      this.ConnectToAtPosition(rh.point, rh.normal, ripObj.gameObject);
     }
 
     public void ReleaseConnectionPointerObject()
@@ -248,15 +241,15 @@ namespace PressPlay.Tentacles.Scripts
     }
 
     protected void ConnectToAtPosition(
-      Vector3 hitPosition,
-      Vector3 hitNormal,
-      GameObject connectTo)
+      PressPlay.FFWD.Vector3 hitPosition,
+      PressPlay.FFWD.Vector3 hitNormal,
+      GameObject connectTo) 
     {
       this.connectTo = connectTo;
       this.connectionPosition = hitPosition;
       this.connectedCollider = connectTo.collider;
       this.connectionNormal = hitNormal;
-      this.rigidbody.velocity = Vector3.zero;
+      this.rigidbody.velocity = PressPlay.FFWD.Vector3.zero;
       this.transform.position = hitPosition;
       this.connectionPosition = hitPosition;
       this.ChangeClawState(ClawBehaviour.ClawStates.connected);
@@ -273,20 +266,20 @@ namespace PressPlay.Tentacles.Scripts
       this.doOnClawBehaviourConnect.DoOnClawBehaviourConnect(this, hitNormal);
     }
 
-    protected void ConnectAtPosition(Vector3 hitPosition, Vector3 hitNormal)
+    protected void ConnectAtPosition(PressPlay.FFWD.Vector3 hitPosition, PressPlay.FFWD.Vector3 hitNormal) 
     {
       if (!this.isClawAttacking)
         return;
       this.connectionPointerObject.active = false;
       this.connectionNormal = (-this.rigidbody.velocity.normalized * 0.0f + hitNormal * 1f) * 0.5f;
-      this.rigidbody.velocity = Vector3.zero;
+      this.rigidbody.velocity = PressPlay.FFWD.Vector3.zero;
       this.transform.position = hitPosition;
       this.connectionPosition = hitPosition;
       this.ChangeClawState(ClawBehaviour.ClawStates.connected);
       this.connectionTime = Time.time;
     }
 
-    public void Push(Vector3 _force)
+    public void Push(PressPlay.FFWD.Vector3 _force) 
     {
       if (this.isClawConnected)
         return;
@@ -313,7 +306,7 @@ namespace PressPlay.Tentacles.Scripts
 
     public void Reset()
     {
-      this.rigidbody.velocity = Vector3.zero;
+      this.rigidbody.velocity = PressPlay.FFWD.Vector3.zero;
       if ((bool) (UnityObject) this.grabbedObject)
         this.ReleaseGrabbedObject();
       if (this.grabbedObjectHolder.transform.childCount > 0)
@@ -322,7 +315,7 @@ namespace PressPlay.Tentacles.Scripts
         this.grabbedObjectHolder = new GameObject();
         this.grabbedObjectHolder.name = "grabbedObjectHolder";
         this.grabbedObjectHolder.transform.parent = this.transform;
-        this.grabbedObjectHolder.transform.localPosition = Vector3.zero;
+        this.grabbedObjectHolder.transform.localPosition = PressPlay.FFWD.Vector3.zero;
         this.grabbedObjectHolder.transform.localRotation = Quaternion.identity;
       }
       this.ChangeClawState(ClawBehaviour.ClawStates.idle);

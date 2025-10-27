@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Material
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.FFWD.dll
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace PressPlay.FFWD
     [ContentSerializer]
     public int renderQueue;
     [ContentSerializer(Optional = true)]
-    public Color color;
+    public Microsoft.Xna.Framework.Color color;
     [ContentSerializer(Optional = true)]
     public string mainTexture;
     [ContentSerializer(Optional = true)]
@@ -33,7 +34,7 @@ namespace PressPlay.FFWD
     internal float finalRenderQueue = float.MinValue;
     public static readonly Material Default = new Material();
 
-    public void SetColor(string name, Color color) => this.color = color;
+    public void SetColor(string name, Microsoft.Xna.Framework.Color color) => this.color = color;
 
     protected override void DoLoadAsset(AssetHelper assetHelper)
     {
@@ -45,7 +46,7 @@ namespace PressPlay.FFWD
       else if (this.renderQueue == 3000 || this.shader == "TransperantNoLight")
         this.blendState = BlendState.AlphaBlend;
       if (this.shader == "Particles/Multiply (Double)")
-        this.color = new Color(this.color.r, this.color.g, this.color.b, 0.5f);
+        this.color = new Microsoft.Xna.Framework.Color(this.color.R, this.color.G, this.color.B, 0.5f);
       this.CalculateRenderQueue();
     }
 

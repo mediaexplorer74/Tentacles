@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Vector2
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -13,27 +13,29 @@ namespace PressPlay.FFWD
 {
   public struct Vector2 : IEquatable<Vector2>
   {
-    private static Vector2 Zero = new Vector2(0.0f, 0.0f);
-    private static Vector2 One = new Vector2(1f, 1f);
-    private static Vector2 Up = new Vector2(0.0f, 1f);
-    private static Vector2 Right = new Vector2(1f, 0.0f);
-    public float x;
-    public float y;
-
-    public float magnitude
+    private static Vector2 Zero;
+    private static Vector2 One;
+    private static Vector2 Up;
+    private static Vector2 Right;
+    static Vector2()
     {
-      get => (float) Math.Sqrt((double) Vector2.DistanceSquared(this, Vector2.zero));
+      Zero = new Vector2(0.0f, 0.0f);
+      One = new Vector2(1f, 1f);
+      Up = new Vector2(0.0f, 1f);
+      Right = new Vector2(1f, 0.0f);
     }
 
-    public float sqrMagnitude => Vector2.DistanceSquared(this, Vector2.zero);
+    public float magnitude => this.x * this.x + this.y * this.y;
 
-    public static Vector2 zero => Vector2.Zero;
+    public float sqrMagnitude => this.x * this.x + this.y * this.y;
 
-    public static Vector2 one => Vector2.One;
+    public static Vector2 zero => new Vector2(0.0f, 0.0f);
 
-    public static Vector2 up => Vector2.Up;
+    public static Vector2 one => new Vector2(1f, 1f);
 
-    public static Vector2 right => Vector2.Right;
+    public static Vector2 up => new Vector2(0.0f, 1f);
+
+    public static Vector2 right => new Vector2(1f, 0.0f);
 
     public float this[int index]
     {

@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.TimedRotation
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -16,9 +17,9 @@ namespace PressPlay.Tentacles.Scripts
     public float sequenceLengthOverride = -1f;
     private float sequenceLength;
     public float sequenceOffset;
-    private Vector3 startRotation;
+    private Microsoft.Xna.Framework.Vector3 startRotation;
     public Transform objectToRotate;
-    private Vector3 tmpVector = Vector3.zero;
+    private Microsoft.Xna.Framework.Vector3 tmpVector = Microsoft.Xna.Framework.Vector3.Zero;
     public bool doRotation = true;
     public TimedRotation.Direction direction;
 
@@ -26,7 +27,7 @@ namespace PressPlay.Tentacles.Scripts
     {
       if (this.objectToRotate == null)
         this.objectToRotate = this.transform;
-      this.startRotation = this.objectToRotate.transform.eulerAngles;
+      this.startRotation = this.objectToRotate.rotation.eulerAngles;
       if ((double) this.sequenceLengthOverride == -1.0)
         this.sequenceLength = 360f / this.speed;
       else
@@ -37,17 +38,17 @@ namespace PressPlay.Tentacles.Scripts
     {
       if (!this.doRotation)
         return;
-      this.objectToRotate.transform.eulerAngles = this.GetRotationFromGlobalTime(LevelHandler.Instance.globalLevelTime);
+      this.objectToRotate.rotation.eulerAngles = this.GetRotationFromGlobalTime(LevelHandler.Instance.globalLevelTime);
     }
 
-    private Vector3 GetRotationFromGlobalTime(float _globalTime)
+    private Microsoft.Xna.Framework.Vector3 GetRotationFromGlobalTime(float _globalTime)
     {
       return this.GetRotationFromSequenceTime((_globalTime - this.sequenceOffset) % this.sequenceLength);
     }
 
-    private Vector3 GetRotationFromSequenceTime(float _sequenceTime)
+    private Microsoft.Xna.Framework.Vector3 GetRotationFromSequenceTime(float _sequenceTime)
     {
-      this.tmpVector.y = (float) (360.0 * ((double) _sequenceTime / (double) this.sequenceLength));
+      this.tmpVector.Y = (float) (360.0 * ((double) _sequenceTime / (double) this.sequenceLength));
       return this.direction == TimedRotation.Direction.clockwise ? this.startRotation + this.tmpVector : this.startRotation - this.tmpVector;
     }
 

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LoadingScreen2
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -32,7 +32,7 @@ namespace PressPlay.Tentacles.Scripts
     public LoadingScreen2(
       PressPlay.FFWD.ScreenManager.ScreenManager screenManager,
       bool loadingIsSlow,
-      GameScreen[] screensToLoad)
+      PressPlay.FFWD.ScreenManager.GameScreen[] screensToLoad)
       : base(screenManager, loadingIsSlow, screensToLoad)
     {
       Debug.Log((object) "Adding LoadingScreen2!!!");
@@ -41,7 +41,7 @@ namespace PressPlay.Tentacles.Scripts
     }
 
     public LoadingScreen2(string sceneToLoad)
-      : base(Application.screenManager, true, (GameScreen[]) null)
+      : base(Application.screenManager, true, (PressPlay.FFWD.ScreenManager.GameScreen[]) null)
     {
       GlobalManager.Instance.fullscreenImageHandler.DoInstantClearScreen();
       this.levelToLoad = GlobalManager.Instance.database.GetLevelFromSceneName(sceneToLoad);
@@ -59,7 +59,7 @@ namespace PressPlay.Tentacles.Scripts
       PressPlay.FFWD.ScreenManager.ScreenManager screenManager,
       bool loadingIsSlow,
       PlayerIndex? controllingPlayer,
-      params GameScreen[] screensToLoad)
+      PressPlay.FFWD.ScreenManager.GameScreen[] screensToLoad)
     {
       foreach (GameScreen screen in screenManager.GetScreens())
         screen.ExitScreen();
@@ -110,7 +110,7 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public override void HandleInput(InputState input)
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
     }
 

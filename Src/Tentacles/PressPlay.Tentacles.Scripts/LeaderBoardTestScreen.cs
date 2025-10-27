@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LeaderBoardTestScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -10,7 +10,7 @@ using System;
 #nullable disable
 namespace PressPlay.Tentacles.Scripts
 {
-  public class LeaderBoardTestScreen : GameScreen
+  public class LeaderBoardTestScreen : PressPlay.FFWD.ScreenManager.GameScreen
   {
     private const int BestTimeLeaderboard = 0;
     private const int LeaderboardPageSize = 600;

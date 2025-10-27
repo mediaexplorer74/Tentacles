@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Components.Collider
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -8,6 +8,7 @@ using FarseerPhysics.Collision;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using PressPlay.FFWD;
 
 #nullable disable
 namespace PressPlay.FFWD.Components
@@ -18,7 +19,7 @@ namespace PressPlay.FFWD.Components
     [ContentSerializer(Optional = true)]
     public string material;
     [ContentSerializerIgnore]
-    public Body connectedBody;
+    public PressPlay.FFWD.Body connectedBody { get; set; }
     private bool _allowTurnOff;
     protected PressPlay.FFWD.Vector3 lastResizeScale;
 
@@ -31,19 +32,21 @@ namespace PressPlay.FFWD.Components
         this._allowTurnOff = value;
         if (!this._allowTurnOff)
           return;
-        Physics.AddMovingBody(this.connectedBody);
+        PressPlay.FFWD.Physics.AddMovingBody(this.connectedBody);
       }
     }
 
-    public Bounds bounds
+    public PressPlay.FFWD.Bounds bounds
     {
       get
       {
         if (this.connectedBody == null)
-          return new Bounds();
+          return new PressPlay.FFWD.Bounds(PressPlay.FFWD.Vector3.zero, PressPlay.FFWD.Vector3.zero);
         AABB aabb;
         this.connectedBody.FixtureList[0].GetAABB(out aabb, 0);
-        return Physics.BoundsFromAABB(aabb, 10f);
+        PressPlay.FFWD.Vector2 aabbCenter = (PressPlay.FFWD.Vector2) aabb.Center;
+        PressPlay.FFWD.Vector2 aabbExtents = (PressPlay.FFWD.Vector2) aabb.Extents;
+        return new PressPlay.FFWD.Bounds(new PressPlay.FFWD.Vector3(aabbCenter.x, 0.0f, aabbCenter.y), new PressPlay.FFWD.Vector3(aabbExtents.x * 2f, 0.0f, aabbExtents.y * 2f));
       }
     }
 
@@ -51,7 +54,7 @@ namespace PressPlay.FFWD.Components
     {
       if (this.rigidbody != null)
         return;
-      this.connectedBody = Physics.AddBody();
+      this.connectedBody = PressPlay.FFWD.Physics.AddBody();
       this.connectedBody.Position = (Microsoft.Xna.Framework.Vector2) this.transform.position;
       this.connectedBody.Rotation = -MathHelper.ToRadians(this.transform.rotation.eulerAngles.y);
       this.connectedBody.UserData = (Component) this;
@@ -64,7 +67,7 @@ namespace PressPlay.FFWD.Components
       base.Destroy();
       if (this.connectedBody == null)
         return;
-      Physics.RemoveBody(this.connectedBody);
+      PressPlay.FFWD.Physics.RemoveBody(this.connectedBody);
     }
 
     internal void SetStatic(bool isStatic)
@@ -74,7 +77,7 @@ namespace PressPlay.FFWD.Components
       this.connectedBody.BodyType = isStatic ? BodyType.Static : BodyType.Kinematic;
       if (isStatic)
         return;
-      Physics.AddMovingBody(this.connectedBody);
+      PressPlay.FFWD.Physics.AddMovingBody(this.connectedBody);
     }
 
     internal void AddCollider(Body body, float mass)
@@ -83,9 +86,9 @@ namespace PressPlay.FFWD.Components
       if (body.BodyType == BodyType.Static)
         return;
       if (this.rigidbody == null)
-        Physics.AddMovingBody(body);
+        PressPlay.FFWD.Physics.AddMovingBody(body);
       else
-        Physics.AddRigidBody(body);
+        PressPlay.FFWD.Physics.AddRigidBody(body);
     }
 
     protected abstract void DoAddCollider(Body body, float mass);

@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Components.ParticleAnimator
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.FFWD.dll
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using PressPlay.FFWD.Interfaces;
 
@@ -26,15 +27,15 @@ namespace PressPlay.FFWD.Components
     private bool hasHadParticles;
 
     [ContentSerializerIgnore]
-    public PressPlay.FFWD.Color[] colorAnimation
+    public Microsoft.Xna.Framework.Color[] colorAnimation
     {
       get
       {
         if (this._colorAnimation == null)
-          return (PressPlay.FFWD.Color[]) null;
-        PressPlay.FFWD.Color[] colorAnimation = new PressPlay.FFWD.Color[this._colorAnimation.Length];
+          return (Microsoft.Xna.Framework.Color[]) null;
+        Microsoft.Xna.Framework.Color[] colorAnimation = new Microsoft.Xna.Framework.Color[this._colorAnimation.Length];
         for (int index = 0; index < this._colorAnimation.Length; ++index)
-          colorAnimation[index] = (PressPlay.FFWD.Color) this._colorAnimation[index];
+          colorAnimation[index] = this._colorAnimation[index];
         return colorAnimation;
       }
       set
@@ -47,7 +48,7 @@ namespace PressPlay.FFWD.Components
         {
           this._colorAnimation = new Microsoft.Xna.Framework.Color[value.Length];
           for (int index = 0; index < value.Length; ++index)
-            this._colorAnimation[index] = (Microsoft.Xna.Framework.Color) value[index];
+            this._colorAnimation[index] = value[index];
         }
       }
     }

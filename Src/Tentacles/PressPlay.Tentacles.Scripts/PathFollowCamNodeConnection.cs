@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.PathFollowCamNodeConnection
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -90,10 +90,10 @@ namespace PressPlay.Tentacles.Scripts
       return (double) vector3.x > (double) this.connectionDistance ? this.frontNode.transform.position - _pos : this.GetPositionOnCameraPath(_pos) - _pos;
     }
 
-    public Quaternion GetRotation(Vector3 _pos)
+    public PressPlay.FFWD.Quaternion GetRotation(Vector3 _pos)
     {
       float progression = this.GetProgression(_pos);
-      return (double) progression < 0.5 ? Quaternion.Lerp(this.backNode.transform.rotation, this.transform.rotation, progression * 2f) : Quaternion.Lerp(this.transform.rotation, this.frontNode.transform.rotation, (float) (((double) progression - 0.5) * 2.0));
+      return (double) progression < 0.5 ? PressPlay.FFWD.Quaternion.Lerp(this.backNode.transform.rotation, this.transform.rotation, progression * 2f) : PressPlay.FFWD.Quaternion.Lerp(this.transform.rotation, this.frontNode.transform.rotation, (float) (((double) progression - 0.5) * 2.0));
     }
 
     public float GetProgression(Vector3 _pos)

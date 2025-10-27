@@ -15,7 +15,7 @@ Dr. Phluff’s obsession with everything cute has driven him mad, and only you c
 Dispatch enemies, collect squishy eyeballs and secret eggs, gain powers and abilities, and compete against your friends.
 
 ## Status 
-- Reversed src code only (no bug fixes)
+- Reversed src code repaired on/over 5%
 
 ## Tech details
 - UWP app (micro-game)

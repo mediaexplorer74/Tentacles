@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ButtonComponent
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -20,6 +20,7 @@ namespace PressPlay.Tentacles.Scripts
     [ContentSerializer(Optional = true)]
     public string OnNormalTexture;
     public string OnActiveTexture;
+    private PressPlay.FFWD.Interfaces.IUpdateable[] updateables;
     private Rectangle _bounds;
     private Texture2D normalTexture;
     private Texture2D activeTexture;
@@ -38,9 +39,9 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public event EventHandler<PlayerIndexEventArgs> Selected;
+    public event EventHandler<PressPlay.FFWD.ScreenManager.PlayerIndexEventArgs> Selected;
 
-    protected internal virtual void OnSelectEntry(PlayerIndex playerIndex)
+    protected internal virtual void OnSelectEntry(Microsoft.Xna.Framework.PlayerIndex playerIndex)
     {
       if (!this.isTapped)
       {
@@ -95,7 +96,7 @@ namespace PressPlay.Tentacles.Scripts
       if (!this.isTapped || (double) Time.time <= (double) this.onSelectTime + (double) this.delayBeforeActivation)
         return;
       if (this.Selected != null)
-        this.Selected((object) this, new PlayerIndexEventArgs(PlayerIndex.One));
+        this.Selected((object) this, new PressPlay.FFWD.ScreenManager.PlayerIndexEventArgs(Microsoft.Xna.Framework.PlayerIndex.One));
       this.isTapped = false;
     }
 

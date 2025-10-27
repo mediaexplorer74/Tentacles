@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ChallengeUI
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -23,8 +23,8 @@ namespace PressPlay.Tentacles.Scripts
     private Control uiContainer;
     [ContentSerializerIgnore]
     private TextControl textControl;
-    public Vector3 hiddenPosition;
-    public Vector3 visiblePosition;
+    public PressPlay.FFWD.Vector3 hiddenPosition;
+    public PressPlay.FFWD.Vector3 visiblePosition;
     public iTween.EaseType easeShow = iTween.EaseType.spring;
     public iTween.EaseType easeHide;
     public float timeToShow = 0.35f;
@@ -50,14 +50,14 @@ namespace PressPlay.Tentacles.Scripts
         return;
       this.isInitialized = true;
       this.uiContainer = new Control();
-      this.uiContainer.size = new Vector2(800f, 69f);
+      this.uiContainer.size = new PressPlay.FFWD.Vector2(800f, 69f);
       this.uiContainer.transform.parent = this.transform;
       AudioClip clip1 = new AudioClip(Application.Load<SoundEffect>("Sounds/dropSwoosh"));
       AudioClip clip2 = new AudioClip(Application.Load<SoundEffect>("Sounds/dropSwoosh"));
       this.sndSwooshShow = AudioManager.Instance.Add(new AudioSettings(clip1, 1f, false), "menu", 1);
       this.sndSwooshHide = AudioManager.Instance.Add(new AudioSettings(clip2, 1f, false), "menu", 1);
       ImageControl child = new ImageControl(Application.Load<Texture2D>("Textures/Menu/misc_assets"), SpritePositions.challengeBarBackground);
-      this.textControl = new TextControl("", GUIAssets.berlinsSans40, Color.white);
+      this.textControl = new TextControl("", GUIAssets.berlinsSans40, Microsoft.Xna.Framework.Color.white);
       this.textControl.transform.localScale *= 0.75f;
       this.textControl.InvalidateAutoSize();
       this.progressBar = new UIProgressBar(new ImageControl(Application.Load<Texture2D>("Textures/Menu/misc_assets"), SpritePositions.challengeProgressBarBackground), new ImageControl(Application.Load<Texture2D>("Textures/Menu/misc_assets"), SpritePositions.challengeProgressBarForeground));
@@ -66,9 +66,9 @@ namespace PressPlay.Tentacles.Scripts
       this.uiContainer.AddChild((Control) this.progressBar);
       child.AlignCenter();
       this.textControl.AlignCenter();
-      this.progressBar.AlignCenter(new Vector2(0.0f, -23f));
-      this.hiddenPosition = new Vector3(0.0f, 0.0f, -120f);
-      this.visiblePosition = new Vector3(0.0f, 0.0f, 0.0f);
+      this.progressBar.AlignCenter(new PressPlay.FFWD.Vector2(0.0f, -23f));
+      this.hiddenPosition = new PressPlay.FFWD.Vector3(0.0f, 0.0f, -120f);
+      this.visiblePosition = new PressPlay.FFWD.Vector3(0.0f, 0.0f, 0.0f);
       this.transform.position = this.hiddenPosition;
     }
 
@@ -97,19 +97,19 @@ namespace PressPlay.Tentacles.Scripts
       this.Show(settings.text, settings.color, settings.duration, settings.showProgressBar, settings.doOnShow, settings.doOnTransitionInComplete);
     }
 
-    public void Show(string text, Color color, float duration)
+    public void Show(string text, Microsoft.Xna.Framework.Color color, float duration)
     {
       this.Show(text, color, duration, false, (GuiBarShowSettings.DoOnTransition) null, (GuiBarShowSettings.DoOnTransition) null);
     }
 
-    public void Show(string text, Color color, bool showProgressBar)
+    public void Show(string text, Microsoft.Xna.Framework.Color color, bool showProgressBar)
     {
       this.Show(text, color, -1f, showProgressBar, (GuiBarShowSettings.DoOnTransition) null, (GuiBarShowSettings.DoOnTransition) null);
     }
 
     public void Show(
       string text,
-      Color color,
+      Microsoft.Xna.Framework.Color color,
       float duration,
       bool showProgressBar,
       GuiBarShowSettings.DoOnTransition doOnShow,
@@ -131,7 +131,7 @@ namespace PressPlay.Tentacles.Scripts
         this.textControl.text = text;
         this.textControl.SetColor(color);
         this.textControl.AlignCenter();
-        this.textControl.transform.localPosition = this.textControl.transform.localPosition + new Vector3(0.0f, 0.0f, (float) ((double) this.textControl.size.y / 2.0 - 20.0));
+        this.textControl.transform.localPosition = this.textControl.transform.localPosition + new PressPlay.FFWD.Vector3(0.0f, 0.0f, (float) ((double) this.textControl.size.y / 2.0 - 20.0));
         if (showProgressBar)
         {
           this.progressBar.gameObject.SetActiveRecursively(true);

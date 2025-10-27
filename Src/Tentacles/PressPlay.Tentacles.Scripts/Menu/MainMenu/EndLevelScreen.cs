@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.Menu.MainMenu.EndLevelScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -47,7 +47,7 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
     private AudioObject sndCountUpObject;
     private AudioClip sndSwoosh;
     private AudioClip sndSwoosh1;
-    private List<ButtonControl> buttons = new List<ButtonControl>();
+    private List<PressPlay.FFWD.UI.Controls.ButtonControl> buttons = new List<PressPlay.FFWD.UI.Controls.ButtonControl>();
 
     private EndLevelScreen.EndLevelSequenceState state
     {
@@ -123,10 +123,10 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
       Texture2D texture = Application.Load<Texture2D>("Textures/Menu/EndLevel/endlevel_pausemenu_atlas");
       ButtonStyle buttonStyle1;
       ButtonStyle buttonStyle2 = buttonStyle1 = new ButtonStyle(texture, SpritePositions.ingameMenuButtonNormal, SpritePositions.ingameMenuButtonHighlighted);
-      this.panelTop = new ImageControl(texture, SpritePositions.ingameMenuBackgroundTop);
-      this.rootControl.AddChild((Control) this.panelTop);
-      this.panelBottom = new ImageControl(texture, SpritePositions.ingameMenuBackgroundBottom);
-      PanelControl child1 = new PanelControl();
+      this.panelTop = new PressPlay.FFWD.UI.Controls.ImageControl(texture, SpritePositions.ingameMenuBackgroundTop);
+      this.rootControl.AddChild((PressPlay.FFWD.UI.Controls.Control) this.panelTop);
+      this.panelBottom = new PressPlay.FFWD.UI.Controls.ImageControl(texture, SpritePositions.ingameMenuBackgroundBottom);
+      PanelControl child1 = new PressPlay.FFWD.UI.Controls.PanelControl();
       this.panelBottom.AddChild((Control) child1);
       this.scorebar = new ImageControl(texture, SpritePositions.endlevelScoreBackground);
       this.panelBottom.AddChild((Control) this.scorebar);
@@ -159,7 +159,7 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
       this.btnExit.textControl.AlignCenter();
       this.btnExit.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       child1.AddChild((Control) this.btnExit);
-      this.buttons.Add((ButtonControl) this.btnExit);
+      this.buttons.Add((PressPlay.FFWD.UI.Controls.ButtonControl) this.btnExit);
       this.btnRetry = new MenuButton(buttonStyle2, "restart");
       this.btnRetry.textControl.font = GUIAssets.berlinsSans40;
       this.btnRetry.textControl.text = LocalisationManager.Instance.GetString("btn_restart").ToUpper();
@@ -168,7 +168,7 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
       this.btnRetry.textControl.AlignCenter();
       this.btnRetry.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       child1.AddChild((Control) this.btnRetry);
-      this.buttons.Add((ButtonControl) this.btnRetry);
+      this.buttons.Add((PressPlay.FFWD.UI.Controls.ButtonControl) this.btnRetry);
       this.btnContinue = new MenuButton(buttonStyle2, "resume");
       this.btnContinue.textControl.font = GUIAssets.berlinsSans40;
       this.btnContinue.textControl.text = LocalisationManager.Instance.GetString("label_continue").ToUpper();
@@ -177,7 +177,7 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
       this.btnContinue.textControl.AlignCenter();
       this.btnContinue.OnClickEvent += new EventHandler<EventArgs>(this.OnButtonPress);
       child1.AddChild((Control) this.btnContinue);
-      this.buttons.Add((ButtonControl) this.btnContinue);
+      this.buttons.Add((PressPlay.FFWD.UI.Controls.ButtonControl) this.btnContinue);
       child1.LayoutRow(0.0f, 0.0f, 20f);
       child1.AlignCenter(new PressPlay.FFWD.Vector2(0.0f, 48f));
       this.rootControl.AddChild((Control) this.panelBottom);
@@ -375,7 +375,7 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
 
     private void OnButtonPress(object sender, EventArgs e)
     {
-      switch (((ButtonControlEventArgs) e).link)
+      switch (((PressPlay.FFWD.UI.Controls.ButtonControlEventArgs) e).link)
       {
         case "resume":
           this.Continue();
@@ -417,12 +417,12 @@ namespace PressPlay.Tentacles.Scripts.Menu.MainMenu
       this.ExitScreen();
     }
 
-    protected override void OnCancel(PlayerIndex playerIndex)
+    protected override void OnCancel(Microsoft.Xna.Framework.PlayerIndex playerIndex)
     {
       this.ScreenManager.AddScreen((GameScreen) new ConfirmPopup(LocalisationManager.Instance.GetString("conf_goto_menu"), new Action(this.OpenMainMenu), (Action) null));
     }
 
-    public override void HandleInput(InputState input) => base.HandleInput(input);
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input) => base.HandleInput(input);
 
     public override void Update(
       GameTime gameTime,

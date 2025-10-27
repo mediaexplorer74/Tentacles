@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.LemmyTravelScreen
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -16,7 +16,7 @@ using System.Collections.Generic;
 #nullable disable
 namespace PressPlay.Tentacles.Scripts
 {
-  public class LemmyTravelScreen : GameScreen
+  public class LemmyTravelScreen : PressPlay.FFWD.ScreenManager.GameScreen
   {
     private int levelIndex;
     private TravelNode currentTravelNode;
@@ -225,7 +225,7 @@ namespace PressPlay.Tentacles.Scripts
       }
     }
 
-    public override void HandleInput(InputState input)
+    public override void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
       base.HandleInput(input);
       if (this.loadingScreen.state != LoadingScreen2.LoadingState.complete || !LevelHandler.isLoaded || LevelHandler.Instance.state != LevelHandler.LevelState.preloadingDone)

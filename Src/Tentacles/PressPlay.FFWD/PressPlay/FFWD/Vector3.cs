@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Vector3
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -13,39 +13,43 @@ namespace PressPlay.FFWD
 {
   public struct Vector3 : IEquatable<Vector3>
   {
-    private static Vector3 _zero = new Vector3(0.0f, 0.0f, 0.0f);
-    private static Vector3 _one = new Vector3(1f, 1f, 1f);
-    private static Vector3 _up = new Vector3(0.0f, 1f, 0.0f);
-    private static Vector3 _right = new Vector3(1f, 0.0f, 0.0f);
-    private static Vector3 _forward = new Vector3(0.0f, 0.0f, -1f);
-    private static Vector3 _back = new Vector3(0.0f, 0.0f, 1f);
-    private static Vector3 _down = new Vector3(0.0f, -1f, 0.0f);
-    public float x;
-    public float y;
-    public float z;
-
-    public Vector3 normalized => Vector3.Normalize(this);
-
-    public float magnitude
+    private static Vector3 _zero;
+    private static Vector3 _one;
+    private static Vector3 _up;
+    private static Vector3 _right;
+    private static Vector3 _forward;
+    private static Vector3 _back;
+    private static Vector3 _down;
+    static Vector3()
     {
-      get => (float) Math.Sqrt((double) Vector3.DistanceSquared(this, Vector3.zero));
+      _zero = new Vector3(0.0f, 0.0f, 0.0f);
+      _one = new Vector3(1f, 1f, 1f);
+      _up = new Vector3(0.0f, 1f, 0.0f);
+      _right = new Vector3(1f, 0.0f, 0.0f);
+      _forward = new Vector3(0.0f, 0.0f, -1f);
+      _back = new Vector3(0.0f, 0.0f, 1f);
+      _down = new Vector3(0.0f, -1f, 0.0f);
     }
 
-    public float sqrMagnitude => Vector3.DistanceSquared(this, Vector3.zero);
+    public float magnitude => this.x * this.x + this.y * this.y + this.z * this.z;
 
-    public static Vector3 zero => Vector3._zero;
+    public float sqrMagnitude => this.x * this.x + this.y * this.y + this.z * this.z;
 
-    public static Vector3 one => Vector3._one;
+    public Vector3 normalized => this;
 
-    public static Vector3 up => Vector3._up;
+    public static Vector3 zero => new Vector3(0.0f, 0.0f, 0.0f);
 
-    public static Vector3 down => Vector3._down;
+    public static Vector3 one => new Vector3(1f, 1f, 1f);
 
-    public static Vector3 right => Vector3._right;
+    public static Vector3 up => new Vector3(0.0f, 1f, 0.0f);
 
-    public static Vector3 forward => Vector3._forward;
+    public static Vector3 down => new Vector3(0.0f, -1f, 0.0f);
 
-    public static Vector3 back => Vector3._back;
+    public static Vector3 right => new Vector3(1f, 0.0f, 0.0f);
+
+    public static Vector3 forward => new Vector3(0.0f, 0.0f, -1f);
+
+    public static Vector3 back => new Vector3(0.0f, 0.0f, 1f);
 
     public float this[int index]
     {
@@ -103,30 +107,6 @@ namespace PressPlay.FFWD
       this.z = z;
     }
 
-    public Vector3(Vector2 position, float depth)
-    {
-      switch (ApplicationSettings.to2dMode)
-      {
-        case ApplicationSettings.To2dMode.DropX:
-          this.x = depth;
-          this.y = position.x;
-          this.z = position.y;
-          break;
-        case ApplicationSettings.To2dMode.DropY:
-          this.x = position.x;
-          this.y = depth;
-          this.z = position.y;
-          break;
-        case ApplicationSettings.To2dMode.DropZ:
-          this.x = position.x;
-          this.y = position.y;
-          this.z = depth;
-          break;
-        default:
-          throw new Exception("Unknown enum " + (object) ApplicationSettings.to2dMode);
-      }
-    }
-
     public Vector3(Microsoft.Xna.Framework.Vector3 v)
       : this(v.X, v.Y, v.Z)
     {
@@ -134,40 +114,7 @@ namespace PressPlay.FFWD
 
     public static Vector3 Lerp(Vector3 from, Vector3 to, float t)
     {
-      float amount = Mathf.Clamp01(t);
-      return new Vector3(MathHelper.Lerp(from.x, to.x, amount), MathHelper.Lerp(from.y, to.y, amount), MathHelper.Lerp(from.z, to.z, amount));
-    }
-
-    public static Vector3 Slerp(Vector3 from, Vector3 to, float t)
-    {
-      throw new NotImplementedException();
-    }
-
-    public static void OrthoNormalize(ref Vector3 normal, ref Vector3 tangent)
-    {
-      throw new NotImplementedException();
-    }
-
-    public static void OrthoNormalize(
-      ref Vector3 normal,
-      ref Vector3 tangent,
-      ref Vector3 binormal)
-    {
-      throw new NotImplementedException();
-    }
-
-    public static void MoveTowards(ref Vector3 normal, ref Vector3 tangent, ref Vector3 binormal)
-    {
-      throw new NotImplementedException();
-    }
-
-    public static Vector3 RotateTowards(
-      Vector3 from,
-      Vector3 to,
-      float maxRadiansDelta,
-      float maxMagnitudeDelta)
-    {
-      throw new NotImplementedException();
+      return from + (to - from) * t;
     }
 
     public static Vector3 Scale(Vector3 a, Vector3 b)
@@ -190,35 +137,9 @@ namespace PressPlay.FFWD
       return new Vector3((float) ((double) lhs.y * (double) rhs.z - (double) rhs.y * (double) lhs.z), (float) -((double) lhs.x * (double) rhs.z - (double) rhs.x * (double) lhs.z), (float) ((double) lhs.x * (double) rhs.y - (double) rhs.x * (double) lhs.y));
     }
 
-    public static Vector3 Reflect(Vector3 vector, Vector3 normal)
-    {
-      throw new NotImplementedException();
-    }
-
     public static float Dot(Vector3 lhs, Vector3 rhs)
     {
-      return (float) ((double) lhs.x * (double) rhs.x + (double) lhs.y * (double) rhs.y + (double) lhs.z * (double) rhs.z);
-    }
-
-    public static Vector3 Project(Vector3 vector, Vector3 onNormal)
-    {
-      throw new NotImplementedException();
-    }
-
-    public static float Angle(Vector3 from, Vector3 to)
-    {
-      float d = Vector3.Dot(from.normalized, to.normalized);
-      return (double) d >= 1.0 || (double) d <= -1.0 ? 0.0f : MathHelper.ToDegrees((float) Math.Acos((double) d));
-    }
-
-    public static float Distance(Vector3 a, Vector3 b)
-    {
-      return (float) Math.Sqrt((double) Vector3.DistanceSquared(a, b));
-    }
-
-    public static float DistanceSquared(Vector3 a, Vector3 b)
-    {
-      return (float) (((double) a.x - (double) b.x) * ((double) a.x - (double) b.x) + ((double) a.y - (double) b.y) * ((double) a.y - (double) b.y) + ((double) a.z - (double) b.z) * ((double) a.z - (double) b.z));
+      return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
     }
 
     public static Vector3 Max(Vector3 value1, Vector3 value2)

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.Maelstrom
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -39,7 +39,7 @@ namespace PressPlay.Tentacles.Scripts
       this.vortexGfx.Rotate(Vector3.up, this.rotationSpeed * Time.deltaTime, Space.Self);
     }
 
-    public override Vector3 GetForce(Rigidbody _rigidBody)
+    public override Vector3 GetForce(PressPlay.FFWD.Components.Rigidbody _rigidBody)
     {
       if (this.sphereCollider == null)
         this.sphereCollider = this.GetComponent<SphereCollider>();

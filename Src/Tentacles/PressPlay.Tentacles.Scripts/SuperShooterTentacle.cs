@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.SuperShooterTentacle
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 
 #nullable disable
@@ -18,7 +19,7 @@ namespace PressPlay.Tentacles.Scripts
     public float tentacleLength = 2f;
     private SimpleLineDrawer lineDrawer;
     public TentacleVisualStats visualStats;
-    private Vector3 activePosition;
+    private Microsoft.Xna.Framework.Vector3 activePosition;
     private Transform startPosition;
     private Transform endPosition;
     private SuperShooter boss;
@@ -106,7 +107,7 @@ namespace PressPlay.Tentacles.Scripts
         this.gotoObj.transform.position = this.startPosition.position;
         this.gotoObj.transform.parent = this.startPosition;
       }
-      this.tip.transform.position = Vector3.Lerp(this.tip.transform.position, this.gotoObj.transform.position, Time.deltaTime * 5f);
+      this.tip.transform.position = Microsoft.Xna.Framework.Vector3.Lerp(this.tip.transform.position, this.gotoObj.transform.position, Time.deltaTime * 5f);
     }
 
     private void ToggleVisibility(bool on)

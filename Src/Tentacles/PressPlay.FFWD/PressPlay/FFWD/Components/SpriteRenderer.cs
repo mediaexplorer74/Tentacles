@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.Components.SpriteRenderer
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -11,8 +11,12 @@ using Microsoft.Xna.Framework.Graphics;
 #nullable disable
 namespace PressPlay.FFWD.Components
 {
-  public class SpriteRenderer : Renderer, PressPlay.FFWD.Interfaces.IUpdateable
+  public class SpriteRenderer : Renderer
   {
+    public Texture2D sprite { get; set; }
+
+    public override GameObject gameObject => this._gameObject;
+
     [ContentSerializer(Optional = true)]
     public string Texture;
     [ContentSerializerIgnore]
@@ -80,13 +84,13 @@ namespace PressPlay.FFWD.Components
     {
     }
 
-    public override int Draw(GraphicsDevice device, Camera cam)
+    public override int Draw(GraphicsDevice device, PressPlay.FFWD.Components.Camera cam)
     {
       if (this.texture == null)
         return 0;
-      Camera.spriteBatch.Begin();
-      Camera.spriteBatch.Draw(this.texture, (Microsoft.Xna.Framework.Vector2) this.Position, new Rectangle?(this.bounds), (Microsoft.Xna.Framework.Color) this.material.color, this.transform.eulerAngles.y, (Microsoft.Xna.Framework.Vector2) this.Origin, this.Scale, this.Effects, this.LayerDepth);
-      Camera.spriteBatch.End();
+      PressPlay.FFWD.Components.Camera.spriteBatch.Begin();
+      PressPlay.FFWD.Components.Camera.spriteBatch.Draw(this.texture, (Microsoft.Xna.Framework.Vector2) this.Position, new Rectangle?(this.bounds), (Microsoft.Xna.Framework.Color) this.material.color, this.transform.eulerAngles.y, (Microsoft.Xna.Framework.Vector2) this.Origin, this.Scale, this.Effects, this.LayerDepth);
+      PressPlay.FFWD.Components.Camera.spriteBatch.End();
       return 1;
     }
   }

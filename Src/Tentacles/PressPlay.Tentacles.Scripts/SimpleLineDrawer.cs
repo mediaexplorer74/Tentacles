@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.SimpleLineDrawer
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
@@ -17,7 +17,7 @@ namespace PressPlay.Tentacles.Scripts
     public float endWidth;
     public Transform start;
     public Transform end;
-    private MeshFilter meshFilter;
+    public PressPlay.FFWD.Components.MeshFilter meshFilter;
     private Mesh mesh;
     private Microsoft.Xna.Framework.Vector3[] vertices;
     private Microsoft.Xna.Framework.Vector2[] uvs;

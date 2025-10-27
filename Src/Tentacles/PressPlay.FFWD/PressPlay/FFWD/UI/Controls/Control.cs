@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.FFWD.UI.Controls.Control
 // Assembly: PressPlay.FFWD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 71C18607-4890-4187-AD5F-810BF86AC08E
@@ -88,7 +88,7 @@ namespace PressPlay.FFWD.UI.Controls
       new GameObject("control").AddComponent<Control>(this);
     }
 
-    public virtual void HandleInput(InputState input)
+    public virtual void HandleInput(PressPlay.FFWD.ScreenManager.InputState input)
     {
       for (int index = 0; index < this.childCount; ++index)
         this.children[index].HandleInput(input);
@@ -133,23 +133,23 @@ namespace PressPlay.FFWD.UI.Controls
       return size;
     }
 
-    protected virtual bool isMouseWithinBounds(InputState input)
+    protected virtual bool isMouseWithinBounds(PressPlay.FFWD.ScreenManager.InputState input)
     {
       return this.isMouseWithinBounds(input, this.bounds);
     }
 
-    protected virtual bool isMouseWithinBounds(InputState input, Rectangle box)
+    protected virtual bool isMouseWithinBounds(PressPlay.FFWD.ScreenManager.InputState input, Rectangle box)
     {
       PressPlay.FFWD.Vector2 mousePosition = input.mousePosition;
       return box.Contains((int) mousePosition.x, (int) mousePosition.y);
     }
 
-    protected virtual bool isTouchWithinBounds(InputState input)
+    protected virtual bool isTouchWithinBounds(PressPlay.FFWD.ScreenManager.InputState input)
     {
       return this.isTouchWithinBounds(input, this.bounds);
     }
 
-    protected virtual bool isTouchWithinBounds(InputState input, Rectangle box)
+    protected virtual bool isTouchWithinBounds(PressPlay.FFWD.ScreenManager.InputState input, Rectangle box)
     {
       for (int index = 0; index < input.TouchState.Count; ++index)
       {
