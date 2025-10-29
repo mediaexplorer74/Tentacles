@@ -25,7 +25,7 @@ namespace PressPlay.Tentacles.Scripts
     private MusicControllerTrigger.MusicControllerMode mode;
     private bool hasStartedMusic;
 
-    public override void OnTriggerEnter(Collider collider)
+    public override void OnTriggerEnter(Component collider)
     {
       if (this.isLemmyInTrigger)
         return;
@@ -34,7 +34,7 @@ namespace PressPlay.Tentacles.Scripts
       this.lastEnterTime = Time.time;
     }
 
-    public override void OnTriggerExit(Collider collider)
+    public override void OnTriggerExit(Component collider)
     {
       if (!this.isLemmyInTrigger)
         return;

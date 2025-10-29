@@ -56,7 +56,7 @@ namespace PressPlay.Tentacles.Scripts
           this.animationComponent[clip.id].wrapMode = clip.wrapMode;
           this.animationComponent[clip.id].speed = clip.speed;
           if (clip.randomizeStartTime)
-            this.animationComponent[clip.id].time = Random.Range(0.0f, this.animationComponent[clip.id].length);
+            this.animationComponent[clip.id].time = MathHelper.Lerp(0.0f, this.animationComponent[clip.id].length, (float) new System.Random().NextDouble());
         }
       }
       this.animationComponent.playAutomatically = this.playAutomatically;
@@ -147,7 +147,7 @@ namespace PressPlay.Tentacles.Scripts
 
     public void Play(string id) => this.Play(id, (PPAnimationHandler.PPAnimationCallback) null);
 
-    public void PlayQueued(string animation, PressPlay.FFWD.QueueMode queueMode)
+    public void PlayQueued(string animation, WrapMode queueMode)
     {
       if (this.animationComponent == null || this.animationComponent[animation] == null)
         return;

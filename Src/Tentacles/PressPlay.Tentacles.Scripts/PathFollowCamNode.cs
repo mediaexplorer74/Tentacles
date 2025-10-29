@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.PathFollowCamNode
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
@@ -34,14 +35,13 @@ namespace PressPlay.Tentacles.Scripts
     public bool affectCameraRotation = true;
     public bool centerFollowObjectInViewPort;
 
-    public float SqrtDistanceTo(Vector3 _pos) => (this.transform.position - _pos).sqrMagnitude;
+    public float SqrtDistanceTo(Microsoft.Xna.Framework.Vector3 _pos) => (this.transform.position - _pos).LengthSquared();
 
-    public Vector3 GetPosition(Vector3 _followObjectPos)
+    public Microsoft.Xna.Framework.Vector3 GetPosition(Microsoft.Xna.Framework.Vector3 _followObjectPos)
     {
-      return this.transform.TransformPoint(this.transform.InverseTransformPoint(_followObjectPos) with
-      {
-        y = 0.0f
-      });
+      Microsoft.Xna.Framework.Vector3 result = this.transform.InverseTransformPoint(_followObjectPos);
+      result.Y = 0.0f;
+      return this.transform.TransformPoint(result);
     }
 
     public override void Update() => base.Update();

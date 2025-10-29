@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.SpriteSheetLineDrawer
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -22,14 +23,14 @@ namespace PressPlay.Tentacles.Scripts
     private short[] triangles;
     private bool[] flipped;
     private float lineIncrementDeltaFraction;
-    private PressPlay.FFWD.Vector3 p1;
-    private PressPlay.FFWD.Vector3 p2;
-    private PressPlay.FFWD.Vector3 p3;
-    private PressPlay.FFWD.Vector3 tmpVerticePosUpper;
-    private PressPlay.FFWD.Vector3 tmpVerticePosLower;
+    private Microsoft.Xna.Framework.Vector3 p1;
+    private Microsoft.Xna.Framework.Vector3 p2;
+    private Microsoft.Xna.Framework.Vector3 p3;
+    private Microsoft.Xna.Framework.Vector3 tmpVerticePosUpper;
+    private Microsoft.Xna.Framework.Vector3 tmpVerticePosLower;
     internal float depth;
-    private PressPlay.FFWD.Vector3 orthogonalVector = new PressPlay.FFWD.Vector3();
-    private PressPlay.FFWD.Vector3[] points;
+    private Microsoft.Xna.Framework.Vector3 orthogonalVector = new Microsoft.Xna.Framework.Vector3();
+    private Microsoft.Xna.Framework.Vector3[] points;
     private int pointCnt;
     private int oldPointCnt = -1;
 
@@ -40,11 +41,11 @@ namespace PressPlay.Tentacles.Scripts
     public override void Initialize()
     {
       this.InitializeLine(100);
-      this.tileSize = new PressPlay.FFWD.Vector2(1f / (float) this.xCount, 1f / (float) this.yCount);
-      this.DrawLine(new PressPlay.FFWD.Vector3[2]
+      this.tileSize = new Microsoft.Xna.Framework.Vector2(1f / (float) this.xCount, 1f / (float) this.yCount);
+      this.DrawLine(new Microsoft.Xna.Framework.Vector3[2]
       {
-        PressPlay.FFWD.Vector3.zero,
-        PressPlay.FFWD.Vector3.forward
+        Microsoft.Xna.Framework.Vector3.Zero,
+        Microsoft.Xna.Framework.Vector3.Forward
       });
       if (!this.automaticPlay || this.automaticPlayAnim == null)
         return;
@@ -53,21 +54,21 @@ namespace PressPlay.Tentacles.Scripts
 
     public void InitializeLine(int _maxPoints)
     {
-      this.meshFilter = (MeshFilter) this.gameObject.AddComponent(typeof (MeshFilter));
-      this.meshFilter.sharedMesh = new Mesh();
-      this.mesh = this.meshFilter.mesh;
-      if (this.gameObject.renderer == null || this.gameObject.renderer.GetType() != typeof (MeshRenderer))
-        this.gameObject.AddComponent(typeof (MeshRenderer));
-      this.gameObject.renderer.sharedMaterial = this.material;
-      this.points = new PressPlay.FFWD.Vector3[_maxPoints + 1];
+      // this.meshFilter = (MeshFilter) this.gameObject.AddComponent(typeof (MeshFilter));
+      // this.meshFilter.sharedMesh = new Mesh();
+      // this.mesh = this.meshFilter.mesh;
+      // if (this.gameObject.renderer == null || this.gameObject.renderer.GetType() != typeof (MeshRenderer))
+      //   this.gameObject.AddComponent(typeof (MeshRenderer));
+      // this.gameObject.renderer.sharedMaterial = this.material;
+      this.points = new Microsoft.Xna.Framework.Vector3[_maxPoints + 1];
       this.Rebuild();
     }
 
-    public void AddPoint(PressPlay.FFWD.Vector3 newPos) => this.insertPoint(newPos);
+    public void AddPoint(Microsoft.Xna.Framework.Vector3 newPos) => this.insertPoint(newPos);
 
     public void DrawLine(Transform[] _transforms)
     {
-      PressPlay.FFWD.Vector3[] _newPositions = new PressPlay.FFWD.Vector3[_transforms.Length];
+      Microsoft.Xna.Framework.Vector3[] _newPositions = new Microsoft.Xna.Framework.Vector3[_transforms.Length];
       int index = 0;
       foreach (Transform transform in _transforms)
       {
@@ -77,7 +78,7 @@ namespace PressPlay.Tentacles.Scripts
       this.DrawLine(_newPositions);
     }
 
-    public void DrawLine(PressPlay.FFWD.Vector3[] _newPositions)
+    public void DrawLine(Microsoft.Xna.Framework.Vector3[] _newPositions)
     {
       this.pointCnt = 0;
       for (int index = 0; index < _newPositions.Length; ++index)
@@ -132,21 +133,21 @@ namespace PressPlay.Tentacles.Scripts
           this.tmpVerticePosUpper = this.p1 + this.orthogonalVector * this.curWidth;
           this.tmpVerticePosLower = this.p1 - this.orthogonalVector * this.curWidth;
         }
-        this.vertices[index * 5] = (Microsoft.Xna.Framework.Vector3) this.tmpVerticePosUpper;
-        this.vertices[index * 5 + 1] = (Microsoft.Xna.Framework.Vector3) this.tmpVerticePosLower;
-        this.vertices[index * 5 + 2] = (Microsoft.Xna.Framework.Vector3) (this.p2 + this.orthogonalVector * this.nextWidth);
-        this.vertices[index * 5 + 3] = (Microsoft.Xna.Framework.Vector3) (this.p2 - this.orthogonalVector * this.nextWidth);
-        this.vertices[index * 5 + 4] = (Microsoft.Xna.Framework.Vector3) this.p2;
-        this.tmpVerticePosUpper = (PressPlay.FFWD.Vector3) this.vertices[index * 5 + 2];
-        this.tmpVerticePosLower = (PressPlay.FFWD.Vector3) this.vertices[index * 5 + 3];
+        this.vertices[index * 5] = this.tmpVerticePosUpper;
+        this.vertices[index * 5 + 1] = this.tmpVerticePosLower;
+        this.vertices[index * 5 + 2] = this.p2 + this.orthogonalVector * this.nextWidth;
+        this.vertices[index * 5 + 3] = this.p2 - this.orthogonalVector * this.nextWidth;
+        this.vertices[index * 5 + 4] = this.p2;
+        this.tmpVerticePosUpper = this.vertices[index * 5 + 2];
+        this.tmpVerticePosLower = this.vertices[index * 5 + 3]; 
       }
       if (flag)
       {
         this.tmpUVs = new Microsoft.Xna.Framework.Vector2[this.baseUVs.Length];
         for (int index = 0; index < this.baseUVs.Length; ++index)
         {
-          this.baseUVs[index] = (Microsoft.Xna.Framework.Vector2) new PressPlay.FFWD.Vector2(0.0f, 0.0f);
-          this.tmpUVs[index] = (Microsoft.Xna.Framework.Vector2) new PressPlay.FFWD.Vector2(0.0f, 0.0f);
+          this.baseUVs[index] = new Microsoft.Xna.Framework.Vector2(0.0f, 0.0f);
+          this.tmpUVs[index] = new Microsoft.Xna.Framework.Vector2(0.0f, 0.0f); 
         }
         for (int index = 0; index < this.pointCnt - 1; ++index)
         {
@@ -159,7 +160,7 @@ namespace PressPlay.Tentacles.Scripts
           this.baseUVs[index * 5 + 2].Y = 0.0f;
           this.baseUVs[index * 5 + 3].X = (num + this.lineIncrementDeltaFraction) / (float) this.xCount;
           this.baseUVs[index * 5 + 3].Y = 1f / (float) this.yCount;
-          this.baseUVs[index * 5 + 4] = (Microsoft.Xna.Framework.Vector2) new PressPlay.FFWD.Vector2(0.5f, 0.5f);
+          this.baseUVs[index * 5 + 4] = new Microsoft.Xna.Framework.Vector2(0.5f, 0.5f); 
         }
       }
       if (flag)
@@ -228,16 +229,16 @@ namespace PressPlay.Tentacles.Scripts
           }
         }
       }
-      this.mesh.Clear();
-      this.mesh.vertices = this.vertices;
-      this.mesh.uv = this.CreateUVs(this.XPosFromIndex(this.currentFrameIndex), this.YPosFromIndex(this.currentFrameIndex));
-      this.mesh.triangles = this.triangles;
+      // this.mesh.Clear();
+      // this.mesh.vertices = this.vertices;
+      // this.mesh.uv = this.CreateUVs(this.XPosFromIndex(this.currentFrameIndex), this.YPosFromIndex(this.currentFrameIndex));
+      // this.mesh.triangles = this.triangles; 
       if (!this.isPlaying)
         return;
       this.UpdateAnim();
     }
 
-    private void insertPoint(PressPlay.FFWD.Vector3 newpos)
+    private void insertPoint(Microsoft.Xna.Framework.Vector3 newpos) 
     {
       this.points[this.pointCnt] = newpos;
       ++this.pointCnt;

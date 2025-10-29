@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.RaycastLemmyDamager
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 
 #nullable disable
@@ -15,10 +16,10 @@ namespace PressPlay.Tentacles.Scripts
     public Transform rayEnd;
     public LayerMask rayStopColliders;
     private RaycastHit rh;
-    private Ray ray = new Ray(Vector3.zero, Vector3.zero);
-    private Vector3 dir;
+    private PressPlay.FFWD.Ray ray = new PressPlay.FFWD.Ray(Microsoft.Xna.Framework.Vector3.Zero, Microsoft.Xna.Framework.Vector3.Zero);
+    private Microsoft.Xna.Framework.Vector3 dir;
     private float rayLength;
-    private Vector3 tmpVector;
+    private Microsoft.Xna.Framework.Vector3 tmpVector;
     private bool hitLemmyLastFrame;
     private GameObject rayDirectionObject;
     private GameObject hitTrackerObject;
@@ -44,7 +45,7 @@ namespace PressPlay.Tentacles.Scripts
       this.ray.origin = this.rayStart.position;
       this.ray.direction = this.dir;
       this.rayDirectionObject.transform.position = this.rayStart.position;
-      this.rayDirectionObject.transform.LookAt(this.rayEnd.position, Vector3.up);
+      this.rayDirectionObject.transform.LookAt(this.rayEnd.position, Microsoft.Xna.Framework.Vector3.Up);
       if (Physics.Raycast(this.ray, out this.rh, this.rayLength, (int) this.rayStopColliders))
       {
         if (this.rh.collider.gameObject.tag == GlobalSettings.Instance.lemmyTag)

@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.PoolablePickup
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 
 #nullable disable
@@ -25,7 +26,7 @@ namespace PressPlay.Tentacles.Scripts
     private bool isInvisible;
     private float birthtime;
     private bool isAboutToDie;
-    private MoveToAndPullLemmy moveToLemmyScript;
+    private Component moveToLemmyScript;
     protected bool _isBeingDragged;
     protected bool _hasBeenPickedUp;
 
@@ -67,13 +68,13 @@ namespace PressPlay.Tentacles.Scripts
     {
       base.Activate();
       if (this.moveToLemmyScript == null)
-        this.moveToLemmyScript = this.GetComponent<MoveToAndPullLemmy>();
+        this.moveToLemmyScript = this.GetComponent<Component>();
       this.moveToLemmyScript.Reset();
-      this.moveToLemmyScript.DelayForSeconds(Random.Range(0.15f, 0.35f));
+      this.moveToLemmyScript.DelayForSeconds(MathHelper.Lerp(0.15f, 0.35f, (float) new System.Random().NextDouble()));
       this._isBeingDragged = false;
       this._hasBeenPickedUp = false;
       this.isAboutToDie = false;
-      this.birthtime = Time.time + Random.Range(0.0f, 0.5f);
+      this.birthtime = Time.time + MathHelper.Lerp(0.0f, 0.5f, (float) new System.Random().NextDouble());
       this.InitRandomMovement();
     }
 
@@ -82,15 +83,15 @@ namespace PressPlay.Tentacles.Scripts
       if (this.mover == null)
         return;
       this.mover.SetDampening(1f);
-      Vector3 insideUnitSphere = Random.insideUnitSphere with
-      {
-        y = 0.0f
-      };
+      Microsoft.Xna.Framework.Vector3 insideUnitSphere = new Microsoft.Xna.Framework.Vector3(
+        (float)(new System.Random().NextDouble() - 0.5) * 2f,
+        0.0f,
+        (float)(new System.Random().NextDouble() - 0.5) * 2f);
       insideUnitSphere *= 5f;
       this.mover.SetVelocity(insideUnitSphere);
     }
 
-    public void SetMovement(Vector3 direction)
+    public void SetMovement(Microsoft.Xna.Framework.Vector3 direction)
     {
       if (this.mover == null)
         return;
@@ -102,7 +103,10 @@ namespace PressPlay.Tentacles.Scripts
 
     public void MoveTowardsLemmy()
     {
-      this.SetMovement((LevelHandler.Instance.lemmy.transform.position - this.transform.position).normalized + Random.insideUnitSphere * 0.7f);
+      this.SetMovement((LevelHandler.Instance.lemmy.transform.position - this.transform.position).normalized + new Microsoft.Xna.Framework.Vector3(
+        (float)(new System.Random().NextDouble() - 0.5f) * 1.4f,
+        0.0f,
+        (float)(new System.Random().NextDouble() - 0.5f) * 1.4f));
     }
 
     public virtual void StartLemmyDrag()

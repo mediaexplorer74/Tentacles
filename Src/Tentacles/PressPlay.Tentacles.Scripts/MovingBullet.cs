@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.MovingBullet
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System;
@@ -19,9 +20,9 @@ namespace PressPlay.Tentacles.Scripts
     public PoolableObject createOnHitLemmy;
     public PoolableObject createOnDestroy;
     public LayerMask layersToHit;
-    private Vector3 lastPosition;
+    private Microsoft.Xna.Framework.Vector3 lastPosition;
     private RaycastHit rh;
-    private Ray ray = new Ray(Vector3.zero, Vector3.zero);
+    private PressPlay.FFWD.Ray ray = new PressPlay.FFWD.Ray(Microsoft.Xna.Framework.Vector3.Zero, Microsoft.Xna.Framework.Vector3.Zero);
     private bool doRaycast = true;
     private float wallHitDistance = -1f;
     private float distanceTraversed;
@@ -30,7 +31,7 @@ namespace PressPlay.Tentacles.Scripts
     public override void Start()
     {
       base.Start();
-      Collider componentInChildren = this.GetComponentInChildren<Collider>();
+      Component componentInChildren = this.GetComponentInChildren<Component>();
       if (componentInChildren != null && componentInChildren.isTrigger)
       {
         this.doRaycast = false;
@@ -76,7 +77,7 @@ namespace PressPlay.Tentacles.Scripts
       this.DoCollisionDetection();
     }
 
-    public override void init(BulletData _data, Vector3 _direction, float _charge)
+    public override void init(BulletData _data, Microsoft.Xna.Framework.Vector3 _direction, float _charge) 
     {
       base.init(_data, _direction, _charge);
       this.lastPosition = this.transform.position;
@@ -84,7 +85,7 @@ namespace PressPlay.Tentacles.Scripts
 
     public void DoCollisionDetection()
     {
-      Vector3 vector3 = this.transform.position - this.lastPosition;
+      Microsoft.Xna.Framework.Vector3 vector3 = this.transform.position - this.lastPosition;
       this.ray.origin = this.lastPosition;
       this.ray.direction = vector3;
       if (!Physics.Raycast(this.ray, out this.rh, vector3.magnitude, (int) this.layersToHit))
@@ -95,7 +96,7 @@ namespace PressPlay.Tentacles.Scripts
         this.DoHitWall();
     }
 
-    public override void OnTriggerEnter(Collider collider)
+    public override void OnTriggerEnter(Component collider) 
     {
       if (collider.tag == GlobalSettings.Instance.lemmyTag)
       {
@@ -118,7 +119,7 @@ namespace PressPlay.Tentacles.Scripts
       this.Explode(this.data);
     }
 
-    public virtual void DoHitLemmy(Vector3 _hitDir)
+    public virtual void DoHitLemmy(Microsoft.Xna.Framework.Vector3 _hitDir) 
     {
       LevelHandler.Instance.lemmy.Damage(this.damageStats.damage, _hitDir);
       LevelHandler.Instance.lemmy.Push(this.damageStats.push * _hitDir);

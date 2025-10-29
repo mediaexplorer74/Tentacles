@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -12,28 +13,28 @@ namespace PressPlay.Tentacles.Scripts
 {
   internal class ObjectShaker : MonoBehaviour
   {
-    private Vector3 rotationAmount;
+    private Microsoft.Xna.Framework.Vector3 rotationAmount;
     private float rotationStartTime;
     private float rotationDuration;
-    private PressPlay.FFWD.Quaternion originalRotation;
-    private Vector3 originalEulerRotation;
+    private Microsoft.Xna.Framework.Quaternion originalRotation;
+    private Microsoft.Xna.Framework.Vector3 originalEulerRotation;
     private bool doShakeRotation;
     private Transform rotationTarget;
-    private Vector3 positionAmount;
+    private Microsoft.Xna.Framework.Vector3 positionAmount;
     private float positionStartTime;
     private float positionDuration;
-    private Vector3 originalPosition;
+    private Microsoft.Xna.Framework.Vector3 originalPosition;
     private bool doShakePosition;
 
-    public void ShakeLocalRotation(Vector3 amount, float duration, Transform target)
+    public void ShakeLocalRotation(Microsoft.Xna.Framework.Vector3 amount, float duration, Transform target)
     {
       this.rotationStartTime = Time.time;
       this.rotationDuration = duration;
       this.originalRotation = this.transform.localRotation;
       this.originalEulerRotation = this.transform.localRotation.eulerAngles;
       this.rotationAmount = amount;
-      this.rotationAmount.x = 0.0f;
-      this.rotationAmount.z = 0.0f;
+      this.rotationAmount.X = 0.0f;
+      this.rotationAmount.Z = 0.0f;
       this.doShakeRotation = true;
       this.rotationTarget = target;
     }
@@ -48,10 +49,13 @@ namespace PressPlay.Tentacles.Scripts
         this.rotationTarget.localRotation = this.originalRotation;
       }
       else
-        this.rotationTarget.localRotation = Quaternion.Euler(Random.insideUnitSphere * this.rotationAmount * (float) (1.0 - ((double) Time.time - (double) this.rotationStartTime) / (double) this.rotationDuration) + this.originalEulerRotation);
+        this.rotationTarget.localRotation = Microsoft.Xna.Framework.Quaternion.CreateFromYawPitchRoll(
+          (float)(new System.Random().NextDouble() - 0.5) * this.rotationAmount.Y * (float)(1.0 - ((double)Time.time - (double)this.rotationStartTime) / (double)this.rotationDuration),
+          (float)(new System.Random().NextDouble() - 0.5) * this.rotationAmount.X * (float)(1.0 - ((double)Time.time - (double)this.rotationStartTime) / (double)this.rotationDuration),
+          (float)(new System.Random().NextDouble() - 0.5) * this.rotationAmount.Z * (float)(1.0 - ((double)Time.time - (double)this.rotationStartTime) / (double)this.rotationDuration)) * this.originalRotation;
     }
 
-    public void ShakePosition(Vector3 amount, float duration, Transform target)
+    public void ShakePosition(Microsoft.Xna.Framework.Vector3 amount, float duration, Transform target)
     {
     }
 

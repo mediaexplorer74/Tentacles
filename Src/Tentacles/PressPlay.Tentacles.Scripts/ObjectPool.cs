@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ namespace PressPlay.Tentacles.Scripts
       return this.Draw(prefab, prefab.transform.position, prefab.transform.rotation);
     }
 
-    public PoolableObject Draw(PoolableObject prefab, Vector3 position, PressPlay.FFWD.Quaternion rotation)
+    public PoolableObject Draw(PoolableObject prefab, Microsoft.Xna.Framework.Vector3 position, Microsoft.Xna.Framework.Quaternion rotation)
     {
       if (!this.pool.ContainsKey(prefab.guid))
         this.Grow(prefab, this.defaultNumberOfInstances);

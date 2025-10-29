@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace PressPlay.Tentacles.Scripts
     public GameObject[] tentacleFinalPositions;
     public GameObject tentacleParent;
     private List<SuperShooterTentacle> tentacles = new List<SuperShooterTentacle>();
-    public Collider[] damageColliders;
+    public Component[] damageColliders;
     public RifleWeapon weapon;
     public CannonScript cannon;
     public AudioWrapper sndLoop;
@@ -127,7 +128,7 @@ namespace PressPlay.Tentacles.Scripts
       int index = 0;
       foreach (GameObject tentaclePosition in this.tentaclePositions)
       {
-        Vector3 vector3 = tentaclePosition.transform.localPosition * new Vector3(1f, -1f, -1f);
+        Microsoft.Xna.Framework.Vector3 vector3 = tentaclePosition.transform.localPosition * new Microsoft.Xna.Framework.Vector3(1f, -1f, -1f);
         tentaclePosition.transform.localPosition = vector3;
         SuperShooterTentacle superShooterTentacle = (SuperShooterTentacle) UnityObject.Instantiate((UnityObject) this.tentaclePrefab, tentaclePosition.transform.position, tentaclePosition.transform.rotation);
         superShooterTentacle.Initialize(this, this.tentaclePositions[index].transform, this.tentacleFinalPositions[index].transform);
@@ -233,7 +234,7 @@ namespace PressPlay.Tentacles.Scripts
       LevelHandler.Instance.levelSession.RegisterKill(this.pointsForKill, this.transform.position, (BaseCreature) this);
       this.SpawnPickups();
       this.DeactivateBoss();
-      LevelHandler.Instance.cam.ShakeCamera(new Vector3(0.0f, 0.0f, 3f), 1f);
+      LevelHandler.Instance.cam.ShakeCamera(new Microsoft.Xna.Framework.Vector3(0.0f, 0.0f, 3f), 1f);
     }
 
     private void Shoot()

@@ -15,8 +15,8 @@ namespace PressPlay.Tentacles.Scripts
   {
     private TextRenderer textRenderer;
     private bool drawInWorld = true;
-    public PressPlay.FFWD.Components.Camera renderCamera;
-    public PressPlay.FFWD.Components.Camera camera;
+    public Component renderCamera;
+    public Component camera;
     public string text = "Hello World";
     public float characterSize = 1f;
     public SpriteText.Anchor_Pos anchor;
@@ -34,7 +34,7 @@ namespace PressPlay.Tentacles.Scripts
       set => this.text = value;
     }
 
-    public void SetCamera(PressPlay.FFWD.Components.Camera c) => this.renderCamera = c;
+    public void SetCamera(Component c) => this.renderCamera = c;
 
     public override void Start()
     {
@@ -47,7 +47,7 @@ namespace PressPlay.Tentacles.Scripts
       base.Update();
       if (!this.drawInWorld)
         return;
-      this.textRenderer.Position = (Vector2) this.renderCamera.WorldToViewportPoint(this.transform.position);
+      // this.textRenderer.Position = (Vector2) this.renderCamera.WorldToViewportPoint(this.transform.position);
     }
 
     protected override void Destroy() => base.Destroy();

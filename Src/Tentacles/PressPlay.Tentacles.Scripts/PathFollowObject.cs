@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -15,9 +16,9 @@ namespace PressPlay.Tentacles.Scripts
     public GameObject followObject;
     private PathFollowCamNode[] nodes;
     private PathFollowCamNodeConnection[] nodeConnections;
-    private Vector3 gotoPos;
-    private PressPlay.FFWD.Quaternion targetRotation;
-    public PressPlay.FFWD.Quaternion rotation;
+    private Microsoft.Xna.Framework.Vector3 gotoPos;
+    private Microsoft.Xna.Framework.Quaternion targetRotation;
+    public Microsoft.Xna.Framework.Quaternion rotation;
     private bool isLocked;
     public bool automaticMovement;
     public float moveSpeed = 4f;
@@ -61,15 +62,15 @@ namespace PressPlay.Tentacles.Scripts
       this.startConnection = this.currentActiveConnection;
     }
 
-    public PathFollowCamNodeConnection GetClosestConnection(Vector3 _pos)
+    public PathFollowCamNodeConnection GetClosestConnection(Microsoft.Xna.Framework.Vector3 _pos)
     {
       if (this.nodeConnections.Length == 0)
         return (PathFollowCamNodeConnection) null;
       int index1 = 0;
-      float num = this.nodeConnections[0].GetOrthogonalDistanceVector(_pos).sqrMagnitude;
+      float num = this.nodeConnections[0].GetOrthogonalDistanceVector(_pos).LengthSquared();
       for (int index2 = 0; index2 < this.nodeConnections.Length; ++index2)
       {
-        float sqrMagnitude = this.nodeConnections[index2].GetOrthogonalDistanceVector(_pos).sqrMagnitude;
+        float sqrMagnitude = this.nodeConnections[index2].GetOrthogonalDistanceVector(_pos).LengthSquared();
         if ((double) sqrMagnitude < (double) num)
         {
           index1 = index2;
@@ -112,9 +113,9 @@ namespace PressPlay.Tentacles.Scripts
     private void MoveCameraAccordingToNodeConnection(PathFollowCamNodeConnection _nodeConnection)
     {
       this.gotoPos = _nodeConnection.GetPositionOnCameraPath(this.followObject.transform.position);
-      this.gotoRotation = _nodeConnection.transform.rotation;
-      this.transform.position = Vector3.Lerp(this.transform.position, this.gotoPos, 0.04f);
-      this.transform.rotation = Quaternion.Lerp(this.transform.rotation, this.gotoRotation, 0.02f);
+      this.targetRotation = _nodeConnection.transform.rotation;
+      this.transform.position = Microsoft.Xna.Framework.Vector3.Lerp(this.transform.position, this.gotoPos, 0.04f);
+      this.transform.rotation = Microsoft.Xna.Framework.Quaternion.Lerp(this.transform.rotation, this.targetRotation, 0.02f);
     }
 
     public void Reset()

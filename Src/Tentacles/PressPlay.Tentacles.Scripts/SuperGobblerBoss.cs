@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System.Collections.Generic;
@@ -34,9 +35,9 @@ namespace PressPlay.Tentacles.Scripts
     public SuperGobblerBossAttackShield shieldPrefab;
     public List<SuperGobblerBossAttackShield> shields;
     public EnergyCell energy;
-    private Vector3 startPosition;
-    private Vector3 liftPosition;
-    private Vector3 earthquakePosition;
+    private Microsoft.Xna.Framework.Vector3 startPosition;
+    private Microsoft.Xna.Framework.Vector3 liftPosition;
+    private Microsoft.Xna.Framework.Vector3 earthquakePosition;
     private bool doHealthReset;
     private bool doEnemySpawn;
     private bool hasStarted;
@@ -54,13 +55,13 @@ namespace PressPlay.Tentacles.Scripts
     public AudioWrapper sndOnLift;
     public AudioWrapper sndOnContraction;
     public AudioWrapper sndOnDeath;
-    private PressPlay.FFWD.Components.MeshCollider shieldMeshCollider;
+    private Component shieldMeshCollider;
 
     public override void Start()
     {
       base.Start();
-      this.shieldMeshCollider = this.gameObject.GetComponentInChildren<MeshCollider>();
-      this.shieldMeshCollider.connectedBody.SleepingAllowed = false;
+      this.shieldMeshCollider = this.gameObject.GetComponentInChildren<Component>();
+      // this.shieldMeshCollider.connectedBody.SleepingAllowed = false; 
     }
 
     public override void Activate()
@@ -145,7 +146,7 @@ namespace PressPlay.Tentacles.Scripts
 
     public void OnContractBodyComplete()
     {
-      LevelHandler.Instance.cam.ShakeCamera(new Vector3(0.0f, 0.0f, 3f), 1f);
+      LevelHandler.Instance.cam.ShakeCamera(new Microsoft.Xna.Framework.Vector3(0.0f, 0.0f, 3f), 1f); 
       this.ShakeAndPushLemmy(this.earthquakePushForce);
       if (this.createOnEarthquake != null)
       {
@@ -172,7 +173,7 @@ namespace PressPlay.Tentacles.Scripts
     private void ShakeAndPushLemmy(float force)
     {
       LevelHandler.Instance.lemmy.BreakConnections();
-      LevelHandler.Instance.lemmy.rigidbody.AddForce((LevelHandler.Instance.lemmy.transform.position - this.body.transform.position).normalized * force);
+      LevelHandler.Instance.lemmy.rigidbody.AddForce(Microsoft.Xna.Framework.Vector3.Normalize(LevelHandler.Instance.lemmy.transform.position - this.body.transform.position) * force); 
     }
 
     private void SetKillColliderStatus(bool status)

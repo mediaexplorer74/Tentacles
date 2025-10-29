@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.BasicLemmyDamager
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -21,7 +22,7 @@ namespace PressPlay.Tentacles.Scripts
 
     public void OverrideDamageStats(DamageLemmyStats _stats) => this.damageStats = _stats;
 
-    protected void HitLemmy(Vector3 _hitDir, Vector3 _position)
+    protected void HitLemmy(Microsoft.Xna.Framework.Vector3 _hitDir, Microsoft.Xna.Framework.Vector3 _position)
     {
       if (!this.doDamage)
         return;
@@ -35,11 +36,11 @@ namespace PressPlay.Tentacles.Scripts
       this.feedback.DoOnHitLemmy(_hitDir, _position);
     }
 
-    internal virtual void DoOnHitLemmy(Vector3 _hitDir, Vector3 _position)
+    internal virtual void DoOnHitLemmy(Microsoft.Xna.Framework.Vector3 _hitDir, Microsoft.Xna.Framework.Vector3 _position)
     {
     }
 
-    protected void StayOnLemmy(Vector3 _hitDir, Vector3 _position)
+    protected void StayOnLemmy(Microsoft.Xna.Framework.Vector3 _hitDir, Microsoft.Xna.Framework.Vector3 _position)
     {
       if (!this.doDamage)
         return;

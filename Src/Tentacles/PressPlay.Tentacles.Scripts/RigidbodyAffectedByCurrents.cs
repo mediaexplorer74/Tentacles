@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.RigidbodyAffectedByCurrents
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System.Collections.Generic;
@@ -15,13 +16,13 @@ namespace PressPlay.Tentacles.Scripts
   {
     public float multiplyCurrentPower = 1f;
     private List<Current> activeCurrents = new List<Current>();
-    private Vector3 _force;
-    private Vector3 tmpVelocityDifference;
+    private Microsoft.Xna.Framework.Vector3 _force;
+    private Microsoft.Xna.Framework.Vector3 tmpVelocityDifference;
     private Current tmpCurrent;
 
-    public Vector3 force => this._force;
+    public Microsoft.Xna.Framework.Vector3 force => this._force;
 
-    public override void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Component other)
     {
       if (!(other.gameObject.tag == "Current"))
         return;
@@ -31,7 +32,7 @@ namespace PressPlay.Tentacles.Scripts
       this.activeCurrents.Add(component);
     }
 
-    public override void OnTriggerExit(Collider other)
+    public override void OnTriggerExit(Component other)
     {
       if (!(other.gameObject.tag == "Current"))
         return;
@@ -45,8 +46,8 @@ namespace PressPlay.Tentacles.Scripts
     {
       if (this.rigidbody == null)
         return;
-      Vector3 force = this._force;
-      this._force = new Vector3();
+      Microsoft.Xna.Framework.Vector3 force = this._force;
+      this._force = new Microsoft.Xna.Framework.Vector3();
       for (int index = 0; index < this.activeCurrents.Count; ++index)
       {
         this.tmpCurrent = this.activeCurrents[index];

@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ObjectMover
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -15,28 +16,28 @@ namespace PressPlay.Tentacles.Scripts
     private float speedThresshold = 0.1f;
     private bool velocityBelowThresshold = true;
     private bool hasMovedThisFrame;
-    private Vector3 velocity = Vector3.zero;
+    private Microsoft.Xna.Framework.Vector3 velocity = Microsoft.Xna.Framework.Vector3.Zero;
     private float dampening = 1f;
-    private Vector3 activeDampeningVector;
+    private Microsoft.Xna.Framework.Vector3 activeDampeningVector;
     public float rayCastCollisionDistance = 1f;
 
     public bool isSleeping => this.velocityBelowThresshold;
 
-    public void AddVelocity(Vector3 _velocity)
+    public void AddVelocity(Microsoft.Xna.Framework.Vector3 _velocity)
     {
       this.velocity += _velocity;
       this.velocityBelowThresshold = false;
       this.RecalcActiveDampeningVector();
     }
 
-    public void SetVelocity(Vector3 _velocity)
+    public void SetVelocity(Microsoft.Xna.Framework.Vector3 _velocity)
     {
       this.velocity = _velocity;
       this.velocityBelowThresshold = false;
       this.RecalcActiveDampeningVector();
     }
 
-    public Vector3 GetVelocity() => this.velocity;
+    public Microsoft.Xna.Framework.Vector3 GetVelocity() => this.velocity;
 
     public void SetDampening(float _dampening)
     {
@@ -61,16 +62,16 @@ namespace PressPlay.Tentacles.Scripts
 
     private void RecalcActiveDampeningVector()
     {
-      this.activeDampeningVector = Vector3.Lerp(Vector3.zero, this.velocity, this.dampening);
+      this.activeDampeningVector = Microsoft.Xna.Framework.Vector3.Lerp(Microsoft.Xna.Framework.Vector3.Zero, this.velocity, this.dampening);
     }
 
     private void Dampening(float _deltaTime)
     {
       if (this.velocityBelowThresshold)
         return;
-      if ((double) this.velocity.sqrMagnitude < (double) (this.activeDampeningVector * _deltaTime).sqrMagnitude)
+      if ((double) this.velocity.LengthSquared() < (double) (this.activeDampeningVector * _deltaTime).LengthSquared())
       {
-        this.velocity = Vector3.zero;
+        this.velocity = Microsoft.Xna.Framework.Vector3.Zero;
         this.velocityBelowThresshold = true;
       }
       else
@@ -82,9 +83,9 @@ namespace PressPlay.Tentacles.Scripts
       if (this.velocityBelowThresshold || this.hasMovedThisFrame)
         return;
       this.hasMovedThisFrame = true;
-      if ((double) this.velocity.sqrMagnitude < (double) this.speedThresshold)
+      if ((double) this.velocity.LengthSquared() < (double) this.speedThresshold)
       {
-        this.velocity = Vector3.zero;
+        this.velocity = Microsoft.Xna.Framework.Vector3.Zero;
         this.velocityBelowThresshold = true;
       }
       else

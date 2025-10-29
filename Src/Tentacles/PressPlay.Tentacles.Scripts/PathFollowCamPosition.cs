@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 
 #nullable disable
@@ -11,9 +12,9 @@ namespace PressPlay.Tentacles.Scripts
 {
   public struct PathFollowCamPosition
   {
-    public Vector3 gotoPos;
-    private PressPlay.FFWD.Quaternion targetRotation;
-    public Vector3 childCamPos;
+    public Microsoft.Xna.Framework.Vector3 gotoPos;
+    private Microsoft.Xna.Framework.Quaternion targetRotation;
+    public Microsoft.Xna.Framework.Vector3 childCamPos;
     public float speedMod;
 
     public override string ToString()

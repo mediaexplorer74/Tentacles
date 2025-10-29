@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.ABaseWeapon
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
@@ -17,7 +18,7 @@ namespace PressPlay.Tentacles.Scripts
     public ABaseWeapon.ABaseWeaponCallback OnWeaponFireCallback;
     public bool useAmmoCache = true;
     public int bulletDamage = 50;
-    public Vector3 random = new Vector3();
+    public Microsoft.Xna.Framework.Vector3 random = new Microsoft.Xna.Framework.Vector3();
     protected int useSpecificNozzle = -1;
     protected CannonScript _cannon;
     protected ABaseBehaviour shooter;
@@ -43,7 +44,7 @@ namespace PressPlay.Tentacles.Scripts
       this.Fire(this.cannon.getNozzlePosition(), this.cannon.getNozzleDirection(), this.cannon.getNozzleRotation());
     }
 
-    protected void Fire(Vector3 _position, Vector3 _direction, Quaternion _rotation)
+    protected void Fire(Microsoft.Xna.Framework.Vector3 _position, Microsoft.Xna.Framework.Vector3 _direction, Microsoft.Xna.Framework.Quaternion _rotation)
     {
       if (this.useSpecificNozzle != -1)
       {
@@ -52,9 +53,9 @@ namespace PressPlay.Tentacles.Scripts
         _rotation = this.cannon.getNozzleRotation(this.useSpecificNozzle);
       }
       this.bulletData = new BulletData((float) this.bulletDamage, this.shooter, "");
-      if ((double) this.random.magnitude > 0.0)
+      if ((double) this.random.Length() > 0.0)
       {
-        Vector3 vector3 = new Vector3(_direction.x + Random.Range(-this.random.x, this.random.x), _direction.y + Random.Range(-this.random.y, this.random.y), _direction.z + Random.Range(-this.random.z, this.random.z));
+        Microsoft.Xna.Framework.Vector3 vector3 = new Microsoft.Xna.Framework.Vector3(_direction.X + Microsoft.Xna.Framework.MathHelper.Lerp(-this.random.X, this.random.X, (float) new System.Random().NextDouble()), _direction.Y + Microsoft.Xna.Framework.MathHelper.Lerp(-this.random.Y, this.random.Y, (float) new System.Random().NextDouble()), _direction.Z + Microsoft.Xna.Framework.MathHelper.Lerp(-this.random.Z, this.random.Z, (float) new System.Random().NextDouble()));
         this.FireWeapon(_position, _direction + vector3, _rotation);
       }
       else
@@ -64,7 +65,7 @@ namespace PressPlay.Tentacles.Scripts
       this.cannon.NextNozzle();
     }
 
-    protected abstract void FireWeapon(Vector3 _position, Vector3 _direction, Quaternion _rotation);
+    protected abstract void FireWeapon(Microsoft.Xna.Framework.Vector3 _position, Microsoft.Xna.Framework.Vector3 _direction, Microsoft.Xna.Framework.Quaternion _rotation);
 
     public virtual void DestroyWeapon() => UnityObject.Destroy((UnityObject) this.gameObject);
 

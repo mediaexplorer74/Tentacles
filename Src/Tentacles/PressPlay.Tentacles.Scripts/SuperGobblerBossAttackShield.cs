@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.SuperGobblerBossAttackShield
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -18,7 +19,7 @@ namespace PressPlay.Tentacles.Scripts
     public float distanceToShoot = 1f;
     public float warningDuration = 1f;
     public float warningDelay;
-    public Vector3 warningShake = new Vector3(3f, 3f, 3f);
+    public Microsoft.Xna.Framework.Vector3 warningShake = new Microsoft.Xna.Framework.Vector3(3f, 3f, 3f);
     public float attackDuration = 1f;
     public float attackDelay;
     public iTween.EaseType attackEase = iTween.EaseType.bounce;
@@ -35,9 +36,9 @@ namespace PressPlay.Tentacles.Scripts
     public PoolableObject createOnDeath;
     private float lastCheckTime;
     private float lemmyInSightTime;
-    private Vector3 startPosition;
-    private Vector3 attackPosition;
-    private Ray ray;
+    private Microsoft.Xna.Framework.Vector3 startPosition;
+    private Microsoft.Xna.Framework.Vector3 attackPosition;
+    private PressPlay.FFWD.Ray ray;
     private bool isLemmyInSight;
     private EnergyCell energy;
     private SuperGobblerBoss boss;
@@ -65,9 +66,9 @@ namespace PressPlay.Tentacles.Scripts
       float pathStartPosition,
       bool ping)
     {
-      this.lookAtPath = new BezierCurve(new Vector3[0]);
+      this.lookAtPath = new BezierCurve(new Microsoft.Xna.Framework.Vector3[0]);
       this.lookAtPath.ResetPath(lookAtPath);
-      this.movePath = new BezierCurve(new Vector3[0]);
+      this.movePath = new BezierCurve(new Microsoft.Xna.Framework.Vector3[0]);
       this.movePath.ResetPath(movePath);
       this.shootDistanceCurve = shootDistanceCurve;
       this.pathStartPosition = pathStartPosition;
@@ -96,10 +97,10 @@ namespace PressPlay.Tentacles.Scripts
     {
       if (this.state != SuperGobblerBossAttackShield.ShieldState.idle)
         return;
-      Vector3 vector3_1 = this.movePath.PointOnPath(this.pathPosition);
-      Vector3 vector3_2 = this.lookAtPath.PointOnPath(this.pathPosition);
+      Microsoft.Xna.Framework.Vector3 vector3_1 = this.movePath.PointOnPath(this.pathPosition);
+      Microsoft.Xna.Framework.Vector3 vector3_2 = this.lookAtPath.PointOnPath(this.pathPosition);
       this.transform.position = vector3_1;
-      this.transform.rotation = Quaternion.LookRotation(vector3_1 - vector3_2, Vector3.up);
+      this.transform.rotation = Quaternion.LookRotation(vector3_1 - vector3_2, Microsoft.Xna.Framework.Vector3.Up);
       if (this.ping)
       {
         this.pathPosition = NumberUtil.Increment(this.pathPosition, 0.2f * Time.deltaTime, 0.0f, 1f, NumberUtil.IncrementMode.clamp);

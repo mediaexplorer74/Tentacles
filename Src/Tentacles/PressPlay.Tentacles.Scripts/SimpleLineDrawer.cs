@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -22,8 +23,8 @@ namespace PressPlay.Tentacles.Scripts
     private Microsoft.Xna.Framework.Vector3[] vertices;
     private Microsoft.Xna.Framework.Vector2[] uvs;
     private short[] triangles;
-    private PressPlay.FFWD.Vector3 dir;
-    private PressPlay.FFWD.Vector3 orthoDir;
+    private Microsoft.Xna.Framework.Vector3 dir;
+    private Microsoft.Xna.Framework.Vector3 orthoDir;
     private bool isInitialized;
     public SimpleLineDrawer.TextureOrientation textureOrientation = SimpleLineDrawer.TextureOrientation.leftRight;
 
@@ -39,12 +40,6 @@ namespace PressPlay.Tentacles.Scripts
       if (this.isInitialized)
         return;
       this.isInitialized = true;
-      this.meshFilter = (MeshFilter) this.gameObject.AddComponent(typeof (MeshFilter));
-      this.meshFilter.sharedMesh = new Mesh();
-      this.mesh = this.meshFilter.sharedMesh;
-      if (this.gameObject.renderer == null || this.gameObject.renderer.GetType() != typeof (MeshRenderer))
-        this.gameObject.AddComponent(typeof (MeshRenderer));
-      this.gameObject.renderer.sharedMaterial = this.material;
       this.vertices = new Microsoft.Xna.Framework.Vector3[4];
       this.uvs = new Microsoft.Xna.Framework.Vector2[4]
       {
@@ -74,7 +69,8 @@ namespace PressPlay.Tentacles.Scripts
     public void RebuildSquare()
     {
       this.dir = this.end.position - this.start.position;
-      this.orthoDir = new PressPlay.FFWD.Vector3(-this.dir.z, 0.0f, this.dir.x).normalized;
+      this.orthoDir = new Microsoft.Xna.Framework.Vector3(-this.dir.Z, 0.0f, this.dir.X);
+      this.orthoDir = Microsoft.Xna.Framework.Vector3.Normalize(this.orthoDir); 
       switch (this.textureOrientation)
       {
         case SimpleLineDrawer.TextureOrientation.bottomTop:
@@ -90,18 +86,13 @@ namespace PressPlay.Tentacles.Scripts
           this.vertices[1] = (Microsoft.Xna.Framework.Vector3) this.transform.InverseTransformPoint(this.end.position - this.orthoDir * this.endWidth * 0.5f);
           break;
       }
-      this.mesh.vertices = this.vertices;
-      this.mesh.normals = this.vertices;
-      this.mesh.uv = this.uvs;
-      this.mesh.triangles = this.triangles;
-      this.meshFilter.mesh = this.mesh;
     }
 
     private void OnDrawGizmos()
     {
       if (this.start == null || this.end == null)
         return;
-      Debug.DrawLine(this.start.position, this.end.position, PressPlay.FFWD.Color.grey);
+      Debug.DrawLine(this.start.position, this.end.position, Microsoft.Xna.Framework.Color.Gray); 
     }
 
     public enum TextureOrientation

@@ -27,9 +27,9 @@ namespace PressPlay.Tentacles.Scripts
     private Microsoft.Xna.Framework.Vector3 followObjectLastPosition;
     public GameObject camShakeObject;
     public GameObject childCam;
-    public PressPlay.FFWD.Components.Camera backgroundCamera;
-    public PressPlay.FFWD.Components.Camera raycastCamera;
-    public PressPlay.FFWD.Components.Camera GUICamera;
+    public Component backgroundCamera;
+    public Component raycastCamera;
+    public Component GUICamera;
     private PathFollowCamNodeConnection currentActiveConnection;
     private PathFollowCamNodeConnection lastActiveConnection;
     private PathFollowCamNode[] nodes;
@@ -38,7 +38,7 @@ namespace PressPlay.Tentacles.Scripts
     private static PathFollowCam instance;
     private Microsoft.Xna.Framework.Vector3 childCamPos;
     private Microsoft.Xna.Framework.Vector3 gotoPos;
-    private PressPlay.FFWD.Quaternion gotoRotation;
+    private Microsoft.Xna.Framework.Quaternion gotoRotation; 
     private bool isLocked;
     private Microsoft.Xna.Framework.Vector3 followObjectPositionInViewPort = Microsoft.Xna.Framework.Vector3.Zero;
     private PathFollowCam.State state;
@@ -205,7 +205,7 @@ namespace PressPlay.Tentacles.Scripts
       {
         if (nodeConnection.backNode.backNodeConnection != null)
         {
-          nodeConnection.backNode.transform.rotation = Microsoft.Xna.Framework.Quaternion.Lerp(nodeConnection.backNode.backNodeConnection.transform.rotation, nodeConnection.transform.rotation, 0.5f);
+          nodeConnection.backNode.transform.rotation = Microsoft.Xna.Framework.Quaternion.Lerp(nodeConnection.backNode.backNodeConnection.transform.rotation, nodeConnection.transform.rotation, 0.5f); 
         }
         else
         {
@@ -339,9 +339,9 @@ namespace PressPlay.Tentacles.Scripts
         this.gotoRotation = _nodeConnection.transform.rotation;
         float num3 = 3f;
         if ((double) magnitude2 < (double) num3)
-          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.backNode.transform.rotation, _nodeConnection.transform.rotation, magnitude2 / num3);
+          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.backNode.transform.rotation, _nodeConnection.transform.rotation, magnitude2 / num3); 
         if ((double) magnitude1 < (double) num3)
-          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.frontNode.transform.rotation, _nodeConnection.transform.rotation, magnitude1 / num3);
+          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.frontNode.transform.rotation, _nodeConnection.transform.rotation, magnitude1 / num3); 
       }
       followPathPosition.gotoPos = this.gotoPos;
       followPathPosition.gotoRotation = this.gotoRotation;
@@ -375,9 +375,9 @@ namespace PressPlay.Tentacles.Scripts
         this.gotoRotation = _nodeConnection.transform.rotation;
         float num2 = 3f;
         if ((double) magnitude2 < (double) num2)
-          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.backNode.transform.rotation, _nodeConnection.transform.rotation, magnitude2 / num2);
+          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.backNode.transform.rotation, _nodeConnection.transform.rotation, magnitude2 / num2); 
         if ((double) magnitude1 < (double) num2)
-          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.frontNode.transform.rotation, _nodeConnection.transform.rotation, magnitude1 / num2);
+          this.gotoRotation = Microsoft.Xna.Framework.Quaternion.Lerp(_nodeConnection.frontNode.transform.rotation, _nodeConnection.transform.rotation, magnitude1 / num2); 
       }
       this.childCamPos.x = -this.followObjectPositionInViewPort.x;
       this.childCamPos.y = -this.followObjectPositionInViewPort.y;
@@ -400,7 +400,7 @@ namespace PressPlay.Tentacles.Scripts
       else
       {
         this.transform.position = Microsoft.Xna.Framework.Vector3.Lerp(this.transform.position, pos.gotoPos, (this.stats.moveStiffness + pos.speedMod * this.stats.speedMoveStiffnessMod) * Time.deltaTime);
-        this.transform.rotation = Microsoft.Xna.Framework.Quaternion.Lerp(this.transform.rotation, pos.gotoRotation, (this.stats.turnStiffness + pos.speedMod * this.stats.speedTurnStiffnessMod) * Time.deltaTime);
+        this.transform.rotation = Microsoft.Xna.Framework.Quaternion.Lerp(this.transform.rotation, pos.gotoRotation, (this.stats.turnStiffness + pos.speedMod * this.stats.speedTurnStiffnessMod) * Time.deltaTime); 
         this.childCam.transform.localPosition = Microsoft.Xna.Framework.Vector3.Lerp(this.childCam.transform.localPosition, pos.childCamPos, this.stats.lookAheadAndHeightStiffnes * Time.deltaTime);
       }
     }

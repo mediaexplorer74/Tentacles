@@ -19,10 +19,10 @@ namespace PressPlay.Tentacles.Scripts
     private OnOffSlider.ControlStates _state;
     public AudioClip buttonSound;
     private ImageControl background;
-    private PressPlay.FFWD.UI.Controls.ButtonStyle onButtonStyle;
-    private PressPlay.FFWD.UI.Controls.ButtonStyle offButtonStyle;
+    private Control onButtonStyle;
+    private Control offButtonStyle;
 
-    public OnOffSlider(Texture2D texture, PressPlay.FFWD.UI.Controls.ButtonStyle onStyle, PressPlay.FFWD.UI.Controls.ButtonStyle offStyle, string link)
+    public OnOffSlider(Texture2D texture, Control onStyle, Control offStyle, string link)
     {
       this.link = link;
       this.onButtonStyle = onStyle;
@@ -92,7 +92,9 @@ namespace PressPlay.Tentacles.Scripts
 
     private void ChangeState()
     {
-      ((UISpriteRenderer) this.background.renderer).sourceRect = this.buttonStyle.GetSourceRect((int) this.state);
+      this.background.renderer.sourceRect = this.state == OnOffSlider.ControlStates.on || this.state == OnOffSlider.ControlStates.onHover
+        ? this.onButtonStyle.GetSourceRect((int) this.state)
+        : this.offButtonStyle.GetSourceRect((int) this.state);
     }
 
     public enum ControlStates

@@ -4,6 +4,7 @@
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 using System.Collections.Generic;
@@ -31,19 +32,19 @@ namespace PressPlay.Tentacles.Scripts
       this.backNode.frontNodeConnection = this;
       if (this.backNode.centerFollowObjectInViewPort && this.frontNode.centerFollowObjectInViewPort)
         this.centerFollowObjectInViewPort = true;
-      Vector3 vector3 = this.frontNode.transform.position - this.backNode.transform.position;
-      this.connectionDistance = vector3.magnitude;
+      Microsoft.Xna.Framework.Vector3 vector3 = this.frontNode.transform.position - this.backNode.transform.position;
+      this.connectionDistance = vector3.Length();
       this.transform.position = _backNode.transform.position;
-      this.transform.LookAt(this.transform.position + Vector3.down, new Vector3(vector3.z, 0.0f, -vector3.x));
+      this.transform.LookAt(this.transform.position + Microsoft.Xna.Framework.Vector3.Down, new Microsoft.Xna.Framework.Vector3(vector3.Z, 0.0f, -vector3.X));
     }
 
-    public PathFollowCamNodeConnection CheckDistanceOnConnections(Vector3 _pos)
+    public PathFollowCamNodeConnection CheckDistanceOnConnections(Microsoft.Xna.Framework.Vector3 _pos)
     {
       return this.CheckDistanceOnConnections(_pos, (PathFollowCamNodeConnection) null, 0.0f);
     }
 
     public PathFollowCamNodeConnection CheckDistanceOnConnections(
-      Vector3 _pos,
+      Microsoft.Xna.Framework.Vector3 _pos,
       PathFollowCamNodeConnection _lastConnection,
       float _changeToLastConnectionThresshold)
     {
@@ -54,10 +55,10 @@ namespace PressPlay.Tentacles.Scripts
         this.connectionsToDistanceTest.Add(this.frontNode.frontNodeConnection);
       if (this.backNode.backNodeConnection != null)
         this.connectionsToDistanceTest.Add(this.backNode.backNodeConnection);
-      float num = this.connectionsToDistanceTest[0].GetOrthogonalDistanceVector(_pos).magnitude;
+      float num = this.connectionsToDistanceTest[0].GetOrthogonalDistanceVector(_pos).Length();
       for (int index2 = 1; index2 < this.connectionsToDistanceTest.Count; ++index2)
       {
-        float magnitude = this.connectionsToDistanceTest[index2].GetOrthogonalDistanceVector(_pos).magnitude;
+        float magnitude = this.connectionsToDistanceTest[index2].GetOrthogonalDistanceVector(_pos).Length();
         if (_lastConnection != null && this.connectionsToDistanceTest[index2] != this && this.connectionsToDistanceTest[index2] == _lastConnection)
           magnitude += _changeToLastConnectionThresshold;
         if ((double) magnitude <= (double) num)
@@ -69,36 +70,34 @@ namespace PressPlay.Tentacles.Scripts
       return this.connectionsToDistanceTest[index1];
     }
 
-    public Vector3 GetPositionOnCameraPath(Vector3 _pos)
+    public Microsoft.Xna.Framework.Vector3 GetPositionOnCameraPath(Microsoft.Xna.Framework.Vector3 _pos)
     {
-      Vector3 position = this.transform.InverseTransformPoint(_pos) with
-      {
-        y = 0.0f
-      };
+      Microsoft.Xna.Framework.Vector3 position = this.transform.InverseTransformPoint(_pos);
+      position.Y = 0.0f;
       if (this.isFirstConnection)
-        position.x = Mathf.Max(0.0f, position.x);
+        position.X = Math.Max(0.0f, position.X);
       if (this.isLastConnection)
-        position.x = Mathf.Min(this.connectionDistance, position.x);
+        position.X = Math.Min(this.connectionDistance, position.X);
       return this.transform.TransformPoint(position);
     }
 
-    public Vector3 GetOrthogonalDistanceVector(Vector3 _pos)
+    public Microsoft.Xna.Framework.Vector3 GetOrthogonalDistanceVector(Microsoft.Xna.Framework.Vector3 _pos)
     {
-      Vector3 vector3 = this.transform.InverseTransformPoint(_pos);
-      if ((double) vector3.x < 0.0)
+      Microsoft.Xna.Framework.Vector3 vector3 = this.transform.InverseTransformPoint(_pos);
+      if ((double) vector3.X < 0.0)
         return this.backNode.transform.position - _pos;
-      return (double) vector3.x > (double) this.connectionDistance ? this.frontNode.transform.position - _pos : this.GetPositionOnCameraPath(_pos) - _pos;
+      return (double) vector3.X > (double) this.connectionDistance ? this.frontNode.transform.position - _pos : this.GetPositionOnCameraPath(_pos) - _pos;
     }
 
-    public PressPlay.FFWD.Quaternion GetRotation(Vector3 _pos)
+    public Microsoft.Xna.Framework.Quaternion GetRotation(Microsoft.Xna.Framework.Vector3 _pos)
     {
       float progression = this.GetProgression(_pos);
-      return (double) progression < 0.5 ? PressPlay.FFWD.Quaternion.Lerp(this.backNode.transform.rotation, this.transform.rotation, progression * 2f) : PressPlay.FFWD.Quaternion.Lerp(this.transform.rotation, this.frontNode.transform.rotation, (float) (((double) progression - 0.5) * 2.0));
+      return (double) progression < 0.5 ? Microsoft.Xna.Framework.Quaternion.Lerp(this.backNode.transform.rotation, this.transform.rotation, progression * 2f) : Microsoft.Xna.Framework.Quaternion.Lerp(this.transform.rotation, this.frontNode.transform.rotation, (float) (((double) progression - 0.5) * 2.0));
     }
 
-    public float GetProgression(Vector3 _pos)
+    public float GetProgression(Microsoft.Xna.Framework.Vector3 _pos)
     {
-      return Mathf.Clamp01(this.transform.InverseTransformPoint(_pos).x / this.connectionDistance);
+      return MathHelper.Clamp(this.transform.InverseTransformPoint(_pos).X / this.connectionDistance, 0f, 1f);
     }
   }
 }

@@ -139,7 +139,7 @@ namespace PressPlay.Tentacles.Scripts
 
     private void ChangeTentacleState(TentacleTip.States newState) => this._state = newState;
 
-    public override void OnTriggerStay(Component collider) 
+    public override void OnTriggerStay(Component collider)
     {
       base.OnTriggerStay(collider);
       if (!this.isIdle || !LayerMaskOperations.CheckLayerMaskContainsLayer(GlobalSettings.Instance.allWallsAndShields, collider.gameObject.layer))
@@ -147,7 +147,7 @@ namespace PressPlay.Tentacles.Scripts
       this.rigidbody.AddForce((collider.transform.position - this.transform.position).normalized * 200f * Time.deltaTime);
     }
 
-    public override void OnTriggerEnter(Component collider) 
+    public override void OnTriggerEnter(Component collider)
     {
       base.OnTriggerEnter(collider);
       if (!this.isIdle || !LayerMaskOperations.CheckLayerMaskContainsLayer(GlobalSettings.Instance.allWallsAndShields, collider.gameObject.layer))

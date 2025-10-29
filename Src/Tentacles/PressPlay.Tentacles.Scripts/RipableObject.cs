@@ -1,9 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: PressPlay.Tentacles.Scripts.RipableObject
 // Assembly: PressPlay.Tentacles.Scripts, Version=1.2011.4.100, Culture=neutral, PublicKeyToken=null
 // MVID: B6E1094A-B322-4665-8EA1-7734DAF1ACCB
 // Assembly location: C:\Users\Admin\Desktop\RE\Tentacles\PressPlay.Tentacles.Scripts.dll
 
+using Microsoft.Xna.Framework;
 using PressPlay.FFWD;
 using PressPlay.FFWD.Components;
 
@@ -18,7 +19,7 @@ namespace PressPlay.Tentacles.Scripts
     public AudioWrapper soundOnRip;
     protected PoolableObject trail;
     public bool lockClaw = true;
-    private Vector3 originalPosition;
+    private Microsoft.Xna.Framework.Vector3 originalPosition;
     private ClawBehaviour connectedClaw;
     public float connectionTime;
     public float minForce;
@@ -28,7 +29,7 @@ namespace PressPlay.Tentacles.Scripts
     private float eatStartTime = -1f;
     private float eatDuration = -1f;
     private float ripTime = -1f;
-    private Vector3 ripLossyScale;
+    private Microsoft.Xna.Framework.Vector3 ripLossyScale;
 
     public override void Start()
     {
@@ -36,7 +37,7 @@ namespace PressPlay.Tentacles.Scripts
       this.InitializeStartPosition(this.transform.position);
     }
 
-    public void InitializeStartPosition(Vector3 _position)
+    public void InitializeStartPosition(Microsoft.Xna.Framework.Vector3 _position) 
     {
       this.originalPosition = _position;
       this.transform.position = _position;
@@ -63,7 +64,7 @@ namespace PressPlay.Tentacles.Scripts
       if ((double) this.eatStartTime != -1.0 && 1.0 - ((double) Time.time - (double) this.eatStartTime) / (double) this.eatDuration < 0.0)
         this.RemoveWhenEaten();
       if ((double) this.ripTime != -1.0)
-        this.transform.localScale = Vector3.Lerp(this.ripLossyScale, Vector3.one, Mathf.Clamp01((float) (((double) Time.time - (double) this.ripTime) / 0.40000000596046448))) / this.transform.parent.lossyScale;
+        this.transform.localScale = Microsoft.Xna.Framework.Vector3.Lerp(this.ripLossyScale, Microsoft.Xna.Framework.Vector3.One, MathHelper.Clamp((float) (((double) Time.time - (double) this.ripTime) / 0.40000000596046448), 0f, 1f)) / this.transform.parent.lossyScale; 
       if ((bool) (UnityObject) this.connectedClaw && this.connectedClaw.isClawConnected)
         this.HandleConnectionTime();
       else
